@@ -29,6 +29,8 @@ public class ViewHome extends JFrame {
 	private JButton btnLogOut;
 	private JButton btnSignIn;
 	private JButton btnLogIn;
+	private JButton btnMngProduct;
+	private JButton btnMngUser;
 	
 	
 	public ViewHome() {
@@ -45,6 +47,7 @@ public class ViewHome extends JFrame {
 	
 	public void CreationViewHome(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
 		setBounds(100, 100, 488, 255);
 		setTitle("BuilDreams : Home");
 		contentPane = new JPanel();
@@ -68,6 +71,11 @@ public class ViewHome extends JFrame {
 		contentPane.add(btnEditProfile);
 		btnEditProfile.setEnabled(false);
 		
+		this.btnMngProduct = new JButton("Manage products");
+		btnMngProduct.setBounds(10,46,219,23);
+		contentPane.add(btnMngProduct);
+		btnMngProduct.setVisible(false);
+		
 		this.btnManageProjTask = new JButton("Manage my projects and tasks");
 		btnManageProjTask.setBounds(10, 80, 219, 23);
 		contentPane.add(btnManageProjTask);
@@ -77,6 +85,11 @@ public class ViewHome extends JFrame {
 		btnMyJournal.setBounds(10, 114, 219, 23);
 		contentPane.add(btnMyJournal);
 		btnMyJournal.setEnabled(false);
+		
+		this.btnMngUser = new JButton("Manage users");
+		btnMngUser.setBounds(10, 114, 219, 23);
+		contentPane.add(btnMngUser);
+		btnMngUser.setVisible(false);
 		
 		this.btnMembers = new JButton("Members public space");
 		btnMembers.setBounds(10, 148, 219, 23);
@@ -153,12 +166,19 @@ public class ViewHome extends JFrame {
 		
 		this.setLocationRelativeTo(null);
 		
-		if (this.isConnected){
-			this.setEnableButtons();
+		if (this.isConnected & this.role == "User"){
+			this.setEnableButtonsUser();
 		}
+		if (this.isConnected & this.role == "Administrator"){
+			this.setVisibleButtonsAdmin();
+		}
+		if (this.isConnected & this.role == "Seller"){
+			this.setVisibleButtonsSeller();
+		}
+		
 	}
 	
-	private void setEnableButtons() {
+	private void setEnableButtonsUser() {
 		btnEditProfile.setEnabled(true);
 		btnManageProjTask.setEnabled(true);
 		btnMyJournal.setEnabled(true);
@@ -168,5 +188,24 @@ public class ViewHome extends JFrame {
 		btnLogOut.setVisible(true);
 		btnLogIn.setVisible(false);
 		btnSignIn.setVisible(false);
+	}
+	
+	private void setVisibleButtonsAdmin(){
+		btnEditProfile.setVisible(false);
+		btnManageProjTask.setVisible(false);
+		btnMyJournal.setVisible(false);
+		btnShop.setVisible(false);
+		btnManageBasket.setVisible(false);
+		btnOffers.setVisible(false);
+		btnLogOut.setVisible(true);
+		btnMembers.setVisible(false);
+		btnLogIn.setVisible(false);
+		btnSignIn.setVisible(false);
+		
+		btnMngProduct.setVisible(true);
+		btnMngUser.setVisible(true);
+	}
+	
+	private void setVisibleButtonsSeller(){
 	}
 }

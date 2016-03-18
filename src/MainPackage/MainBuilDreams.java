@@ -2,14 +2,15 @@ package MainPackage;
 
 import java.awt.EventQueue;
 
-import UIPackage.ViewLogin;
+import UIPackage.ViewHome;
+
 
 public class MainBuilDreams {
 	public static void main (String[] args){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewLogin frame = new ViewLogin();
+					ViewHome frame = new ViewHome();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
