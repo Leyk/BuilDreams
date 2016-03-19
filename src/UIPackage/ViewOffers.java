@@ -27,25 +27,25 @@ import javax.swing.table.TableCellRenderer;
 
 import TabPatterns.*;
 
-public class ViewBasket extends JFrame {
+public class ViewOffers extends JFrame {
 	private JTable tableau;
 	private JButton order = new JButton("Order Items");
 	private JButton home = new JButton("Home");
 	private ModeleDonneesTab model;
 
-	  public ViewBasket(){
+	  public ViewOffers(){
 		  this.setLocationRelativeTo(null);
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  this.setBounds(100, 100, 488, 258);
 		  this.setTitle("BuilDreams : My Basket");
 		  
 		  Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-			      {"Wood", 100, 200,"Dupont","Delete"},
-			      {"Plastic", 100, 50,"Kane","Delete"},
-			      {"Hammer", 100, 45,"Vasseur","Delete"},
-			      {"Screw", 100, 19,"Faivre","Delete"}
+			      {"56465", "19/03/2016","Dupont","tata","See","Delete"},
+			      {"8567654", "19/03/2016","Kane","titi","See","Delete"},
+			      {"4564", "19/03/2016","Vasseur","toto","See","Delete"},
+			      {"46547", "19/03/2016","Faivre","tutu","See","Delete"}
 			    };
-	    String  title[] = {"Product name", "Quantity", "Price", "Seller"," "};
+	    String  title[] = {"Id offer", "Date", "Applicant", "Seller"," "," "};
 	    
 	    JButton btnHome = new JButton("Home");
 	    btnHome.addActionListener(new ActionListener() {
@@ -57,15 +57,15 @@ public class ViewBasket extends JFrame {
 	    });
 		btnHome.setBounds(176, 130, 112, 23);
 		
-		JButton btnOrder = new JButton("Order");
-		btnOrder.setBounds(176, 130, 112, 23);
+		JButton btnNewOffer = new JButton("Order");
+		btnNewOffer.setBounds(176, 130, 112, 23);
 		
 		JLabel lblPrixTot = new JLabel();
 		lblPrixTot.setBounds(32, 11, 252, 24);
 		lblPrixTot.setText("Total Price (€): ");
 		
 		JPanel panbtn = new JPanel();
-		panbtn.add(btnOrder);
+		panbtn.add(btnNewOffer);
 		panbtn.add(btnHome);
 		
 		JPanel panPrixTot = new JPanel();
