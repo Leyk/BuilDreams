@@ -30,7 +30,7 @@ public class ViewPersoTask extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(26, 57, 86, 20);
@@ -55,7 +55,7 @@ public class ViewPersoTask extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewManagePersoProjectTask fenMngPersoProjTask = new ViewManagePersoProjectTask(); 
+				ViewManagePersoProject fenMngPersoProjTask = new ViewManagePersoProject(); 
 				fenMngPersoProjTask.setVisible(true);	
 				dispose();
 			}
@@ -84,20 +84,18 @@ public class ViewPersoTask extends JFrame {
 		textFieldBeginDate = new JTextField();
 		textFieldBeginDate.setBounds(123, 129, 182, 20);
 		contentPane.add(textFieldBeginDate);
-		textFieldBeginDate.setColumns(10);
 		
 		textFieldTheoricalLen = new JTextField();
 		textFieldTheoricalLen.setBounds(122, 164, 182, 20);
 		contentPane.add(textFieldTheoricalLen);
-		textFieldTheoricalLen.setColumns(10);
 		
 		JLabel lblProduct = new JLabel("Products");
 		lblProduct.setBounds(26, 238, 46, 14);
 		contentPane.add(lblProduct);
 		
-		JList listProducts = new JList();
-		listProducts.setBounds(123, 238, 182, 20);
-		contentPane.add(listProducts);
+		JList listProduct = new JList();
+		listProduct.setBounds(123, 238, 182, 20);
+		contentPane.add(listProduct);
 		
 		JLabel lblUseExistingTask = new JLabel("Use existing task");
 		lblUseExistingTask.setBounds(26, 3, 144, 14);
@@ -112,19 +110,19 @@ public class ViewPersoTask extends JFrame {
 		contentPane.add(lblTask);
 		lblTask.setVisible(false);
 		
-		JList listTasks = new JList();
-		listTasks.setBounds(123, 27, 182, 20);
-		contentPane.add(listTasks);
-		listTasks.setVisible(false);
+		JList listTask = new JList();
+		listTask.setBounds(123, 27, 182, 20);
+		contentPane.add(listTask);
+		listTask.setVisible(false);
 		
 		chckbxYes.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				if (chckbxYes.isSelected()){
-					listTasks.setVisible(true);
+					listTask.setVisible(true);
 					lblTask.setVisible(true);			
 				}
 				else {
-					listTasks.setVisible(false);
+					listTask.setVisible(false);
 					lblTask.setVisible(false);	
 				}
 			}

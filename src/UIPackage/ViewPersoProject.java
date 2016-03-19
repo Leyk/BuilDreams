@@ -30,7 +30,7 @@ public class ViewPersoProject extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(10, 57, 102, 20);
@@ -40,9 +40,9 @@ public class ViewPersoProject extends JFrame {
 		lblDescription.setBounds(10, 94, 102, 20);
 		contentPane.add(lblDescription);
 		
-		JLabel lblTasks = new JLabel("General tasks");
-		lblTasks.setBounds(10, 164, 102, 20);
-		contentPane.add(lblTasks);
+		JLabel lblTask = new JLabel("General tasks");
+		lblTask.setBounds(10, 164, 102, 20);
+		contentPane.add(lblTask);
 		
 		JButton btnCreate = new JButton("Create");
 		btnCreate.setBounds(50, 241, 89, 23);
@@ -51,7 +51,7 @@ public class ViewPersoProject extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewManagePersoProjectTask fenMngPersoProjTask = new ViewManagePersoProjectTask(); 
+				ViewManagePersoProject fenMngPersoProjTask = new ViewManagePersoProject(); 
 				fenMngPersoProjTask.setVisible(true);	
 				dispose();
 			}
@@ -67,9 +67,9 @@ public class ViewPersoProject extends JFrame {
 		textFieldDescription.setBounds(123, 94, 182, 20);
 		contentPane.add(textFieldDescription);
 		
-		JList listGeneralTasks = new JList();
-		listGeneralTasks.setBounds(123, 164, 182, 20);
-		contentPane.add(listGeneralTasks);
+		JList listGeneralTask = new JList();
+		listGeneralTask.setBounds(123, 164, 182, 20);
+		contentPane.add(listGeneralTask);
 		
 		JLabel lblBeginDate = new JLabel("Begin date");
 		lblBeginDate.setBounds(10, 129, 102, 20);

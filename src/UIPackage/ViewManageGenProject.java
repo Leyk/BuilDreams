@@ -17,7 +17,7 @@ public class ViewManageGenProject extends JFrame {
 	public ViewManageGenProject() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 258);
-		setTitle("BuilDreams : Manage members");
+		setTitle("BuilDreams : Manage general projects");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -48,7 +48,7 @@ public class ViewManageGenProject extends JFrame {
 			JPanel panbtn = new JPanel();
 			panbtn.add(btnCreateGeneralProject);
 			panbtn.add(btnHome);
-			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
+			getContentPane().add(panbtn, BorderLayout.SOUTH);
 	}
 	
 

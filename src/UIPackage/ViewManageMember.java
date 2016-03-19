@@ -35,8 +35,8 @@ public class ViewManageMember extends JFrame {
 		    });
 			btnHome.setBounds(176, 130, 112, 23);
 			
-			JButton btnCreateProd = new JButton("New member");
-			btnCreateProd.addActionListener(new ActionListener() {
+			JButton btnCreateMember = new JButton("New member");
+			btnCreateMember.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ViewRegistration fenRegistration = new ViewRegistration(); 
 					fenRegistration.setVisible(true);	
@@ -44,12 +44,12 @@ public class ViewManageMember extends JFrame {
 					
 				}
 			});
-			btnCreateProd.setBounds(176, 130, 112, 23);
+			btnCreateMember.setBounds(176, 130, 112, 23);
 			
 			JPanel panbtn = new JPanel();
-			panbtn.add(btnCreateProd);
+			panbtn.add(btnCreateMember);
 			panbtn.add(btnHome);
-			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
+			getContentPane().add(panbtn, BorderLayout.SOUTH);
 	}
 	
 

@@ -29,12 +29,13 @@ public class ViewEditProfile extends JFrame {
 		setBounds(100, 100, 338, 284);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setTitle("BuilDreams : Edit my profile");
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblConnectedAs = new JLabel("Connected as "+role);
-		lblConnectedAs.setBounds(123, 11, 119, 14);
+		lblConnectedAs.setBounds(123, 11, 160, 14);
 		contentPane.add(lblConnectedAs);
 		
 		JLabel lblName = new JLabel("Name");
@@ -60,17 +61,14 @@ public class ViewEditProfile extends JFrame {
 		textFieldName = new JTextField();
 		textFieldName.setBounds(123, 36, 182, 20);
 		contentPane.add(textFieldName);
-		textFieldName.setColumns(10);
 		
 		textFieldSurname = new JTextField();
 		textFieldSurname.setBounds(123, 71, 182, 20);
 		contentPane.add(textFieldSurname);
-		textFieldSurname.setColumns(10);
-		
+	
 		textFieldEmail = new JTextField();
 		textFieldEmail.setBounds(123, 106, 182, 20);
 		contentPane.add(textFieldEmail);
-		textFieldEmail.setColumns(10);
 		
 		JPasswordField passwordField = new JPasswordField();
 		passwordField.setBounds(123, 141, 182, 20);
@@ -124,8 +122,7 @@ public class ViewEditProfile extends JFrame {
 		});
 		btnCancel.setBounds(191, 211, 89, 23);
 		contentPane.add(btnCancel);
-		this.setTitle("BuilDreams : Edit user profile");
-		
+				
 		if(role=="Seller"){
 			lblDomainActivity.setVisible(true);
 			lblWebsite.setVisible(true);
@@ -136,7 +133,7 @@ public class ViewEditProfile extends JFrame {
 			btnUpdate.setBounds(38, 326, 89, 23);
 			btnCancel.setBounds(182, 326, 89, 23);
 			setBounds(100, 100, 338, 410);
-			this.setLocationRelativeTo(null);
+			setLocationRelativeTo(null);
 		}
 	}
 }

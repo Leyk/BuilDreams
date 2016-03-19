@@ -20,7 +20,7 @@ public class ViewHome extends JFrame {
 	private JPanel contentPane;
 	
 	private JButton btnEditProfile;
-	private JButton btnManageProjTask;
+	private JButton btnManagePersoProj;
 	private JButton btnMyJournal;
 	private JButton btnMembers;
 	private JButton btnShop;
@@ -37,6 +37,7 @@ public class ViewHome extends JFrame {
 	private JButton btnQuit;
 	private JButton btnMyShop;
 	private JButton btnOrders;
+	private JButton btnManagePersoTask;
 	
 	
 	public ViewHome() {
@@ -53,7 +54,7 @@ public class ViewHome extends JFrame {
 	
 	public void CreationViewHome(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
+		setVisible(true);
 		setBounds(100, 100, 488, 255);
 		setTitle("BuilDreams : Home");
 		contentPane = new JPanel();
@@ -85,21 +86,21 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnMngProduct.setBounds(10,46,219,23);
+		btnMngProduct.setBounds(10, 114, 219, 23);
 		contentPane.add(btnMngProduct);
 		btnMngProduct.setVisible(false);
 		
-		this.btnManageProjTask = new JButton("Manage my projects and tasks");
-		btnManageProjTask.addActionListener(new ActionListener() {
+		this.btnManagePersoProj = new JButton("My projects");
+		btnManagePersoProj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ViewManagePersoProjectTask fenMngPersoProjTask = new ViewManagePersoProjectTask();
-				fenMngPersoProjTask.setVisible(true);		
+				ViewManagePersoProject fenMngPersoProj = new ViewManagePersoProject();
+				fenMngPersoProj.setVisible(true);		
 				dispose();
 			}
 		});
-		btnManageProjTask.setBounds(10, 80, 219, 23);
-		contentPane.add(btnManageProjTask);
-		btnManageProjTask.setEnabled(false);
+		btnManagePersoProj.setBounds(10, 80, 219, 23);
+		contentPane.add(btnManagePersoProj);
+		btnManagePersoProj.setEnabled(false);
 		
 		this.btnMngGenProj = new JButton("Manage general projects");
 		btnMngGenProj.addActionListener(new ActionListener() {
@@ -131,12 +132,12 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnMngUser.setBounds(10, 114, 219, 23);
+		btnMngUser.setBounds(240, 46, 219, 23);
 		contentPane.add(btnMngUser);
 		btnMngUser.setVisible(false);
 		
 		this.btnMembers = new JButton("Members public space");
-		btnMembers.setBounds(10, 148, 219, 23);
+		btnMembers.setBounds(240, 148, 219, 23);
 		contentPane.add(btnMembers);
 		btnMembers.setEnabled(false);
 		
@@ -153,11 +154,11 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnMngCateg.setBounds(240, 46, 219, 23);
+		btnMngCateg.setBounds(240,114,219,23);
 		contentPane.add(btnMngCateg);
 		btnMngCateg.setVisible(false);
 		
-		this.btnMyShop = new JButton("Manage my shop");
+		this.btnMyShop = new JButton("My shop");
 		btnMyShop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ViewManageShop fenMngShop = new ViewManageShop();
@@ -169,7 +170,7 @@ public class ViewHome extends JFrame {
 		contentPane.add(btnMyShop);
 		btnMyShop.setVisible(false);
 		
-		this.btnManageBasket = new JButton("Manage my basket");
+		this.btnManageBasket = new JButton("My basket");
 		btnManageBasket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ViewBasket fenBasket = new ViewBasket();
@@ -177,9 +178,22 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnManageBasket.setBounds(240, 80, 219, 23);
+		btnManageBasket.setBounds(10, 148, 219, 23);
 		contentPane.add(btnManageBasket);
 		btnManageBasket.setEnabled(false);
+		
+		
+		this.btnManagePersoTask = new JButton("My tasks");
+		btnManagePersoTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManagePersoTask fenMngPersoTask = new ViewManagePersoTask();
+				fenMngPersoTask.setVisible(true);		
+				dispose();
+			}
+		});
+		btnManagePersoTask.setBounds(240, 80, 219, 23);
+		contentPane.add(btnManagePersoTask);
+		btnManagePersoTask.setEnabled(false);
 		
 		this.btnMngGenTask = new JButton("Manage general tasks");
 		btnMngGenTask.addActionListener(new ActionListener() {
@@ -208,7 +222,7 @@ public class ViewHome extends JFrame {
 				fenHome.setVisible(true);
 			}
 		});
-		btnLogOut.setBounds(148, 182, 174, 23);
+		btnLogOut.setBounds(82, 182, 100, 23);
 		contentPane.add(btnLogOut);
 		btnLogOut.setVisible(false);
 		
@@ -220,7 +234,7 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnSignIn.setBounds(260, 182, 174, 23);
+		btnSignIn.setBounds(190, 182, 100, 23);
 		contentPane.add(btnSignIn);
 		
 		this.btnLogIn = new JButton("Log in");
@@ -231,17 +245,17 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnLogIn.setBounds(42, 182, 174, 23);
+		btnLogIn.setBounds(72, 182, 100, 23);
 		contentPane.add(btnLogIn);
 		
-		this.btnQuit = new JButton("Close the application");
+		this.btnQuit = new JButton("Quit");
 		btnQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 		    	System.exit(0); 
 			}
 		});
-		btnQuit.setBounds(240, 148, 220, 23);
+		btnQuit.setBounds(310, 182, 100, 23);
 		contentPane.add(btnQuit);
 		
 		this.setLocationRelativeTo(null);
@@ -260,7 +274,8 @@ public class ViewHome extends JFrame {
 	
 	private void setEnableButtonsUser() {
 		btnEditProfile.setEnabled(true);
-		btnManageProjTask.setEnabled(true);
+		btnManagePersoProj.setEnabled(true);
+		btnManagePersoTask.setEnabled(true);
 		btnMyJournal.setEnabled(true);
 		btnShop.setEnabled(true);
 		btnManageBasket.setEnabled(true);
@@ -271,8 +286,9 @@ public class ViewHome extends JFrame {
 	}
 	
 	private void setVisibleButtonsAdmin(){
-		btnEditProfile.setVisible(false);
-		btnManageProjTask.setVisible(false);
+		btnEditProfile.setEnabled(true);
+		btnManagePersoProj.setVisible(false);
+		btnManagePersoTask.setVisible(false);
 		btnMyJournal.setVisible(false);
 		btnShop.setVisible(false);
 		btnManageBasket.setVisible(false);
@@ -287,14 +303,15 @@ public class ViewHome extends JFrame {
 		btnMngCateg.setVisible(true);
 		btnMngGenProj.setVisible(true);
 		btnMngGenTask.setVisible(true);
-		btnQuit.setBounds(240, 114, 219, 23);
-		btnLogOut.setBounds(148, 148, 174, 23);
+		btnQuit.setBounds(310, 148, 100, 23);
+		btnLogOut.setBounds(82, 148, 100, 23);
 		setBounds(100, 100, 488, 221);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 	}
 	
 	private void setVisibleButtonsSeller(){
-		btnManageProjTask.setVisible(false);
+		btnManagePersoProj.setVisible(false);
+		btnManagePersoTask.setVisible(false);
 		btnMyJournal.setVisible(false);
 		btnShop.setVisible(false);
 		btnManageBasket.setVisible(false);
@@ -308,9 +325,9 @@ public class ViewHome extends JFrame {
 		btnOrders.setVisible(true);	
 		btnOffers.setEnabled(true);
 		btnOffers.setBounds(240, 80, 219, 23);
-		btnQuit.setBounds(240, 114, 219, 23);
-		btnLogOut.setBounds(10, 114, 219, 23);
+		btnQuit.setBounds(310, 114, 100, 23);
+		btnLogOut.setBounds(82, 114, 100, 23);
 		setBounds(100, 100, 488, 200);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 	}
 }

@@ -27,6 +27,7 @@ public class ViewProduct extends JFrame {
 		setBounds(100, 100, 338, 358);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setTitle("BuilDreams : Create a product");
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
@@ -108,6 +109,5 @@ public class ViewProduct extends JFrame {
 		JFormattedTextField formattedTextFieldUnitPrice = new JFormattedTextField();
 		formattedTextFieldUnitPrice.setBounds(123, 253, 76, 20);
 		contentPane.add(formattedTextFieldUnitPrice);
-		setTitle("BuilDreams : Create a product");
 	}
 }

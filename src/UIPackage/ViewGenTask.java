@@ -28,7 +28,7 @@ public class ViewGenTask extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(26, 37, 86, 20);
@@ -42,9 +42,9 @@ public class ViewGenTask extends JFrame {
 		lblCategory.setBounds(26, 144, 86, 20);
 		contentPane.add(lblCategory);
 		
-		JLabel lblTasks = new JLabel("Products");
-		lblTasks.setBounds(26, 181, 86, 20);
-		contentPane.add(lblTasks);
+		JLabel lblProduct = new JLabel("Products");
+		lblProduct.setBounds(26, 181, 86, 20);
+		contentPane.add(lblProduct);
 		
 		JButton btnCreate = new JButton("Create");
 		btnCreate.setBounds(102, 235, 89, 23);
@@ -64,20 +64,18 @@ public class ViewGenTask extends JFrame {
 		textFieldName = new JTextField();
 		textFieldName.setBounds(123, 37, 182, 20);
 		contentPane.add(textFieldName);
-		textFieldName.setColumns(10);
 		
 		textFieldDescription = new JTextField();
 		textFieldDescription.setBounds(123, 74, 182, 20);
 		contentPane.add(textFieldDescription);
-		textFieldDescription.setColumns(10);
 		
 		JList listCategory = new JList();
 		listCategory.setBounds(123, 144, 182, 20);
 		contentPane.add(listCategory);
 		
-		JList listProducts = new JList();
-		listProducts.setBounds(122, 181, 182, 20);
-		contentPane.add(listProducts);
+		JList listProduct = new JList();
+		listProduct.setBounds(122, 181, 182, 20);
+		contentPane.add(listProduct);
 		
 		JLabel lblTheoricalLength = new JLabel("Theorical length");
 		lblTheoricalLength.setBounds(26, 109, 86, 20);
@@ -86,7 +84,6 @@ public class ViewGenTask extends JFrame {
 		textFieldTheoricalLen = new JTextField();
 		textFieldTheoricalLen.setBounds(123, 109, 182, 20);
 		contentPane.add(textFieldTheoricalLen);
-		textFieldTheoricalLen.setColumns(10);
 	}
 
 }

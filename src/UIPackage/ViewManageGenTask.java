@@ -17,7 +17,7 @@ public class ViewManageGenTask extends JFrame {
 	public ViewManageGenTask() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 258);
-		setTitle("BuilDreams : Manage members");
+		setTitle("BuilDreams : Manage general tasks");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -48,7 +48,7 @@ public class ViewManageGenTask extends JFrame {
 			JPanel panbtn = new JPanel();
 			panbtn.add(btnCreateGeneralTask);
 			panbtn.add(btnHome);
-			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
+			getContentPane().add(panbtn, BorderLayout.SOUTH);
 	}
 	
 

@@ -38,7 +38,7 @@ public class ViewRegistration extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(26, 37, 86, 14);
@@ -77,14 +77,6 @@ public class ViewRegistration extends JFrame {
 		contentPane.add(textFieldPhone);
 		
 		JButton btnRegister = new JButton("Register");
-		btnRegister.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int reussi = 0;
-				if (reussi == 1){
-					
-				}
-			}
-		});
 		btnRegister.setBounds(38, 214, 89, 23);
 		contentPane.add(btnRegister);
 		
@@ -167,7 +159,6 @@ public class ViewRegistration extends JFrame {
 					btnCancel.setBounds(182, 214, 89, 23);
 					setBounds(100, 100, 338, 300);
 					setLocationRelativeTo(null);
-
 				}
 				}
 			});
