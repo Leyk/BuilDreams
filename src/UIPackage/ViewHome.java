@@ -31,6 +31,12 @@ public class ViewHome extends JFrame {
 	private JButton btnLogIn;
 	private JButton btnMngProduct;
 	private JButton btnMngUser;
+	private JButton btnMngCateg;
+	private JButton btnMngGenProj;
+	private JButton btnMngGenTask;
+	private JButton btnQuit;
+	private JButton btnMyShop;
+	private JButton btnOrders;
 	
 	
 	public ViewHome() {
@@ -72,21 +78,59 @@ public class ViewHome extends JFrame {
 		btnEditProfile.setEnabled(false);
 		
 		this.btnMngProduct = new JButton("Manage products");
+		btnMngProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageShop fenMngShop = new ViewManageShop();
+				fenMngShop.setVisible(true);		
+				dispose();
+			}
+		});
 		btnMngProduct.setBounds(10,46,219,23);
 		contentPane.add(btnMngProduct);
 		btnMngProduct.setVisible(false);
 		
 		this.btnManageProjTask = new JButton("Manage my projects and tasks");
+		btnManageProjTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManagePersoProjectTask fenMngPersoProjTask = new ViewManagePersoProjectTask();
+				fenMngPersoProjTask.setVisible(true);		
+				dispose();
+			}
+		});
 		btnManageProjTask.setBounds(10, 80, 219, 23);
 		contentPane.add(btnManageProjTask);
 		btnManageProjTask.setEnabled(false);
+		
+		this.btnMngGenProj = new JButton("Manage general projects");
+		btnMngGenProj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageGenProject fenMngGenProj = new ViewManageGenProject();
+				fenMngGenProj.setVisible(true);		
+				dispose();
+			}
+		});
+		btnMngGenProj.setBounds(10, 80, 219, 23);
+		contentPane.add(btnMngGenProj);
+		btnMngGenProj.setVisible(false);
+		
+		this.btnOrders = new JButton("My orders");
+		btnOrders.setBounds(10, 80, 219, 23);
+		contentPane.add(btnOrders);
+		btnOrders.setVisible(false);
 		
 		this.btnMyJournal = new JButton("My journal");
 		btnMyJournal.setBounds(10, 114, 219, 23);
 		contentPane.add(btnMyJournal);
 		btnMyJournal.setEnabled(false);
 		
-		this.btnMngUser = new JButton("Manage users");
+		this.btnMngUser = new JButton("Manage members");
+		btnMngUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageMember fenMngUser = new ViewManageMember();
+				fenMngUser.setVisible(true);		
+				dispose();
+			}
+		});
 		btnMngUser.setBounds(10, 114, 219, 23);
 		contentPane.add(btnMngUser);
 		btnMngUser.setVisible(false);
@@ -101,6 +145,30 @@ public class ViewHome extends JFrame {
 		contentPane.add(btnShop);
 		btnShop.setEnabled(false);
 		
+		this.btnMngCateg = new JButton("Manage product categories");
+		btnMngCateg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageCategory fenMngCategory = new ViewManageCategory();
+				fenMngCategory.setVisible(true);		
+				dispose();
+			}
+		});
+		btnMngCateg.setBounds(240, 46, 219, 23);
+		contentPane.add(btnMngCateg);
+		btnMngCateg.setVisible(false);
+		
+		this.btnMyShop = new JButton("Manage my shop");
+		btnMyShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageShop fenMngShop = new ViewManageShop();
+				fenMngShop.setVisible(true);		
+				dispose();
+			}
+		});
+		btnMyShop.setBounds(240, 46, 219, 23);
+		contentPane.add(btnMyShop);
+		btnMyShop.setVisible(false);
+		
 		this.btnManageBasket = new JButton("Manage my basket");
 		btnManageBasket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -109,9 +177,21 @@ public class ViewHome extends JFrame {
 				dispose();
 			}
 		});
-		btnManageBasket.setBounds(239, 80, 219, 23);
+		btnManageBasket.setBounds(240, 80, 219, 23);
 		contentPane.add(btnManageBasket);
 		btnManageBasket.setEnabled(false);
+		
+		this.btnMngGenTask = new JButton("Manage general tasks");
+		btnMngGenTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageGenTask fenMngGenTask = new ViewManageGenTask();
+				fenMngGenTask.setVisible(true);		
+				dispose();
+			}
+		});
+		btnMngGenTask.setBounds(240, 80, 219, 23);
+		contentPane.add(btnMngGenTask);
+		btnMngGenTask.setVisible(false);
 		
 		this.btnOffers = new JButton("My offers");
 		btnOffers.setBounds(240, 114, 219, 23);
@@ -122,10 +202,10 @@ public class ViewHome extends JFrame {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewHome fenHome = new ViewHome();
+				dispose();
 				JOptionPane.showMessageDialog(null, "You are now disconnected.",
 			   		     "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
 				fenHome.setVisible(true);
-				dispose();
 			}
 		});
 		btnLogOut.setBounds(148, 182, 174, 23);
@@ -154,14 +234,14 @@ public class ViewHome extends JFrame {
 		btnLogIn.setBounds(42, 182, 174, 23);
 		contentPane.add(btnLogIn);
 		
-		JButton btnQuit = new JButton("Close the application");
+		this.btnQuit = new JButton("Close the application");
 		btnQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 		    	System.exit(0); 
 			}
 		});
-		btnQuit.setBounds(239, 148, 220, 23);
+		btnQuit.setBounds(240, 148, 220, 23);
 		contentPane.add(btnQuit);
 		
 		this.setLocationRelativeTo(null);
@@ -204,8 +284,33 @@ public class ViewHome extends JFrame {
 		
 		btnMngProduct.setVisible(true);
 		btnMngUser.setVisible(true);
+		btnMngCateg.setVisible(true);
+		btnMngGenProj.setVisible(true);
+		btnMngGenTask.setVisible(true);
+		btnQuit.setBounds(240, 114, 219, 23);
+		btnLogOut.setBounds(148, 148, 174, 23);
+		setBounds(100, 100, 488, 221);
+		this.setLocationRelativeTo(null);
 	}
 	
 	private void setVisibleButtonsSeller(){
+		btnManageProjTask.setVisible(false);
+		btnMyJournal.setVisible(false);
+		btnShop.setVisible(false);
+		btnManageBasket.setVisible(false);
+		btnLogOut.setVisible(true);
+		btnMembers.setVisible(false);
+		btnLogIn.setVisible(false);
+		btnSignIn.setVisible(false);
+		
+		btnMyShop.setVisible(true);
+		btnEditProfile.setEnabled(true);
+		btnOrders.setVisible(true);	
+		btnOffers.setEnabled(true);
+		btnOffers.setBounds(240, 80, 219, 23);
+		btnQuit.setBounds(240, 114, 219, 23);
+		btnLogOut.setBounds(10, 114, 219, 23);
+		setBounds(100, 100, 488, 200);
+		this.setLocationRelativeTo(null);
 	}
 }

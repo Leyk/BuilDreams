@@ -136,6 +136,7 @@ public class ViewEditProfile extends JFrame {
 			btnUpdate.setBounds(38, 326, 89, 23);
 			btnCancel.setBounds(182, 326, 89, 23);
 			setBounds(100, 100, 338, 410);
+			this.setLocationRelativeTo(null);
 		}
 	}
 }

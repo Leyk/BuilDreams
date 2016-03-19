@@ -91,7 +91,7 @@ public class ViewRegistration extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewHome fenHome = new ViewHome();
+				ViewHome fenHome = new ViewHome();  // A CHANGER, renvoyer si user non connecté ou si admin
 				fenHome.setVisible(true);	
 				dispose();
 			}
