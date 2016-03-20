@@ -6,13 +6,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+
+import TabPatterns.ButtonEditor;
+import TabPatterns.ButtonRenderer;
+import TabPatterns.ModeleDonneesTab;
 
 public class ViewManageGenTask extends JFrame {
 
 	private JPanel contentPane;
+	private ModeleDonneesTab model;
+	private JTable tableau;
+
 
 	public ViewManageGenTask() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,6 +60,33 @@ public class ViewManageGenTask extends JFrame {
 			panbtn.add(btnCreateGeneralTask);
 			panbtn.add(btnHome);
 			getContentPane().add(panbtn, BorderLayout.SOUTH);
+			
+			JLabel lblInfos = new JLabel();
+			lblInfos.setBounds(32, 11, 252, 24);
+			lblInfos.setText("Nb of general tasks : ");
+			
+			JPanel panNorth = new JPanel();
+			panNorth.add(lblInfos);
+			this.getContentPane().add(panNorth, BorderLayout.NORTH);
+			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
+			
+			 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
+				      {"Task1", "Cat1", "10j","Update","Delete"},
+				      {"Task2", "Cat2", "8j","Update","Delete"},
+				      {"Task3", "Cat3", "1j","Update","Delete"},
+				      {"Task4", "Cat4", "3j","Update","Delete"}
+				    };
+		    String  title[] = {"Task name", "Category", "Length", " ", "  "};
+		    
+		    this.model = new ModeleDonneesTab(data, title);
+		    this.tableau = new JTable(model);
+		    this.tableau.setRowHeight(20);
+		    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
+		    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());
+		    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox()));
+		    this.tableau.getColumn("  ").setCellRenderer(new ButtonRenderer());
+		    this.tableau.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox()));
+		    this.tableau.setAutoCreateRowSorter(true);
 	}
 	
 

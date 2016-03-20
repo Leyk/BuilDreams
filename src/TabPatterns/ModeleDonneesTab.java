@@ -36,13 +36,16 @@ public class ModeleDonneesTab extends AbstractTableModel {
 	
 	// allow to edit cells
 	public boolean isCellEditable(int row, int col){
-		if(getColumnName(col)=="Quantity"){    // sale => à changer
+		if(getColumnName(col)=="Chosen Quantity"){    // sale => à changer
 			return true;
 		}
 		else if(getColumnName(col)==" "){
 			return true;
 		}
 		else if(getColumnName(col)=="  "){
+			return true;
+		}
+		else if(getColumnName(col)=="Chosen Price"){
 			return true;
 		}
 		return false;

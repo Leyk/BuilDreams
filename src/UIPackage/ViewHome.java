@@ -36,7 +36,7 @@ public class ViewHome extends JFrame {
 	private JButton btnMngGenTask;
 	private JButton btnQuit;
 	private JButton btnMyShop;
-	private JButton btnOrders;
+	private JButton btnOrder;
 	private JButton btnManagePersoTask;
 	
 	
@@ -114,13 +114,20 @@ public class ViewHome extends JFrame {
 		contentPane.add(btnMngGenProj);
 		btnMngGenProj.setVisible(false);
 		
-		this.btnOrders = new JButton("My orders");
-		btnOrders.setBounds(10, 80, 219, 23);
-		contentPane.add(btnOrders);
-		btnOrders.setVisible(false);
+		this.btnOrder = new JButton("My orders");
+		btnOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageOrder fenMngOrder = new ViewManageOrder();
+				fenMngOrder.setVisible(true);		
+				dispose();
+			}
+		});
+		btnOrder.setBounds(10, 114, 219, 23);
+		contentPane.add(btnOrder);
+		btnOrder.setEnabled(false);
 		
 		this.btnMyJournal = new JButton("My journal");
-		btnMyJournal.setBounds(10, 114, 219, 23);
+		btnMyJournal.setBounds(240, 148, 219, 23);
 		contentPane.add(btnMyJournal);
 		btnMyJournal.setEnabled(false);
 		
@@ -136,12 +143,19 @@ public class ViewHome extends JFrame {
 		contentPane.add(btnMngUser);
 		btnMngUser.setVisible(false);
 		
-		this.btnMembers = new JButton("Members public space");
+		/*this.btnMembers = new JButton("Members public space");
 		btnMembers.setBounds(240, 148, 219, 23);
 		contentPane.add(btnMembers);
-		btnMembers.setEnabled(false);
+		btnMembers.setEnabled(false);*/
 		
 		this.btnShop = new JButton("Online shop");
+		btnShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewOnlineShop fenOnlineShop = new ViewOnlineShop();
+				fenOnlineShop.setVisible(true);		
+				dispose();
+			}
+		});
 		btnShop.setBounds(240, 46, 219, 23);
 		contentPane.add(btnShop);
 		btnShop.setEnabled(false);
@@ -207,7 +221,14 @@ public class ViewHome extends JFrame {
 		contentPane.add(btnMngGenTask);
 		btnMngGenTask.setVisible(false);
 		
-		this.btnOffers = new JButton("My offers");
+		this.btnOffers = new JButton("My offers ");
+		btnOffers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewManageOffer fenMngOffer = new ViewManageOffer();
+				fenMngOffer.setVisible(true);		
+				dispose();
+			}
+		});
 		btnOffers.setBounds(240, 114, 219, 23);
 		contentPane.add(btnOffers);
 		btnOffers.setEnabled(false);
@@ -283,6 +304,7 @@ public class ViewHome extends JFrame {
 		btnLogOut.setVisible(true);
 		btnLogIn.setVisible(false);
 		btnSignIn.setVisible(false);
+		btnOrder.setEnabled(true);
 	}
 	
 	private void setVisibleButtonsAdmin(){
@@ -293,8 +315,9 @@ public class ViewHome extends JFrame {
 		btnShop.setVisible(false);
 		btnManageBasket.setVisible(false);
 		btnOffers.setVisible(false);
+		btnOrder.setVisible(false);
 		btnLogOut.setVisible(true);
-		btnMembers.setVisible(false);
+		//btnMembers.setVisible(false);
 		btnLogIn.setVisible(false);
 		btnSignIn.setVisible(false);
 		
@@ -316,15 +339,16 @@ public class ViewHome extends JFrame {
 		btnShop.setVisible(false);
 		btnManageBasket.setVisible(false);
 		btnLogOut.setVisible(true);
-		btnMembers.setVisible(false);
+		//btnMembers.setVisible(false);
 		btnLogIn.setVisible(false);
 		btnSignIn.setVisible(false);
 		
 		btnMyShop.setVisible(true);
 		btnEditProfile.setEnabled(true);
-		btnOrders.setVisible(true);	
+		btnOrder.setEnabled(true);	
 		btnOffers.setEnabled(true);
 		btnOffers.setBounds(240, 80, 219, 23);
+		btnOrder.setBounds(10,80,219,23);
 		btnQuit.setBounds(310, 114, 100, 23);
 		btnLogOut.setBounds(82, 114, 100, 23);
 		setBounds(100, 100, 488, 200);

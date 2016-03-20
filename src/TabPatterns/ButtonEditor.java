@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
+import UIPackage.ViewHome;
+import UIPackage.ViewOffer;
+import UIPackage.ViewOrder;
+
 public class ButtonEditor extends DefaultCellEditor {
 
     protected JButton button;
@@ -47,7 +51,18 @@ public class ButtonEditor extends DefaultCellEditor {
 
           
       public void actionPerformed(ActionEvent event) {
-        System.out.println("test " + ((JButton)event.getSource()).getText());
+    	  if ("See Order".equals(event.getActionCommand())){
+    		  ViewOrder fenOrder = new ViewOrder(); // A REMPLACER PAR LE ROLE RECUPERE
+			  fenOrder.setVisible(true);
+			  System.out.println(((JButton)event.getSource()));  // Récupérer la fenetre d'où ça provient pour faire un dispose()
+    	  } else if("See Offer".equals(event.getActionCommand())){
+    		  ViewOffer fenOffer = new ViewOffer();
+    		  fenOffer.setVisible(true);
+    		  System.out.println(((JButton)event.getSource()));  // Récupérer la fenetre d'où ça provient pour faire un dispose()
+    	  }
+    	  else {
+    		  System.out.println("test " + ((JButton)event.getSource()).getText());
+    	  }
       }
     }     
   }

@@ -21,16 +21,16 @@ import TabPatterns.ModeleDonneesTab;
 import TabPatterns.SpinnerEditor;
 import TabPatterns.SpinnerRenderer;
 
-public class ViewManageShop extends JFrame {
+public class ViewOnlineShop extends JFrame {
 
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
 
-	public ViewManageShop() {
+	public ViewOnlineShop() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 258);
-		setTitle("BuilDreams : Manage shop");
+		setTitle("BuilDreams : Online shop");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -48,24 +48,13 @@ public class ViewManageShop extends JFrame {
 		    });
 			btnHome.setBounds(176, 130, 112, 23);
 			
-			JButton btnCreateProd = new JButton("New product");
-			btnCreateProd.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					ViewProduct fenProd = new ViewProduct();
-					fenProd.setVisible(true);	
-					dispose();
-				}
-			});
-			btnCreateProd.setBounds(176, 130, 112, 23);
-			
 			JPanel panbtn = new JPanel();
-			panbtn.add(btnCreateProd);
 			panbtn.add(btnHome);
 			getContentPane().add(panbtn, BorderLayout.SOUTH);
 			
 			JLabel lblInfos = new JLabel();
 			lblInfos.setBounds(32, 11, 252, 24);
-			lblInfos.setText("Nb of products : ");
+			lblInfos.setText("Products available in the Online Shop ");
 			
 			JPanel panNorth = new JPanel();
 			panNorth.add(lblInfos);
@@ -73,12 +62,12 @@ public class ViewManageShop extends JFrame {
 			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 			
 			 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-				      {"5641", "Product1", "Categ1", "Subcat1", 100, "20", "Update","Delete"},
-				      {"7412", "Product2", "Categ1", "Subcat1", 200, "10", "Update","Delete"},
-				      {"7412", "Product3", "Categ3", "Subcat2", 500, "15", "Update","Delete"},
-				      {"8964", "Product4", "Categ5", "Subcat4", 150, "50", "Update","Delete"},
+				      {"5641", "Product1", "Categ1", "Subcat1", 100, "20", "SellerA", "Add to card","Add to offer"},
+				      {"7412", "Product2", "Categ1", "Subcat1", 200, "10", "SellerB", "Add to card","Add to offer"},
+				      {"7412", "Product3", "Categ3", "Subcat2", 500, "15", "SellerC", "Add to card","Add to offer"},
+				      {"8964", "Product4", "Categ5", "Subcat4", 150, "50", "SellerD", "Add to card","Add to offer"}
 				    };
-		    String  title[] = {"Ref", "Product name", "Category", "Subcategory","Quantity", "Price", " ","  "};
+		    String  title[] = {"Ref", "Product name", "Category", "Subcategory","Qty available", "Price", "Seller", " ","  "};
 		    
 		    this.model = new ModeleDonneesTab(data, title);
 		    this.tableau = new JTable(model);

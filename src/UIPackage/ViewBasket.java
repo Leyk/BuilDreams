@@ -45,7 +45,7 @@ public class ViewBasket extends JFrame {
 			      {"Hammer", 100, 45,"Vasseur","Delete"},
 			      {"Screw", 100, 19,"Faivre","Delete"}
 			    };
-	    String  title[] = {"Product name", "Quantity", "Price", "Seller"," "};
+	    String  title[] = {"Product name", "Chosen Quantity", "Price", "Seller"," "};
 	    
 	    JButton btnHome = new JButton("Home");
 	    btnHome.addActionListener(new ActionListener() {
@@ -58,6 +58,13 @@ public class ViewBasket extends JFrame {
 		btnHome.setBounds(176, 130, 112, 23);
 		
 		JButton btnOrder = new JButton("Order");
+		btnOrder.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				ViewPayment fenPayment = new ViewPayment();
+				fenPayment.setVisible(true);
+				dispose();
+			}
+		});
 		btnOrder.setBounds(176, 130, 112, 23);
 		
 		JLabel lblPrixTot = new JLabel();
@@ -79,9 +86,9 @@ public class ViewBasket extends JFrame {
 	    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 	    this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 	    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());
-	    this.tableau.getColumn("Quantity").setCellRenderer(new SpinnerRenderer());
+	    this.tableau.getColumn("Chosen Quantity").setCellRenderer(new SpinnerRenderer());
 	    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox()));
-	    this.tableau.getColumn("Quantity").setCellEditor(new SpinnerEditor());
+	    this.tableau.getColumn("Chosen Quantity").setCellEditor(new SpinnerEditor());
 	    this.tableau.setAutoCreateRowSorter(true);
 	    this.setLocationRelativeTo(null);
 	  }

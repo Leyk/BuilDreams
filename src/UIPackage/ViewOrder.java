@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,51 +19,58 @@ import TabPatterns.ButtonEditor;
 import TabPatterns.ButtonRenderer;
 import TabPatterns.ModeleDonneesTab;
 
-public class ViewManagePersoProject extends JFrame {
+public class ViewOrder extends JFrame {
 
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
 
-	public ViewManagePersoProject() {
+	public ViewOrder() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 488, 258);
-		setTitle("BuilDreams : Manage my projects");
+		setBounds(100, 100, 450, 300);
+		setTitle("BuilDreams : See Order");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
 		
-		
-		 JButton btnHome = new JButton("Home");
-		    btnHome.addActionListener(new ActionListener() {
+
+		 JButton btnCancel = new JButton("Cancel");
+		    btnCancel.addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent e) {
-		    		ViewHome fenHome = new ViewHome(true,"User"); // A REMPLACER PAR LE ROLE RECUPERE
-					fenHome.setVisible(true);	
+		    		ViewManageOrder fenMngOrder= new ViewManageOrder(); // A REMPLACER PAR LE ROLE RECUPERE
+		    		fenMngOrder.setVisible(true);	
 					dispose();
 		    	}
 		    });
-			btnHome.setBounds(176, 130, 112, 23);
+			btnCancel.setBounds(176, 130, 112, 23);
 			
-			JButton btnCreatePersoProject = new JButton("Create personnal project");
-			btnCreatePersoProject.addActionListener(new ActionListener() {
+			JButton btnMngOrder = new JButton("");
+			if(true){  
+				btnMngOrder.setText("Valide");   // A PARTIR DE L'ETAT DE LA COMMANDE : si déjà validée le bouton doit s'appeler "Sent"
+			} else {                              // Si c'est un USER qui consulte ses orders il n'y a pas de boutons pour valider..
+				btnMngOrder.setText("Sent"); 
+			}
+			btnMngOrder.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					ViewPersoProject fenPersoProject = new ViewPersoProject(); 
-					fenPersoProject.setVisible(true);	
+					ViewManageOrder fenMngOrder = new ViewManageOrder (); 
+					JOptionPane.showMessageDialog(null, "Order validation successful",
+				   		     "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+					fenMngOrder.setVisible(true);	
 					dispose();
+					
 				}
 			});
-			btnCreatePersoProject.setBounds(22, 31, 225, 23);
-
+			btnMngOrder.setBounds(176, 130, 112, 23);
+			
 			JPanel panbtn = new JPanel();
-			panbtn.add(btnCreatePersoProject);
-			panbtn.add(btnHome);
-			getContentPane().add(panbtn, BorderLayout.SOUTH);
+			panbtn.add(btnMngOrder);
+			panbtn.add(btnCancel);
 			
 			JLabel lblInfos = new JLabel();
 			lblInfos.setBounds(32, 11, 252, 24);
-			lblInfos.setText("Nb of projects : ");
+			lblInfos.setText("#Name#'Order : #ref# #address# Total Price : ");  // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
 			
 			JPanel panNorth = new JPanel();
 			panNorth.add(lblInfos);
@@ -70,24 +78,18 @@ public class ViewManagePersoProject extends JFrame {
 			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 			
 			 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-				      {"Project1", "20/03/2016", "20j", "in progress", "Update","Delete"},
-				      {"Project2", "02/03/2016", "20j", "completed", "Update","Delete"},
-				      {"Project3", "10/03/2016", "20j", "in progress", "Update","Delete"},
-				      {"Project4", "19/03/2016", "20j", "in progress", "Update","Delete"},
+				      {"Product1", 10, 220},
+				      {"Product2", 10, 150},
+				      {"Product3", 10, 450},
+				      {"Product4", 10, 25},
 				    };
-		    String  title[] = {"Project name", "Begin date", "Length","State", " ","  "};
+		    String  title[] = {"Product name", "Quantity", "Price"};
 		    
 		    this.model = new ModeleDonneesTab(data, title);
 		    this.tableau = new JTable(model);
 		    this.tableau.setRowHeight(20);
 		    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
-		    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());
-		    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox()));
-		    this.tableau.getColumn("  ").setCellRenderer(new ButtonRenderer());
-		    this.tableau.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox()));
 		    this.tableau.setAutoCreateRowSorter(true);
-		    this.tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
-	
 
 }
