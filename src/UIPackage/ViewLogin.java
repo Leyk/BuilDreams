@@ -17,8 +17,8 @@ import BusinessLogic.FacadeView;
 
 public class ViewLogin extends JFrame implements ActionListener{
 	private JPanel contentPane;
-	private JTextField textField_login;
-	private JPasswordField textField_password;
+	private MyTextField textField_login;
+	private MyPasswordField textField_password;
 	private JButton btnLogIn;
 	private JButton btnCancel;
 	private FacadeView myFacadeView;
@@ -52,15 +52,15 @@ public class ViewLogin extends JFrame implements ActionListener{
 		contentPane.add(btnLogIn);
 		btnLogIn.setActionCommand("Login");
 		
-		textField_login = new JTextField();
+		textField_login = new MyTextField();
+		textField_login.setActionCommand("Login");
 		textField_login.setBounds(108, 50, 176, 20);
 		contentPane.add(textField_login);
-		textField_login.setColumns(10);
-		
-		textField_password = new JPasswordField();
+
+		textField_password = new MyPasswordField();
+		textField_password.setActionCommand("Login");
 		textField_password.setBounds(108, 87, 176, 20);
 		contentPane.add(textField_password);
-		textField_password.setColumns(10);
 		
 		JLabel lblinfo1 = new JLabel("You must log in to access BuilDreams App");
 		lblinfo1.setBounds(32, 11, 252, 24);
@@ -99,6 +99,13 @@ public class ViewLogin extends JFrame implements ActionListener{
 		return this.textField_password.getText();
 	}
 	
+	public MyPasswordField getTextFieldPasswordObject() {
+		return this.textField_password;
+	}
+	
+	public MyTextField getTextFieldObject() {
+		return this.textField_login;
+	}
 	/* FIN ACCESSEUR */
 	
 	
@@ -107,15 +114,18 @@ public class ViewLogin extends JFrame implements ActionListener{
 	private void addActionListenner () {
 		this.getButtonLogIn().addActionListener(this);
 		this.getButtonCancel().addActionListener(this);
+		this.getTextFieldPasswordObject().addActionListener(this);
+		this.getTextFieldObject().addActionListener(this);
 	}
 	
 	public void actionPerformed (ActionEvent e){
+		System.out.println(e.getActionCommand());
 		if ("Cancel".equals(e.getActionCommand())){
 			ViewHome fenHome = new ViewHome();
 			fenHome.setVisible(true);	
 			this.dispose();
 		}
-		else if ("Login".equals(e.getActionCommand())){
+		else if ("Login".equals(e.getActionCommand()) || "".equals(e.getActionCommand())){
 			//String [] recup = this.connectionDatabase(this.getTextFieldLogin(), this.getTextFieldPassword());
 			this.myFacadeView = new FacadeView(this.getTextFieldLogin(),this.getTextFieldPassword());
 			
@@ -136,12 +146,7 @@ public class ViewLogin extends JFrame implements ActionListener{
 		}
 	}
 	
-	/* Fin Code d'implémentation de l'interface ActionListener */
-	public void keyReleased(KeyEvent e) {  
-		if (e.getKeyCode() == KeyEvent.VK_ENTER){  
-			btnLogIn.doClick();
-		}
-	}
+	/* Fin Code d'implémentation de l'interface ActionListener */  // A FINALISER
 	
 	/* Affichage d'une nouvelle fenetre si la connexion est réussie (à re-développer) */ 
 	

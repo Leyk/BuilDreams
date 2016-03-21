@@ -24,6 +24,11 @@ public class ModeleDonneesTab extends AbstractTableModel {
 		return this.data[row][col];
 	}
 	
+	public void setValueAt(Object value, int row, int col) {
+        data[row][col] = value;
+        fireTableCellUpdated(row, col);
+    }
+	
 	// to display column's title
 	public String getColumnName(int col){
 		return this.title[col];
