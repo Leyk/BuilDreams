@@ -297,7 +297,6 @@ public class ViewHome extends JFrame {
 		btnEditProfile.setEnabled(true);
 		btnManagePersoProj.setEnabled(true);
 		btnManagePersoTask.setEnabled(true);
-		btnMyJournal.setEnabled(true);
 		btnShop.setEnabled(true);
 		btnManageBasket.setEnabled(true);
 		btnOffers.setEnabled(true);

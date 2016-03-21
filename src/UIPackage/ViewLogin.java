@@ -133,7 +133,7 @@ public class ViewLogin extends JFrame implements ActionListener{
 			if (recupInfo[0].equals(this.getTextFieldLogin()) && recupInfo[0] != ""){
 				//System.out.println("Bravo, votre identifiant existe bien en base de données ! Il ne reste plus qu'à terminer le programme !");
 				this.connexionReussieDisplay(recupInfo);
-				ViewHome fenHome = new ViewHome(true, "Administrator"); // A REMPLACER PAR LE ROLE RECUPERE
+				ViewHome fenHome = new ViewHome(true, "User"); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);
 				dispose();
 				
