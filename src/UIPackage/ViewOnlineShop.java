@@ -71,6 +71,7 @@ public class ViewOnlineShop extends JFrame {
 		    
 		    this.model = new ModeleDonneesTab(data, title);
 		    this.tableau = new JTable(model);
+		    this.model.addTab(tableau);
 		    this.tableau.setRowHeight(20);
 		    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 		    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());

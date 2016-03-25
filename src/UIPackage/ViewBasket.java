@@ -81,6 +81,7 @@ public class ViewBasket extends JFrame {
 	    JSpinner monspin = new JSpinner();
 	    this.model = new ModeleDonneesTab(data, title);
 	    this.tableau = new JTable(model);
+	    this.model.addTab(tableau);
 	    this.tableau.setRowHeight(20);
 	    this.getContentPane().add(panPrixTot, BorderLayout.NORTH);
 	    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
