@@ -10,8 +10,8 @@ public class MyFactory extends AbstractFactory{
 		
 	}
 	
-	/* Renvoie un objet user créé à partir des informations, nickname et password passé en paramètre */
-	public JDBCPerson createUserJDBC (String nicknameIn, String passwordIn) {
+	/* Renvoie un objet user crï¿½ï¿½ ï¿½ partir des informations, nickname et password passï¿½ en paramï¿½tre */
+	public JDBCPerson createPersonJDBC (String nicknameIn, String passwordIn) {
 		// futur : phase de test pour voir si le nickname ou le password est pertinant
 		return new JDBCPerson(nicknameIn, passwordIn);
 	}

@@ -1,7 +1,7 @@
 package BusinessLogic;
 
 public abstract class AbstractPerson {
-	private String pseudo;
+	private String pseudo; //PrimarKey
 	private String password;
 	private String firstName;
 	private String lastName;
