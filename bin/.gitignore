@@ -1,5 +1,8 @@
-/TabPatterns/
-/UIPackage/
+/BusinessLogic/
 /Facade.class
 /Factory.class
 /Gestionnaire.class
+/MainPackage/
+/Persistance/
+/TabPatterns/
+/UIPackage/

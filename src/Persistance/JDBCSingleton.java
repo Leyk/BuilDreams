@@ -3,9 +3,11 @@ package Persistance;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 public class JDBCSingleton implements Serializable {
 
@@ -72,4 +74,48 @@ public class JDBCSingleton implements Serializable {
 		
 		return res;
 	}
+	
+	public String registrationUser (String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn) throws SQLException {		
+		String url = this.myParam.getURL();
+		String username = this.myParam.getUsername();
+		String password = this.myParam.getPassword();
+		
+		String res = "";
+		
+		try {
+			Connection connection = DriverManager.getConnection(url, username, password);
+			Statement st = (Statement) connection.createStatement();
+		    String queryPerson = "INSERT INTO Person(nickname, name, surname, email, password, phoneNumber) VALUES ('" + textFieldSurnameIn + "','" + textFieldNameIn + "','" + textFieldNameIn + "','" + textFieldEmailIn + "','" + textFieldPasswordIn + "','" + textFieldPhoneIn + "');";
+		    String queryRole = "INSERT INTO Role(nickname) VALUES ('" + textFieldSurnameIn + "');";
+		    
+		    st.executeUpdate(queryPerson);
+		    
+		    PreparedStatement pstmt = connection.prepareStatement(queryRole, Statement.RETURN_GENERATED_KEYS);  
+		    int numero = pstmt.executeUpdate();  
+		    ResultSet keys = pstmt.getGeneratedKeys();    
+		    
+		    
+		    int id_AutoIncrement = 0;
+	    
+		    if (keys.next()){
+		    	id_AutoIncrement=keys.getInt(1);
+		    }
+		    
+		   
+		    String queryUser = "INSERT INTO Users (wording, idRole) VALUES ('users'," + String.valueOf(id_AutoIncrement) + ");"; 
+		    st.executeUpdate(queryUser);
+		    
+		    res = "OK";
+
+		    connection.close();
+		    
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException("Erreur, l'identifiant existe dans la base de données");
+		}
+		
+		return res;
+	}
+	
+	
 }

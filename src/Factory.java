@@ -12,7 +12,7 @@ public class Factory {
 	public Factory() {
 	}
 
-	public JDBCPerson createJDBCPerson (String nicknameIn, String passwordIn) {
+	/*public JDBCPerson createJDBCPerson (String nicknameIn, String passwordIn) {
 		// futur : phase de test pour voir si le nickname ou le password est pertinant
 		return new JDBCPerson(nicknameIn, passwordIn);
 	}
@@ -143,6 +143,6 @@ public class Factory {
 
 	public JDBC createJDBC () {
 		return new JDBC();
-	}
+	}*/
 	
 }
