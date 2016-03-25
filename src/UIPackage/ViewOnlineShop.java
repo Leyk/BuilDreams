@@ -80,5 +80,6 @@ public class ViewOnlineShop extends JFrame {
 		    this.tableau.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox()));
 		    this.tableau.setAutoCreateRowSorter(true);
 		    this.tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		  //  this.model.resizeCol(tableau);
 	}
 }

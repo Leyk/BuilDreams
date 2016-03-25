@@ -1,8 +1,12 @@
 package TabPatterns;
 
+import java.awt.Component;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 public class ModeleDonneesTab extends AbstractTableModel {
@@ -43,6 +47,56 @@ public class ModeleDonneesTab extends AbstractTableModel {
 		return this.data[0][col].getClass();
 	}
 	
+	/*public void resizeCol(JTable table){
+		for (int column = 0; column < table.getColumnCount(); column++)
+		{
+		    TableColumn tableColumn = table.getColumnModel().getColumn(column);
+		    TableCellRenderer headerRenderer = tableColumn.getHeaderRenderer();
+		    if (headerRenderer == null) {
+		    	headerRenderer = table.getTableHeader().getDefaultRenderer();
+		    }
+		    Component comp = headerRenderer.getTableCellRendererComponent(
+			        table, tableColumn.getHeaderValue(), false, false, 0, 0);
+			int widthC = comp.getPreferredSize().width;
+		    int preferredWidth = tableColumn.getMinWidth();
+		    int maxWidth = tableColumn.getMaxWidth();
+		 
+		    for (int row = 0; row < table.getRowCount(); row++)
+		    {
+		        TableCellRenderer cellRenderer = table.getCellRenderer(row, column);
+		        Component c = table.prepareRenderer(cellRenderer, row, column);
+		        int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
+		        preferredWidth = Math.max(preferredWidth, width);
+		 
+		        //  We've exceeded the maximum width, no need to check other rows
+		 
+		        if (preferredWidth >= maxWidth)
+		        {
+		            preferredWidth = maxWidth;
+		            break;
+		        }
+		    }
+		 
+		    tableColumn.setPreferredWidth( preferredWidth );
+		}
+		    // Get width of column header
+		    
+		    java.awt.
+
+		    // Get maximum width of column data
+		    for (int r=0; r<table.getRowCount(); r++) {
+		        renderer = table.getCellRenderer(r, vColIndex);
+		        comp = renderer.getTableCellRendererComponent(
+		            table, table.getValueAt(r, vColIndex), false, false, r, vColIndex);
+		        width = Math.max(width, comp.getPreferredSize().width);
+		    }
+
+		    // Add margin
+		    width += 2*margin;
+
+		    // Set the width
+		    col.setPreferredWidth(width);
+	}*/
 	
 	// Pas très propre mais pas réussi à faire autrement..
 	public void setValueAt(Object value, int row, int col) {
