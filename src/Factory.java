@@ -12,13 +12,13 @@ public class Factory {
 	public Factory() {
 	}
 
-	/*public JDBCPerson createJDBCPerson (String nicknameIn, String passwordIn) {
+	public JDBCPerson createJDBCPerson (String nicknameIn, String passwordIn) {
 		// futur : phase de test pour voir si le nickname ou le password est pertinant
 		return new JDBCPerson(nicknameIn, passwordIn);
 	}
 	
-	public JDBCUser createJDBCUser () {
-		return new JDBCUser();
+	public JDBCUsers createJDBCUser () {
+		return new JDBCUsers();
 	}
 	
 	public JDBCAdmin createJDBCAdmin () {
@@ -72,77 +72,4 @@ public class Factory {
 	public JDBCTaskCategory createJDBCTaskCategory () {
 		return new JDBCTaskCategory();
 	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}
-
-	public JDBC createJDBC () {
-		return new JDBC();
-	}*/
-	
 }

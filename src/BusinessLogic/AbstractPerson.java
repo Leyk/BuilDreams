@@ -1,6 +1,6 @@
 package BusinessLogic;
 
-public class AbstractPerson {
+public abstract class AbstractPerson {
 	private String pseudo;
 	private String password;
 	private String firstName;
@@ -65,5 +65,5 @@ public class AbstractPerson {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	/* Classe abstraite contenant tous les attributs communs à tous les users. Permettra ensuite de jouer avec le pattern role etc ... */
+	/* Classe abstraite contenant tous les attributs communs ï¿½ tous les users. Permettra ensuite de jouer avec le pattern role etc ... */
 }
