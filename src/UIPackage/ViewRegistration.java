@@ -31,6 +31,7 @@ public class ViewRegistration extends JFrame implements ActionListener{
 	private JTextField textFieldSiret;
 	private JTextField textFieldWeb;
 	private JTextField textFieldDomainActivity;
+	private JTextField textFieldNickname;
 	
 	private JCheckBox chckbxYes;
 	
@@ -54,7 +55,7 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		this.sellerSelected = false;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 338, 300);
+		setBounds(100, 100, 338, 337);
 		setTitle("BuilDreams : Registration");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,15 +72,19 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		contentPane.add(lblSurname);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone number");
-		lblPhoneNumber.setBounds(26, 179, 86, 14);
+		lblPhoneNumber.setBounds(26, 220, 86, 14);
 		contentPane.add(lblPhoneNumber);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(26, 109, 46, 14);
+		lblEmail.setBounds(26, 146, 46, 14);
 		contentPane.add(lblEmail);
 		
+		JLabel lblNickname = new JLabel("Nickname");
+		lblNickname.setBounds(26, 109, 76, 14);
+		contentPane.add(lblNickname);
+		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(26, 144, 76, 14);
+		lblPassword.setBounds(26, 183, 76, 14);
 		contentPane.add(lblPassword);
 		
 		textFieldName = new JTextField();
@@ -91,50 +96,54 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		contentPane.add(textFieldSurname);
 		
 		textFieldEmail = new JTextField();
-		textFieldEmail.setBounds(123, 109, 182, 20);
+		textFieldEmail.setBounds(123, 146, 182, 20);
 		contentPane.add(textFieldEmail);
 		
+		textFieldNickname = new JTextField();
+		textFieldNickname.setBounds(123, 109, 182, 20);
+		contentPane.add(textFieldNickname);
+		
 		textFieldPhone = new JTextField();
-		textFieldPhone.setBounds(123, 179, 182, 20);
+		textFieldPhone.setBounds(123, 220, 182, 20);
 		contentPane.add(textFieldPhone);
 		
 		this.btnRegister = new JButton("Register");
 		this.btnRegister.addActionListener(this);
-		this.btnRegister.setBounds(38, 214, 89, 23);
+		this.btnRegister.setBounds(38, 251, 89, 23);
 		contentPane.add(this.btnRegister);
 		
 		this.btnCancel = new JButton("Cancel");
 		this.btnCancel.addActionListener(this);
-		this.btnCancel.setBounds(182, 214, 89, 23);
+		this.btnCancel.setBounds(182, 251, 89, 23);
 		contentPane.add(this.btnCancel);
 		
 		textFieldSiret = new JTextField();
-		textFieldSiret.setBounds(123, 214, 182, 20);
+		textFieldSiret.setBounds(123, 257, 182, 20);
 		contentPane.add(textFieldSiret);
 		textFieldSiret.setVisible(false);
 		
 		this.lblSiret = new JLabel("Siret");
-		this.lblSiret.setBounds(26, 214, 86, 17);
+		this.lblSiret.setBounds(26, 257, 86, 17);
 		contentPane.add(this.lblSiret);
 		this.lblSiret.setVisible(false);
 		
 		textFieldWeb = new JTextField();
-		textFieldWeb.setBounds(123, 249, 182, 20);
+		textFieldWeb.setBounds(123, 294, 182, 20);
 		contentPane.add(textFieldWeb);
 		textFieldWeb.setVisible(false);
 		
 		this.lblWebsite = new JLabel("Website");
-		this.lblWebsite.setBounds(26, 249, 86, 14);
+		this.lblWebsite.setBounds(26, 294, 86, 14);
 		contentPane.add(this.lblWebsite);
 		this.lblWebsite.setVisible(false);
 		
 		textFieldDomainActivity = new JTextField();
-		textFieldDomainActivity.setBounds(123, 284, 182, 20);
+		textFieldDomainActivity.setBounds(123, 331, 182, 20);
 		contentPane.add(textFieldDomainActivity);
 		textFieldDomainActivity.setVisible(false);
 		
 		this.lblDomainActivity = new JLabel("Domain activity");
-		this.lblDomainActivity.setBounds(26, 284, 86, 14);
+		this.lblDomainActivity.setBounds(26, 331, 86, 14);
 		contentPane.add(lblDomainActivity);
 		this.lblDomainActivity.setVisible(false);
 		
@@ -148,7 +157,7 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		contentPane.add(chckbxYes);
 		
 		this.textFieldPassword = new JPasswordField();
-		this.textFieldPassword.setBounds(123, 144, 182, 20);
+		this.textFieldPassword.setBounds(123, 183, 182, 20);
 		contentPane.add(textFieldPassword);
 	}
 	
@@ -174,9 +183,9 @@ public class ViewRegistration extends JFrame implements ActionListener{
 				textFieldSiret.setVisible(true);
 				textFieldWeb.setVisible(true);
 				textFieldDomainActivity.setVisible(true);
-				this.btnRegister.setBounds(38, 326, 89, 23);
-				this.btnCancel.setBounds(182, 326, 89, 23);
-				setBounds(100, 100, 338, 410);
+				this.btnRegister.setBounds(38, 363, 89, 23);
+				this.btnCancel.setBounds(182, 363, 89, 23);
+				setBounds(100, 100, 338, 447);
 				setLocationRelativeTo(null);
 			}
 			else {
@@ -186,9 +195,9 @@ public class ViewRegistration extends JFrame implements ActionListener{
 				textFieldSiret.setVisible(false);
 				textFieldWeb.setVisible(false);
 				textFieldDomainActivity.setVisible(false);
-				this.btnRegister.setBounds(38, 214, 89, 23);
-				this.btnCancel.setBounds(182, 214, 89, 23);
-				setBounds(100, 100, 338, 300);
+				this.btnRegister.setBounds(38, 251, 89, 23);
+				this.btnCancel.setBounds(182, 251, 89, 23);
+				setBounds(100, 100, 338, 337);
 				setLocationRelativeTo(null);
 			}
 		}
