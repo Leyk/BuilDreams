@@ -35,12 +35,31 @@ public class JDBCPerson extends AbstractPerson {
 	
 	/* Méthode qui essaie de se connecter à la base de données, si réussie, on "instancie complètement" l'objet, sinon on throw une erreur */
 	public JDBCPerson loadDB () throws SQLException {
-		String[] res = JDBCSingleton.getInstance().loadDB(this.getPseudo(),this.getPassword());
+		String[] res = new String [6];
+		res[0] = "";
+		String query = "Select * From Person Where nickname = '" + this.getPseudo() + "' and password = '" + this.getPassword() + "';";
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(query);
+		
+
+	    while (rs.next()) {
+	    	res[0] = rs.getString("nickname");
+	        res[1] = rs.getString("name");
+	        res[2] = rs.getString("surname");
+	        res[3] = rs.getString("email");
+	        res[4] = rs.getString("password");
+	        res[5] = rs.getString("phoneNumber");
+	        //System.out.println(res[0] + "|" + res[1] + "|" + res[2] + "|" + res[3] + "|" + res[4] + "|" + res[5]);
+	    }
+	    
 		
 		if (res[0] != ""){
 			this.remplissageAttributs(res);
 		}
 		else {
+			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de données");
+		}
+		
+		if (res[0] == ""){
 			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de données");
 		}
 		

@@ -9,9 +9,8 @@ public class ManagerPerson {
 	private AbstractFactory myFactory;
 	private String [] resConnexion;
 	
-	public ManagerPerson (String nicknameIn, String passwordIn) {
+	public ManagerPerson () {
 		this.myFactory = new MyFactory ();
-		this.myUser = ((MyFactory)this.myFactory).createPersonJDBC(nicknameIn, passwordIn);
 		resConnexion = new String[6];
 	}
 	
@@ -29,7 +28,8 @@ public class ManagerPerson {
 	
 	/* M�thode qui appelle le loadDB du user stock�, s'il y a match (le user existe en base) alors ok on appelle la m�thode de remplissage, 
 	 * sinon on traite l'erreur en renvoyant un tableau vide, la vue affichera le bon r�sultat */
-	public String[] loginJDBC () {
+	public String[] loginJDBC (String nicknameIn, String passwordIn) {
+		this.myUser = ((MyFactory)this.myFactory).createPersonJDBC(nicknameIn, passwordIn);
 		try {
 			this.creationTableau(((JDBCPerson)this.myUser).loadDB());
 		} catch (SQLException e) {

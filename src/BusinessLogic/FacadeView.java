@@ -3,12 +3,12 @@ package BusinessLogic;
 public class FacadeView {
 	private ManagerPerson myGV;
 
-	public FacadeView (String nicknameIn, String passwordIn) {
-		this.myGV = new ManagerPerson(nicknameIn, passwordIn);
+	public FacadeView () {
+		this.myGV = new ManagerPerson();
 	}
 	
-	public String[] loginJDBC(){
-		return this.myGV.loginJDBC();
+	public String[] loginJDBC(String nicknameIn, String passwordIn){
+		return this.myGV.loginJDBC(nicknameIn, passwordIn);
 	}
 	
 	/* Délègue uniquement l'appel de la méthode login, de cette manière le user ne voit pas la complexité */

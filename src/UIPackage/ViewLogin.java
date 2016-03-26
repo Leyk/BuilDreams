@@ -126,9 +126,9 @@ public class ViewLogin extends JFrame implements ActionListener{
 		}
 		else if ("Login".equals(e.getActionCommand()) || "".equals(e.getActionCommand())){
 			//String [] recup = this.connectionDatabase(this.getTextFieldLogin(), this.getTextFieldPassword());
-			this.myFacadeView = new FacadeView(this.getTextFieldLogin(),this.getTextFieldPassword());
+			this.myFacadeView = new FacadeView();
 			
-			String [] recupInfo = this.myFacadeView.loginJDBC();
+			String [] recupInfo = this.myFacadeView.loginJDBC(this.getTextFieldLogin(),this.getTextFieldPassword());
 			
 			if (recupInfo[0].equals(this.getTextFieldLogin()) && recupInfo[0] != ""){
 				//System.out.println("Bravo, votre identifiant existe bien en base de données ! Il ne reste plus qu'à terminer le programme !");

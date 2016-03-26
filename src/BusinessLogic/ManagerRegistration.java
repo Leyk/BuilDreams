@@ -6,6 +6,11 @@ import Persistance.JDBCSingleton;
 
 public class ManagerRegistration {
 	
+	public ManagerRegistration() {
+		super();
+
+	}
+
 	public String registrationUser (String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn) {
 		try {
 			return JDBCSingleton.getInstance().registrationUser(textFieldNameIn, textFieldSurnameIn, textFieldEmailIn, textFieldPasswordIn, textFieldPhoneIn);
