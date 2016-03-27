@@ -46,27 +46,29 @@ public class JDBCSeller extends AbstractSeller{
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryRole);
 		int role = 0;
-	    if (rs.next()){
+	    while (rs.next()){
+	    	try {
 	    	role=rs.getInt(1);
+		    String querySeller = "SELECT wording, siret, webSite, domainActivity, idRole FROM Seller WHERE Seller.idRole = '" + role + "';";
+		    ResultSet rs2 = JDBCSingleton.getInstance().RequestWithResultSet(querySeller);
+		    while (rs2.next()) {
+		    	res[0] = rs2.getString("wording");
+		    	res[1] = rs2.getString("siret");
+		    	res[2] = rs2.getString("webSite");
+		    	res[3] = rs2.getString("domainActivity");
+		        res[4] = rs2.getString("idRole");
+		    }
+	    	} catch (SQLException e) {
+				System.out.println("Pas encore trouvé de role correspondant");
+		    }
 	    }
-	    rs = null;
-	    String querySeller = "SELECT wording, siret, webSite, domainActivity, idRole FROM Seller WHERE Seller.idRole = '" + role + "';";
-	    rs = JDBCSingleton.getInstance().RequestWithResultSet(querySeller);
-	    
-	    while (rs.next()) {
-	    	res[0] = rs.getString("wording");
-	    	res[1] = rs.getString("siret");
-	    	res[2] = rs.getString("webSite");
-	    	res[3] = rs.getString("domainActivity");
-	        res[4] = rs.getString("idRole");
-	    }
-	    if (res[0] != ""){
-			this.remplissageAttributs(res);
-		}
 		}
 	    catch (SQLException e) {
 			System.out.println("Pas de role Seller pour cette personne");
 	    }
+	    if (res[0] != ""){
+			this.remplissageAttributs(res);
+		}
 	    return this;
     }
 }

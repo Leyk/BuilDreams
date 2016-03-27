@@ -45,24 +45,26 @@ public class JDBCUsers extends AbstractUsers{
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryRole);
 		int role = 0;
-	    if (rs.next()){
+	    while (rs.next()){
+	    	try {
 	    	role=rs.getInt(1);
+	    	String queryUsers = "SELECT wording, idRole FROM Users WHERE Users.idRole = '" + role + "';";
+	    	ResultSet rs2 = JDBCSingleton.getInstance().RequestWithResultSet(queryUsers);
+	    	while (rs2.next()) {
+	    		res[0] = rs2.getString("wording");
+	    		res[1] = rs2.getString("idRole");
+	    	}
+	    	} catch (SQLException e) {
+				System.out.println("Pas encore trouvé de role correspondant");
+		    }
 	    }
-	    rs = null;
-	    String queryUsers = "SELECT wording, idRole FROM Users WHERE Users.idRole = '" + role + "';";
-	    rs = JDBCSingleton.getInstance().RequestWithResultSet(queryUsers);
-	    
-	    while (rs.next()) {
-	    	res[0] = rs.getString("wording");
-	        res[1] = rs.getString("idRole");
-	    }
-	    if (res[0] != ""){
-			this.remplissageAttributs(res);
-		}
 		}
 	    catch (SQLException e) {
 			System.out.println("Pas de role Users pour cette personne");
 	    }
+    	if (res[0] != ""){
+			this.remplissageAttributs(res);
+		}
 	    return this;
     }
 
