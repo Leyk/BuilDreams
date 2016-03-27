@@ -64,6 +64,8 @@ public abstract class AbstractSeller {
 	}
 
 	public abstract int saveInsertDB(String pseudo) throws SQLException;
+
+	public abstract AbstractSeller loadDB(String pseudoIn);
 	
 	
 }

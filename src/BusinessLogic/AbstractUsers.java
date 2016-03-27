@@ -34,6 +34,8 @@ public abstract class AbstractUsers {
 	}
 
 	public abstract int saveInsertDB(String pseudo) throws SQLException;
+
+	public abstract AbstractUsers loadDB(String pseudoIn);
 	
 	
 }

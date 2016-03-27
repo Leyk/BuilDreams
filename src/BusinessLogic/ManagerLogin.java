@@ -7,6 +7,9 @@ import Persistance.JDBCPerson;
 public class ManagerLogin {
 	private AbstractPerson myPerson;
 	private AbstractFactory myFactory;
+	private AbstractAdmin myAdmin = null;
+	private AbstractUsers myUsers = null;
+	private AbstractSeller mySeller = null;
 	private String [] resConnexion;
 	
 	public ManagerLogin () {
@@ -30,12 +33,35 @@ public class ManagerLogin {
 	 * sinon on traite l'erreur en renvoyant un tableau vide, la vue affichera le bon r�sultat */
 	public String[] login(String pseudoIn, String passwordIn) {
 		this.myPerson = this.myFactory.createPerson(pseudoIn, passwordIn);
+		this.myAdmin = this.myFactory.createAdmin();
+		this.myUsers = this.myFactory.createUsers();
+		this.mySeller = this.myFactory.createSeller();
+		
 		try {
-			this.creationTableau(this.myPerson.loadDB());
+		myPerson.loadDB();
+		myAdmin.loadDB(pseudoIn);
+		myUsers.loadDB(pseudoIn);
+		mySeller.loadDB(pseudoIn);
+		creationTableau(myPerson);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			resConnexion[0] = "";
 		}
-		
+		System.out.println(resConnexion[0]);
+		System.out.println(resConnexion[1]);
+		System.out.println(resConnexion[2]);
+		System.out.println(resConnexion[3]);
+		System.out.println(resConnexion[4]);
+		System.out.println(resConnexion[5]);
+		System.out.println(myAdmin.getWording());
+		System.out.println(myAdmin.getIdRole());
+		System.out.println(myUsers.getWording());
+		System.out.println(myUsers.getIdRole());
+		System.out.println(mySeller.getWording());
+		System.out.println(mySeller.getSiret());
+		System.out.println(mySeller.getWebSite());
+		System.out.println(mySeller.getDomainActivity());
+		System.out.println(mySeller.getIdRole());
 		return resConnexion;
 	}
 }

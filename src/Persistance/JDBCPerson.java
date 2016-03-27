@@ -66,11 +66,6 @@ public class JDBCPerson extends AbstractPerson {
 		else {
 			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de données");
 		}
-		
-		if (res[0] == ""){
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de données");
-		}
-		
 		return this;
 	}
 

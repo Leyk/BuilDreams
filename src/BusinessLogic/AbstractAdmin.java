@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+
 public abstract class AbstractAdmin {
 	private String wording;
 	private int idRole; //PrimarKey //ForeignKey
@@ -30,6 +32,8 @@ public abstract class AbstractAdmin {
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
+
+	public abstract AbstractAdmin loadDB(String pseudoIn);
 
 	
 
