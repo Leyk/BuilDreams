@@ -56,7 +56,40 @@ public class JDBCSingleton implements Serializable {
 		}	
 	}
 	
-	public String registrationUser (String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn) throws SQLException {		
+	public ResultSet UpdateWithResultSet(String query) throws SQLException {		
+		String url = this.myParam.getURL();
+		String username = this.myParam.getUsername();
+		String password = this.myParam.getPassword();
+		try {
+			Connection connection = DriverManager.getConnection(url, username, password);
+			PreparedStatement pstmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			pstmt.executeUpdate();
+		    ResultSet rs = pstmt.getGeneratedKeys();
+		    return rs;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException("Erreur, cet objet existe déjà dans cette table");
+		}
+	}
+	
+	public void UpdateWithoutResultSet(String query) throws SQLException {
+		String url = this.myParam.getURL();
+		String username = this.myParam.getUsername();
+		String password = this.myParam.getPassword();
+		try {
+			Connection connection = DriverManager.getConnection(url, username, password);
+			Statement st = (Statement) connection.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException("Erreur, cet objet existe déjà dans cette table");
+		}
+	}
+
+	
+	
+	
+	/*public String registrationUser (String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn) throws SQLException {		
 		String url = this.myParam.getURL();
 		String username = this.myParam.getUsername();
 		String password = this.myParam.getPassword();
@@ -66,6 +99,7 @@ public class JDBCSingleton implements Serializable {
 		try {
 			Connection connection = DriverManager.getConnection(url, username, password);
 			Statement st = (Statement) connection.createStatement();
+			
 		    String queryPerson = "INSERT INTO Person(nickname, name, surname, email, password, phoneNumber) VALUES ('" + textFieldSurnameIn + "','" + textFieldNameIn + "','" + textFieldNameIn + "','" + textFieldEmailIn + "','" + textFieldPasswordIn + "','" + textFieldPhoneIn + "');";
 		    String queryRole = "INSERT INTO Role(nickname) VALUES ('" + textFieldSurnameIn + "');";
 		    
@@ -97,7 +131,6 @@ public class JDBCSingleton implements Serializable {
 		}
 		
 		return res;
-	}
-	
+	}*/
 	
 }

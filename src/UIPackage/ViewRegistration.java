@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.FacadeRegistration;
-import BusinessLogic.FacadeView;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,11 +30,9 @@ public class ViewRegistration extends JFrame implements ActionListener{
 	private JTextField textFieldSiret;
 	private JTextField textFieldWeb;
 	private JTextField textFieldDomainActivity;
-	private JTextField textFieldNickname;
+	private JTextField textFieldPseudo;
 	
 	private JCheckBox chckbxYes;
-	
-	private Boolean sellerSelected;
 	
 	private JLabel lblDomainActivity;
 	private JLabel lblWebsite;
@@ -51,8 +48,6 @@ public class ViewRegistration extends JFrame implements ActionListener{
 	 */
 	public ViewRegistration() {
 		this.myFacadeRegistration = new FacadeRegistration();
-		
-		this.sellerSelected = false;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 338, 337);
@@ -99,9 +94,9 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		textFieldEmail.setBounds(123, 146, 182, 20);
 		contentPane.add(textFieldEmail);
 		
-		textFieldNickname = new JTextField();
-		textFieldNickname.setBounds(123, 109, 182, 20);
-		contentPane.add(textFieldNickname);
+		textFieldPseudo = new JTextField();
+		textFieldPseudo.setBounds(123, 109, 182, 20);
+		contentPane.add(textFieldPseudo);
 		
 		textFieldPhone = new JTextField();
 		textFieldPhone.setBounds(123, 220, 182, 20);
@@ -161,13 +156,6 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		contentPane.add(textFieldPassword);
 	}
 	
-	private void isSelected() {
-		this.sellerSelected = true;
-	}
-	
-	private void isUnSelected() {
-		this.sellerSelected = false;
-	}
 	
 	public void actionPerformed (ActionEvent e){
 		if ("Cancel".equals(e.getActionCommand())){
@@ -204,11 +192,11 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		else if ("Register".equals(e.getActionCommand())){
 			String recup = new String();
 			
-			if (this.sellerSelected){
-				recup = this.myFacadeRegistration.registrationSeller(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPhone.getText(), textFieldSiret.getText(), textFieldWeb.getText(), textFieldDomainActivity.getText());
+			if (this.chckbxYes.isSelected()){
+				recup = this.myFacadeRegistration.registrationSeller(textFieldPseudo.getText(), textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText(), Integer.parseInt(textFieldSiret.getText()), textFieldWeb.getText(), textFieldDomainActivity.getText());
 			}
 			else {
-				recup = this.myFacadeRegistration.registrationUser(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText());
+				recup = this.myFacadeRegistration.registrationUsers(textFieldPseudo.getText(), textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText());
 			}
 			
 			if (recup.equals("Invalid registration")){

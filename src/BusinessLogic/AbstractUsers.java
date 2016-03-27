@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+
 public abstract class AbstractUsers {
 	private String wording;
 	private int idRole; //PrimarKey //ForeignKey
@@ -30,6 +32,8 @@ public abstract class AbstractUsers {
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
+
+	public abstract int saveInsertDB(String pseudo) throws SQLException;
 	
 	
 }

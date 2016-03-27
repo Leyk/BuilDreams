@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import BusinessLogic.FacadeView;
+import BusinessLogic.FacadeLogin;
 
 public class ViewLogin extends JFrame implements ActionListener{
 	private JPanel contentPane;
@@ -21,7 +21,7 @@ public class ViewLogin extends JFrame implements ActionListener{
 	private MyPasswordField textField_password;
 	private JButton btnLogIn;
 	private JButton btnCancel;
-	private FacadeView myFacadeView;
+	private FacadeLogin myFacadeLogin;
 	
 
 	/**
@@ -126,9 +126,9 @@ public class ViewLogin extends JFrame implements ActionListener{
 		}
 		else if ("Login".equals(e.getActionCommand()) || "".equals(e.getActionCommand())){
 			//String [] recup = this.connectionDatabase(this.getTextFieldLogin(), this.getTextFieldPassword());
-			this.myFacadeView = new FacadeView();
+			this.myFacadeLogin = new FacadeLogin();
 			
-			String [] recupInfo = this.myFacadeView.loginJDBC(this.getTextFieldLogin(),this.getTextFieldPassword());
+			String [] recupInfo = this.myFacadeLogin.login(this.getTextFieldLogin(),this.getTextFieldPassword());
 			
 			if (recupInfo[0].equals(this.getTextFieldLogin()) && recupInfo[0] != ""){
 				//System.out.println("Bravo, votre identifiant existe bien en base de données ! Il ne reste plus qu'à terminer le programme !");

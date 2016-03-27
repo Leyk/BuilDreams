@@ -1,13 +1,15 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+
 public abstract class AbstractSeller {
 	private String wording;
 	private int siret;
 	private String webSite;
 	private String domainActivity;
-	private String idRole; //PrimarKey //ForeignKey
+	private int idRole; //PrimarKey //ForeignKey
 	
-	public AbstractSeller(String wording, int siret, String webSite, String domainActivity, String idRole) {
+	public AbstractSeller(String wording, int siret, String webSite, String domainActivity, int idRole) {
 		super();
 		this.wording = wording;
 		this.siret = siret;
@@ -53,13 +55,15 @@ public abstract class AbstractSeller {
 		this.domainActivity = domainActivity;
 	}
 
-	public String getIdRole() {
+	public int getIdRole() {
 		return idRole;
 	}
 
-	public void setIdRole(String idRole) {
+	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
+
+	public abstract int saveInsertDB(String pseudo) throws SQLException;
 	
 	
 }
