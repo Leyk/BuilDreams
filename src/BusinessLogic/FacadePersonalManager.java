@@ -1,5 +1,8 @@
 package BusinessLogic;
 // MOCK UP 12
+
+import java.sql.Date;
+
 public class FacadePersonalManager {
 	
 	private ManagerPersonalManager myGV;
@@ -17,14 +20,14 @@ public class FacadePersonalManager {
 	// un projet generale est choisie la personne auras que a mettre les date et faire create, les taches avec leur produit relier sont faite automatiquement, il pourra les modifier ulterieurement
 	// Enregistrer un projet personel
 	// Sinon
-	// Creation classique
+	// Creation Classique Project personell
 	
 	
 	// Update General Project
 	// Charger la liste des project personel
 	// Charger un projet personel
 	// Charger les category de project : facade category
-	// Afficher les taches relier a ce projet
+	// Afficher les taches personelle relier a ce projet
 	// Choix Create Update Delete tache voir plus bas
 	// Enregistrement du projet personel
 
@@ -51,65 +54,86 @@ public class FacadePersonalManager {
 	// (Enregistrer les produits reliés a une tache personel)
 	
 	// Delete Personal Tache
-	// Charger la liste des taches personnelles
+	// Charger la liste des taches personnelles de ce projet
 	// Charger une tache personelle
 	// Supprimer la tache personelle et ses liens
 	
+	//////////////////////////////////////////////
 	
+	// Charger les projet generau si demander (check yes) : FacadeGeneralManager
+	// Charger un projet generale si demandé (si check yes bien sur) : FacadeGerneralManager
+	// Charger les category de project : facade category
+	// Charger les category de Tache : facade category
+	// Charger les category de produits : facade category
 	
-/*
+	// Creation projet personel a partir d'un projet general : un projet generale est choisie la personne auras que a mettre les date et faire create, les taches avec leur produit relier sont faite automatiquement, il pourra les modifier ulterieurement
+	public boolean addPersonalProjectFromGeneralProject(int idGeneralProject, Date beginDate, Date endDate){
+		
+	}
+	
+	// ADD Creation Classique Project personel
+	public boolean addGeneralProject(String name, String description, Date beginDate, Date endDate, int idProjectCategory){
+	
+	}
+	
+	// Charger la liste des project personel
+	public String[][] loadAllPersonalProject(){
+		
+	}
+	
+	// Charger un projet personel
+	public String[] loadPersonalProject(int idPersonalProject){
+		
+	}
+	
+	// Charger la liste des taches personnels de ce projet
+	public String[][] loadAllTasksLinkedToPersonalProject(int idPersonalProject){
+		
+	}
+	
+	// UPDATE Enregistrement du projet personel (avec leur taches relier avec leur produit relié) String[] le string est la liste des id
+	public boolean updatePersonalProject(int idPersonalProject, String name, String description, Date beginDate, Date endDate, int idProjectCategory, String[] linkedPersonalTasks){
+		
+	}
+	
+	// Supprimer le projet personel et ses liens
+	public boolean deletePersonalProject(int idGeneralProject){
+		
+	}
+	
+	// ADD Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache personelle)
+	// Retourne l'id de la tache sauvé pour pouvoir l'ajouter à la liste des tache pour la sauvegarde plus tard par le updatePersonalProject
+	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
+	public String addPersonalTask(String name, String description, Date beginDate, Date endDate, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
+		
+	}
+	
+	// (Enregistrer les produit relier a une tache personel) ==> (quantity unit idcategory)
+	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
+	public boolean saveLinkedProductCategories(int idPersonalTask, String[][] linkedProductCategories){
+		
+	}
+	
+	// Charger une tache personel
+	public String[] loadPersonalTask(int idPersonalTask){
+		
+	}
+	
+	// Charger la liste des produits relié à cette tache personelle
+	public String[][] loadAllProductCategoriesLinkedToPersonalTask(int idPersonalTask){
+		
+	}
+	
+	// UPDATE Enregistrer une tache personel (qui poura appeler apres Enregistrer les produits reliés a la tache personel)
+	public String updatePersonalTask(int idPersonalTask, String name, String description, Date beginDate, Date endDate, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
+		
+	}
+	
+	// Supprimer la tache personelle et ses liens
+	public boolean deletePersonalTask(int idPersonalTask){
+		
+	}
 	
 
-	// Charge tous les projets generaux
-	public String[][] loadAllGeneralProject(){
-		
-	}
-	
-	// Charge toutes les taches generales
-	public String[][] loadAllGeneralTask(){
-		
-	}
-	
-	// Charge toutes les taches generales
-		public String[][] loadAllProjectTasks(){
-			
-		}
-		
-	// Charge toutes les taches generales
-	public String[][] loadAllTask(){
-		
-	}
-	
-
-
-	// Ca ajoute un produit de ce seller à la base 
-	public boolean addGeneralProject(String name, String description, float quantity, String reference, float price , int idCategory){
-		
-	}
-	
-	// Ca modifie un produit de ce seller à la base
-	public boolean updateProductSeller(int idProduct, String name, String description, float quantity, String reference, float price , int idCategory){
-		return this.myGV.updateProductSeller(idProduct, name, description, quantity, reference, price , idCategory);
-	}
-	
-	// Ca supprime un produit de ce seller de la base
-	public boolean deleteProductSeller(int idProduct){
-		return this.myGV.deleteProductSeller(idProduct);
-	}
-	
-	// Ca ajoute un produit de ce seller à la base 
-	public boolean addProductSeller(String name, String description, float quantity, String reference, float price , int idCategory){
-		return this.myGV.addProductSeller(name, description, quantity, reference, price , idCategory);
-	}
-	
-	// Ca modifie un produit de ce seller à la base
-	public boolean updateProductSeller(int idProduct, String name, String description, float quantity, String reference, float price , int idCategory){
-		return this.myGV.updateProductSeller(idProduct, name, description, quantity, reference, price , idCategory);
-	}
-	
-	// Ca supprime un produit de ce seller de la base
-	public boolean deleteProductSeller(int idProduct){
-		return this.myGV.deleteProductSeller(idProduct);
-	}*/
 
 } 

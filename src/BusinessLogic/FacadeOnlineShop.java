@@ -14,18 +14,18 @@ public class FacadeOnlineShop {
 	}
 	
 	// Charge les données du shop pour un seller
-	public String[][] loadShop(int idSeller){
-		return this.myGV.loadShop(idSeller);
+	public String[][] loadShopSeller(int idSeller){
+		return this.myGV.loadShopSeller(idSeller);
 	}
 	
 	// Charge les données du shop pour une category
-	public String[][] loadShop(int idCategory){
-		return this.myGV.loadShop(idCategory);
+	public String[][] loadShopCategory(int idCategory){
+		return this.myGV.loadShopCategory(idCategory);
 	}
 	
 	// Charge les données du shop pour un seller et une category
-	public String[][] loadShop(int idSeller, int idCategory){
-		return this.myGV.loadShop(idSeller, idCategory);
+	public String[][] loadShopSellerCategory(int idSeller, int idCategory){
+		return this.myGV.loadShopSellerCategory(idSeller, idCategory);
 	}
 
 	// ajout d'un item au panier

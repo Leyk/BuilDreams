@@ -53,60 +53,83 @@ public class FacadeGeneralManager {
 	// Supprimer la tache generale et ses liens
 	
 	
+	/////////////////////////////////
 	
-/*
+	// Charger les category de project : facade category
+	// Charger les category de Tache : facade category
+	// Charger les category de produits : facade category
 	
-
-	// Charge tous les projets generaux
-	public String[][] loadAllGeneralProject(){
-		
-	}
-	
-	// Charge toutes les taches generales
+	// Charger les taches generales
 	public String[][] loadAllGeneralTask(){
 		
 	}
 	
-	// Charge toutes les taches generales
-		public String[][] loadAllProjectTasks(){
+	// ADD Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general) le string est la liste des id
+	public boolean addGeneralProject(String name, String description, int idProjectCategory, String[] linkedGeneralTasks){
+		
+	}
+	
+	// (Enregistrer les tache relier a un project general) le string est la liste des id
+	public boolean saveLinkedGeneralTask(int idGeneralProject, String[] linkedGeneralTasks){
+		
+	}
+	
+	// Charger la liste des project generaux
+	public String[][] loadAllGeneralProject(){
+		
+	}
+	
+	// Charger un projet general
+	public String[] loadGeneralProject(int idGeneralProject){
+		
+	}
+	
+	// Charger la liste des taches relié à un projet general
+	public String[][] loadAllTasksLinkedToGeneralProject(int idGeneralProject){
+		
+	}
+	
+	// UPDATE Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general) le string est la liste des id
+	public boolean updateGeneralProject(int idGeneralProject, String name, String description, int idProjectCategory, String[] linkedGeneralTasks){
 			
-		}
-		
-	// Charge toutes les taches generales
-	public String[][] loadAllTask(){
-		
 	}
 	
-
-
-	// Ca ajoute un produit de ce seller à la base 
-	public boolean addGeneralProject(String name, String description, float quantity, String reference, float price , int idCategory){
+	// Supprimer le projet general et ses liens
+	public boolean deleteGeneralProject(int idGeneralProject){
 		
 	}
 	
-	// Ca modifie un produit de ce seller à la base
-	public boolean updateProductSeller(int idProduct, String name, String description, float quantity, String reference, float price , int idCategory){
-		return this.myGV.updateProductSeller(idProduct, name, description, quantity, reference, price , idCategory);
+	// ADD Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
+	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
+	public boolean addGeneralTask(String name, String description, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
+		
 	}
 	
-	// Ca supprime un produit de ce seller de la base
-	public boolean deleteProductSeller(int idProduct){
-		return this.myGV.deleteProductSeller(idProduct);
+	// (Enregistrer les produit relier a une tache generale) ==> (quantity unit idcategory)
+	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
+	public boolean saveLinkedProductCategories(int idGeneralTask, String[][] linkedProductCategories){
+		
 	}
 	
-	// Ca ajoute un produit de ce seller à la base 
-	public boolean addProductSeller(String name, String description, float quantity, String reference, float price , int idCategory){
-		return this.myGV.addProductSeller(name, description, quantity, reference, price , idCategory);
+	// Charger une tache generale
+	public String[] loadGeneralTask(int idGeneralTask){
+		
 	}
 	
-	// Ca modifie un produit de ce seller à la base
-	public boolean updateProductSeller(int idProduct, String name, String description, float quantity, String reference, float price , int idCategory){
-		return this.myGV.updateProductSeller(idProduct, name, description, quantity, reference, price , idCategory);
+	// Charger la liste des category de produits relié a cette tache generale
+	public String[][] loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask){
+		
 	}
 	
-	// Ca supprime un produit de ce seller de la base
-	public boolean deleteProductSeller(int idProduct){
-		return this.myGV.deleteProductSeller(idProduct);
-	}*/
-
+	// UPDATE Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
+	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
+	public boolean updateGeneralTask(int idGeneralTask, String name, String description, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
+		
+	}
+	
+	// Supprimer la tache generale et ses liens
+	public boolean deleteGeneralTask(int idGeneralTask){
+		
+	}
+	
 } 
