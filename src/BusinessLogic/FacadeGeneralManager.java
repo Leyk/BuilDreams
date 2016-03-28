@@ -2,10 +2,10 @@ package BusinessLogic;
 // MOCK UP 11 
 public class FacadeGeneralManager {
 	
-	private ManagerGeneralManager myGV;
+	private ManagerGeneralManager myManagerGeneralManager;
 
 	public FacadeGeneralManager() {
-		this.myGV = new ManagerGeneralManager();
+		this.myManagerGeneralManager = new ManagerGeneralManager();
 	}
 	
 	// A SIMOM : Lors du select penses bien à recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
@@ -61,75 +61,75 @@ public class FacadeGeneralManager {
 	
 	// Charger les taches generales
 	public String[][] loadAllGeneralTask(){
-		
+		return this.myManagerGeneralManager.loadAllGeneralTask();
 	}
 	
 	// ADD Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general) le string est la liste des id
 	public boolean addGeneralProject(String name, String description, int idProjectCategory, String[] linkedGeneralTasks){
-		
+		return this.myManagerGeneralManager.addGeneralProject(name, description, idProjectCategory, linkedGeneralTasks);
 	}
 	
 	// (Enregistrer les tache relier a un project general) le string est la liste des id
 	public boolean saveLinkedGeneralTask(int idGeneralProject, String[] linkedGeneralTasks){
-		
+		return this.myManagerGeneralManager.saveLinkedGeneralTask(idGeneralProject, linkedGeneralTasks);
 	}
 	
 	// Charger la liste des project generaux
 	public String[][] loadAllGeneralProject(){
-		
+		return this.myManagerGeneralManager.loadAllGeneralProject();
 	}
 	
 	// Charger un projet general
 	public String[] loadGeneralProject(int idGeneralProject){
-		
+		return this.myManagerGeneralManager.loadGeneralProject(idGeneralProject);
 	}
 	
 	// Charger la liste des taches relié à un projet general
 	public String[][] loadAllTasksLinkedToGeneralProject(int idGeneralProject){
-		
+		return this.myManagerGeneralManager.loadAllTasksLinkedToGeneralProject(idGeneralProject);
 	}
 	
 	// UPDATE Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general) le string est la liste des id
 	public boolean updateGeneralProject(int idGeneralProject, String name, String description, int idProjectCategory, String[] linkedGeneralTasks){
-			
+		return this.myManagerGeneralManager.updateGeneralProject(idGeneralProject, name,  description, idProjectCategory, linkedGeneralTasks);
 	}
 	
 	// Supprimer le projet general et ses liens
 	public boolean deleteGeneralProject(int idGeneralProject){
-		
+		return this.myManagerGeneralManager.deleteGeneralProject(idGeneralProject);
 	}
 	
 	// ADD Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public boolean addGeneralTask(String name, String description, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
-		
+		return this.myManagerGeneralManager.addGeneralTask(name, description, theoreticalLength, idTaskCategory, linkedProductCategories);
 	}
 	
 	// (Enregistrer les produit relier a une tache generale) ==> (quantity unit idcategory)
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public boolean saveLinkedProductCategories(int idGeneralTask, String[][] linkedProductCategories){
-		
+		return this.myManagerGeneralManager.saveLinkedProductCategories(idGeneralTask, linkedProductCategories);
 	}
 	
 	// Charger une tache generale
 	public String[] loadGeneralTask(int idGeneralTask){
-		
+		return this.myManagerGeneralManager.loadGeneralTask(idGeneralTask);
 	}
 	
 	// Charger la liste des category de produits relié a cette tache generale
 	public String[][] loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask){
-		
+		return this.myManagerGeneralManager.loadAllProductCategoriesLinkedToGeneralTask(idGeneralTask);
 	}
 	
 	// UPDATE Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public boolean updateGeneralTask(int idGeneralTask, String name, String description, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
-		
+		return this.myManagerGeneralManager.updateGeneralTask(idGeneralTask, name, description, theoreticalLength, idTaskCategory, linkedProductCategories);
 	}
 	
 	// Supprimer la tache generale et ses liens
 	public boolean deleteGeneralTask(int idGeneralTask){
-		
+		return this.myManagerGeneralManager.deleteGeneralTask(idGeneralTask);
 	}
 	
 } 

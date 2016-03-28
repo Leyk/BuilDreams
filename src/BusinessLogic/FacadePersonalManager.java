@@ -5,10 +5,10 @@ import java.sql.Date;
 
 public class FacadePersonalManager {
 	
-	private ManagerPersonalManager myGV;
+	private ManagerPersonalManager myManagerPersonalManager;
 
 	public FacadePersonalManager() {
-		this.myGV = new ManagerPersonalManager();
+		this.myManagerPersonalManager = new ManagerPersonalManager();
 	}
 	
 	// A SIMOM : Lors du select penses bien à recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
@@ -68,70 +68,70 @@ public class FacadePersonalManager {
 	
 	// Creation projet personel a partir d'un projet general : un projet generale est choisie la personne auras que a mettre les date et faire create, les taches avec leur produit relier sont faite automatiquement, il pourra les modifier ulterieurement
 	public boolean addPersonalProjectFromGeneralProject(int idGeneralProject, Date beginDate, Date endDate){
-		
+		return this.myManagerPersonalManager.addPersonalProjectFromGeneralProject(idGeneralProject, beginDate, endDate);
 	}
 	
 	// ADD Creation Classique Project personel
 	public boolean addGeneralProject(String name, String description, Date beginDate, Date endDate, int idProjectCategory){
-	
+		return this.myManagerPersonalManager.addGeneralProject(name, description, beginDate, endDate, idProjectCategory);
 	}
 	
 	// Charger la liste des project personel
 	public String[][] loadAllPersonalProject(){
-		
+		return this.myManagerPersonalManager.loadAllPersonalProject();
 	}
 	
 	// Charger un projet personel
 	public String[] loadPersonalProject(int idPersonalProject){
-		
+		return this.myManagerPersonalManager.loadPersonalProject(idPersonalProject);
 	}
 	
 	// Charger la liste des taches personnels de ce projet
 	public String[][] loadAllTasksLinkedToPersonalProject(int idPersonalProject){
-		
+		return this.myManagerPersonalManager.loadAllTasksLinkedToPersonalProject(idPersonalProject);
 	}
 	
 	// UPDATE Enregistrement du projet personel (avec leur taches relier avec leur produit relié) String[] le string est la liste des id
 	public boolean updatePersonalProject(int idPersonalProject, String name, String description, Date beginDate, Date endDate, int idProjectCategory, String[] linkedPersonalTasks){
-		
+		return this.myManagerPersonalManager.updatePersonalProject(idPersonalProject, name, description, beginDate, endDate, idProjectCategory, linkedPersonalTasks);
 	}
 	
 	// Supprimer le projet personel et ses liens
 	public boolean deletePersonalProject(int idGeneralProject){
-		
+		return this.myManagerPersonalManager.deletePersonalProject(idGeneralProject);
 	}
 	
 	// ADD Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache personelle)
 	// Retourne l'id de la tache sauvé pour pouvoir l'ajouter à la liste des tache pour la sauvegarde plus tard par le updatePersonalProject
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public String addPersonalTask(String name, String description, Date beginDate, Date endDate, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
-		
+		return this.myManagerPersonalManager.addPersonalTask(name, description, beginDate, endDate, theoreticalLength, idTaskCategory, linkedProductCategories);
 	}
 	
 	// (Enregistrer les produit relier a une tache personel) ==> (quantity unit idcategory)
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public boolean saveLinkedProductCategories(int idPersonalTask, String[][] linkedProductCategories){
-		
+		return this.myManagerPersonalManager.saveLinkedProductCategories(idPersonalTask, linkedProductCategories);
 	}
 	
 	// Charger une tache personel
 	public String[] loadPersonalTask(int idPersonalTask){
-		
+		return this.myManagerPersonalManager.loadPersonalTask(idPersonalTask);
 	}
 	
 	// Charger la liste des produits relié à cette tache personelle
 	public String[][] loadAllProductCategoriesLinkedToPersonalTask(int idPersonalTask){
-		
+		return this.myManagerPersonalManager.loadAllProductCategoriesLinkedToPersonalTask(idPersonalTask);
 	}
 	
 	// UPDATE Enregistrer une tache personel (qui poura appeler apres Enregistrer les produits reliés a la tache personel)
 	public String updatePersonalTask(int idPersonalTask, String name, String description, Date beginDate, Date endDate, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
-		
+		return this.myManagerPersonalManager.updatePersonalTask(idPersonalTask, name, description, beginDate, endDate, theoreticalLength, idTaskCategory, linkedProductCategories);
 	}
 	
 	// Supprimer la tache personelle et ses liens
 	public boolean deletePersonalTask(int idPersonalTask){
-		
+		return this.myManagerPersonalManager.deletePersonalTask(idPersonalTask);
 	}
 	
 
