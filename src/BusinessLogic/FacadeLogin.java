@@ -1,5 +1,5 @@
 package BusinessLogic;
-
+//MOCK UP 8
 public class FacadeLogin {
 	private ManagerLogin myGV;
 
@@ -7,6 +7,7 @@ public class FacadeLogin {
 		this.myGV = new ManagerLogin();
 	}
 	
+	// Renvoie le profile person demandé si il existe
 	public String[] login(String nicknameIn, String passwordIn){
 		return this.myGV.login(nicknameIn, passwordIn);
 	}

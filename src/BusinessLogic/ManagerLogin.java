@@ -5,11 +5,7 @@ import java.sql.SQLException;
 import Persistance.JDBCPerson;
 
 public class ManagerLogin {
-	private AbstractPerson myPerson;
 	private AbstractFactory myFactory;
-	private AbstractAdmin myAdmin = null;
-	private AbstractUsers myUsers = null;
-	private AbstractSeller mySeller = null;
 	private String [] resConnexion;
 	
 	public ManagerLogin () {
@@ -32,17 +28,17 @@ public class ManagerLogin {
 	/* M�thode qui appelle le loadDB du user stock�, s'il y a match (le user existe en base) alors ok on appelle la m�thode de remplissage, 
 	 * sinon on traite l'erreur en renvoyant un tableau vide, la vue affichera le bon r�sultat */
 	public String[] login(String pseudoIn, String passwordIn) {
-		this.myPerson = this.myFactory.createPerson(pseudoIn, passwordIn);
-		this.myAdmin = this.myFactory.createAdmin();
-		this.myUsers = this.myFactory.createUsers();
-		this.mySeller = this.myFactory.createSeller();
-		
+		AbstractPerson myPerson = this.myFactory.createPerson(pseudoIn, passwordIn);
+		AbstractAdmin myAdmin = this.myFactory.createAdmin();
+		AbstractUsers myUsers = this.myFactory.createUsers();
+		AbstractSeller mySeller = this.myFactory.createSeller();
 		try {
 		myPerson.loadDB();
 		myAdmin.loadDB(pseudoIn);
 		myUsers.loadDB(pseudoIn);
 		mySeller.loadDB(pseudoIn);
 		creationTableau(myPerson);
+		PersonRoleSingleton.initInstance(myPerson, myAdmin, myUsers, mySeller);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			resConnexion[0] = "";

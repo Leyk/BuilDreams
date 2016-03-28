@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.PersonRoleSingleton;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -236,6 +239,7 @@ public class ViewHome extends JFrame {
 		this.btnLogOut = new JButton("Log out");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				PersonRoleSingleton.eraseInstance();
 				ViewHome fenHome = new ViewHome();
 				dispose();
 				JOptionPane.showMessageDialog(null, "You are now disconnected.",

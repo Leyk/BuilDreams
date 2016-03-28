@@ -12,10 +12,18 @@ import java.sql.Statement;
 public class JDBCSingleton implements Serializable {
 
 	private Parametres myParam;
+	private Connection myConnection;
 	
-	/** Constructeur privé */
+	/** Constructeur privé 
+	 * @throws SQLException */
 	private JDBCSingleton() {
 		myParam = new Parametres();
+		try {
+			myConnection = this.connection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/** Instance unique pré-initialisée */
@@ -31,12 +39,17 @@ public class JDBCSingleton implements Serializable {
 		return INSTANCE;
 	}
 	
-	public ResultSet RequestWithResultSet (String query) throws SQLException {
+	private Connection connection() throws SQLException{
 		String url = this.myParam.getURL();
 		String username = this.myParam.getUsername();
 		String password = this.myParam.getPassword();
-		try (Connection connection = DriverManager.getConnection(url, username, password)) {
-		    Statement st = (Statement) connection.createStatement();
+		Connection connection = DriverManager.getConnection(url, username, password);
+		return connection;
+	}
+	
+	public ResultSet RequestWithResultSet (String query) throws SQLException {
+		try {
+		    Statement st = (Statement) myConnection.createStatement();
 		    ResultSet rs = st.executeQuery(query);
 		    return rs;
 		} catch (SQLException e) {
@@ -45,11 +58,8 @@ public class JDBCSingleton implements Serializable {
 	}
 	
 	public void RequestWithoutResultSet (String query) throws SQLException {
-		String url = this.myParam.getURL();
-		String username = this.myParam.getUsername();
-		String password = this.myParam.getPassword();
-		try (Connection connection = DriverManager.getConnection(url, username, password)) {
-		    Statement st = (Statement) connection.createStatement();
+		try {
+		    Statement st = (Statement) myConnection.createStatement();
 		    st.executeQuery(query);  
 		} catch (SQLException e) {
 		    throw new IllegalStateException("Cannot connect the database!", e);
@@ -57,12 +67,8 @@ public class JDBCSingleton implements Serializable {
 	}
 	
 	public ResultSet UpdateWithResultSet(String query) throws SQLException {		
-		String url = this.myParam.getURL();
-		String username = this.myParam.getUsername();
-		String password = this.myParam.getPassword();
 		try {
-			Connection connection = DriverManager.getConnection(url, username, password);
-			PreparedStatement pstmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement pstmt = myConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			pstmt.executeUpdate();
 		    ResultSet rs = pstmt.getGeneratedKeys();
 		    return rs;
@@ -73,12 +79,8 @@ public class JDBCSingleton implements Serializable {
 	}
 	
 	public void UpdateWithoutResultSet(String query) throws SQLException {
-		String url = this.myParam.getURL();
-		String username = this.myParam.getUsername();
-		String password = this.myParam.getPassword();
 		try {
-			Connection connection = DriverManager.getConnection(url, username, password);
-			Statement st = (Statement) connection.createStatement();
+			Statement st = (Statement) myConnection.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
