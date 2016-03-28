@@ -1,56 +1,59 @@
 package BusinessLogic;
-// MOCK UP 11 
-public class FacadeGeneralManager {
+// MOCK UP 12
+public class FacadePersonalManager {
 	
-	private ManagerGeneralManager myGV;
+	private ManagerPersonalManager myGV;
 
-	public FacadeGeneralManager() {
-		this.myGV = new ManagerGeneralManager();
+	public FacadePersonalManager() {
+		this.myGV = new ManagerPersonalManager();
 	}
 	
 	// A SIMOM : Lors du select penses bien à recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
 	
-	// Create General Project 
-	// Charger les category de project : facade category
-	// Charger les taches generales
-	// Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general)
-	// (Enregistrer les tache relier a un project general)
+	// Create Personal Project 
+	// Charger les projet generau si demander (check yes)
+	// Charger un projet generale si demandé (si check yes bien sur)
+	// Si
+	// un projet generale est choisie la personne auras que a mettre les date et faire create, les taches avec leur produit relier sont faite automatiquement, il pourra les modifier ulterieurement
+	// Enregistrer un projet personel
+	// Sinon
+	// Creation classique
+	
 	
 	// Update General Project
-	// Charger la liste des project generaux
+	// Charger la liste des project personel
+	// Charger un projet personel
 	// Charger les category de project : facade category
-	// Charger un projet general
-	// Charger les taches generales
-	// Charger la liste des taches relié à un projet general
-	// Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general)
-	// (Enregistrer les tache relier a un project general)
-	
+	// Afficher les taches relier a ce projet
+	// Choix Create Update Delete tache voir plus bas
+	// Enregistrement du projet personel
+
 	// Delete General Project
-	// Charger la liste des project generaux
-	// Charger un projet general
-	// Supprimer le projet general et ses liens
+	// Charger la liste des project personel
+	// Charger un projet personel
+	// Supprimer le projet personel et ses liens
 	
 	// A SIMOM : Lors du select penses bien à recuper la liste de [idCategoryProduit, quantity, unit] (ici tableau 3 fois n) pour apres l'envoyer dans la requette de creation ou d'update
 	
-	// Create General Task 
+	// Create Personal Task 
 	// Charger les category de Tache : facade category
 	// Charger les category de produits : facade category
-	// Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
-	// (Enregistrer les produit relier a une tache generale) ==> (quantity unit idcategory)
+	// Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache personelle)
+	// (Enregistrer les produit relier a une tache personel) ==> (quantity unit idcategory)
 	
-	// Update General Task
-	// Charger la liste des taches generale
+	// Update Personal Task
+	// Charger la liste des taches personnels de ce projet
 	// Charger les category de Tache : facade category
-	// Charger une tache generale
+	// Charger une tache personel
 	// Charger les category de produit
-	// Charger la liste des category de produits relié a cette tache generale
-	// Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
-	// (Enregistrer les produits reliés a une tache generale)
+	// Charger la liste des produits relié à cette tache personele
+	// Enregistrer une tache personel (qui poura appeler apres Enregistrer les produits reliés a la tache personel)
+	// (Enregistrer les produits reliés a une tache personel)
 	
-	// Delete General Task
-	// Charger la liste des taches generales
-	// Charger une tache generale
-	// Supprimer la tache generale et ses liens
+	// Delete Personal Tache
+	// Charger la liste des taches personnelles
+	// Charger une tache personelle
+	// Supprimer la tache personelle et ses liens
 	
 	
 	
