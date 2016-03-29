@@ -37,7 +37,7 @@ public abstract class AbstractFactory {
 			int idEntry, int idPersonalProject, int idTaskCategory);
 	
 	abstract public AbstractProduct createProduct();
-	abstract public AbstractProduct createProduct(int idProduct, String name, String description, float quantity, int idCategory, int idRole);
+	abstract public AbstractProduct createProduct(int idProduct, String name, String description, float quantity, String reference, float price, int idCategory, int idRole);
 	
 	abstract public AbstractProductCategory createProductCategory();
 	abstract public AbstractProductCategory createProductCategory(int idCategory, String name, int idSuperCategory);

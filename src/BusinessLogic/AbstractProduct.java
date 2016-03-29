@@ -5,15 +5,20 @@ public abstract class AbstractProduct {
 	private String name;
 	private String description;
 	private float quantity;
+	private String reference;
+	private float price;
 	private int idCategory; //ForeignKey
 	private int idRole; //ForeignKey
 	
-	public AbstractProduct(int idProduct, String name, String description, float quantity, int idCategory, int idRole) {
+	public AbstractProduct(int idProduct, String name, String description, float quantity, String reference,
+			float price, int idCategory, int idRole) {
 		super();
 		this.idProduct = idProduct;
 		this.name = name;
 		this.description = description;
 		this.quantity = quantity;
+		this.reference = reference;
+		this.price = price;
 		this.idCategory = idCategory;
 		this.idRole = idRole;
 	}
@@ -53,6 +58,22 @@ public abstract class AbstractProduct {
 
 	public void setQuantity(float quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 	public int getIdCategory() {

@@ -134,14 +134,12 @@ public class JDBCFactory extends AbstractFactory{
 	public AbstractProduct createProduct() {
 		return new JDBCProduct();
 	}
-
+	
 	@Override
-	public AbstractProduct createProduct(int idProduct, String name, String description, float quantity, int idCategory,
-			int idRole) {
-		return new JDBCProduct(idProduct, name, description, quantity, idCategory,
-				idRole);
+	public AbstractProduct createProduct(int idProduct, String name, String description, float quantity, String reference, float price, int idCategory, int idRole) {
+		return new JDBCProduct(idProduct, name, description, quantity, reference, price, idCategory, idRole);
 	}
-
+	
 	@Override
 	public AbstractProductCategory createProductCategory() {
 		return new JDBCProductCategory();
