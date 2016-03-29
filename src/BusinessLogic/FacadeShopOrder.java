@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 //MOCK UP 4
 public class FacadeShopOrder {
 	
@@ -9,12 +12,12 @@ public class FacadeShopOrder {
 	}
 	
 	// Charger les commandes avec leur etat
-	public String[][] loadAllCommand(){
+	public ArrayList<ArrayList<String>> loadAllCommand(){
 		return this.myManagerShopOrder.loadAllCommand();
 	}
 	
 	//Charge une commande en particulier
-	public String[][] loadCommand(int idCommand){
+	public ArrayList<ArrayList<String>> loadCommand(int idCommand){
 		return this.myManagerShopOrder.loadCommand(idCommand);
 	}
 	

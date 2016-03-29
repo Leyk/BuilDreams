@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 //MOCK UP 9 sert aussi pour les mock up utilisant des catégories
 public class FacadeCategory {
 	
@@ -11,7 +14,7 @@ public class FacadeCategory {
 	//PRODUCT CATEGORY MANAGE
 	
 	// Ca charge toutes les categories de produit leur id et leur nom
-	public String[][] loadAllProductCategory(){
+	public ArrayList<ArrayList<String>> loadAllProductCategory(){
 		return this.myManagerCategory.loadAllProductCategory();
 	}
 
@@ -33,7 +36,7 @@ public class FacadeCategory {
 	//PROJECT CATEGORY MANAGE
 	
 	// Ca charge toutes les categories de projet leur id et leur nom
-	public String[][] loadAllProjectCategory(){
+	public ArrayList<ArrayList<String>> loadAllProjectCategory(){
 		return this.myManagerCategory.loadAllProjectCategory();
 	}
 
@@ -55,7 +58,7 @@ public class FacadeCategory {
 	//TASK CATEGORY MANAGE
 	
 	// Ca charge toutes les categories de tache leur id et leur nom
-	public String[][] loadAllTaskCategory(){
+	public ArrayList<ArrayList<String>> loadAllTaskCategory(){
 		return this.myManagerCategory.loadAllTaskCategory();
 	}
 

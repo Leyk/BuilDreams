@@ -8,31 +8,31 @@ import Persistance.JDBCPerson;
 
 public class ManagerLogin {
 	private AbstractFactory myFactory;
-	private String [] resConnexion;
+	private ArrayList<String> resConnexion;
 	private AbstractPerson myPerson;
 	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
 	
 	
 	public ManagerLogin () {
 		this.myFactory = new JDBCFactory();
-		resConnexion = new String[6];
+		resConnexion = new ArrayList<String>();
 	}
 	
 	/* Remplit le tableau avec les attributs de l'objet user, que l'on renvoie � la vue afin de les afficher */
-	private String[] creationTableau(AbstractPerson personIn){		
-		resConnexion [0] = personIn.getPseudo();
-		resConnexion [1] = personIn.getName();
-		resConnexion [2] = personIn.getSurname();
-		resConnexion [3] = personIn.getEmail();
-		resConnexion [4] = personIn.getPassword();
-		resConnexion [5] = personIn.getPhoneNumber();
+	private ArrayList<String> creationTableau(AbstractPerson personIn){		
+		resConnexion.add(0, personIn.getPseudo());
+		resConnexion.add(1, personIn.getName());
+		resConnexion.add(2, personIn.getSurname());
+		resConnexion.add(3, personIn.getEmail());
+		resConnexion.add(4, personIn.getPassword());
+		resConnexion.add(5, personIn.getPhoneNumber());
 		
 		return resConnexion;
 	}
 	
 	/* M�thode qui appelle le loadDB du user stock�, s'il y a match (le user existe en base) alors ok on appelle la m�thode de remplissage, 
 	 * sinon on traite l'erreur en renvoyant un tableau vide, la vue affichera le bon r�sultat */
-	public String[] login(String pseudoIn, String passwordIn) {
+	public ArrayList<String> login(String pseudoIn, String passwordIn) {
 		AbstractPerson myPerson = this.myFactory.createPerson(pseudoIn, passwordIn);
 		AbstractAdmin myAdmin = this.myFactory.createAdmin();
 		AbstractUsers myUsers = this.myFactory.createUsers();
@@ -54,14 +54,14 @@ public class ManagerLogin {
 		}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			resConnexion[0] = "";
+			resConnexion.add(0, "");
 		}
-		System.out.println(resConnexion[0]);
-		System.out.println(resConnexion[1]);
-		System.out.println(resConnexion[2]);
-		System.out.println(resConnexion[3]);
-		System.out.println(resConnexion[4]);
-		System.out.println(resConnexion[5]);
+		System.out.println(resConnexion.get(0));
+		System.out.println(resConnexion.get(1));
+		System.out.println(resConnexion.get(2));
+		System.out.println(resConnexion.get(3));
+		System.out.println(resConnexion.get(4));
+		System.out.println(resConnexion.get(5));
 		System.out.println(myAdmin.getWording());
 		System.out.println(myAdmin.getIdRole());
 		System.out.println(myUsers.getWording());

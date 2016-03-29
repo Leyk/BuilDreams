@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import java.util.ArrayList;
+
 import Persistance.JDBCFactory;
 
 public class ManagerProductSeller {
@@ -11,7 +13,7 @@ public class ManagerProductSeller {
 		this.myFactory = new JDBCFactory();
 	}
 
-	public String[][] loadAllProductSeller() {
+	public ArrayList<ArrayList<String>> loadAllProductSeller() {
 		// TODO Auto-generated method stub
 		return null;
 	}

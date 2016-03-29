@@ -3,6 +3,7 @@ package UIPackage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -128,9 +129,9 @@ public class ViewLogin extends JFrame implements ActionListener{
 			//String [] recup = this.connectionDatabase(this.getTextFieldLogin(), this.getTextFieldPassword());
 			this.myFacadeLogin = new FacadeLogin();
 			
-			String [] recupInfo = this.myFacadeLogin.login(this.getTextFieldLogin(),this.getTextFieldPassword());
+			ArrayList<String> recupInfo = this.myFacadeLogin.login(this.getTextFieldLogin(),this.getTextFieldPassword());
 			
-			if (recupInfo[0].equals(this.getTextFieldLogin()) && recupInfo[0] != ""){
+			if (recupInfo.get(0).equals(this.getTextFieldLogin()) && recupInfo.get(0) != ""){
 				//System.out.println("Bravo, votre identifiant existe bien en base de données ! Il ne reste plus qu'à terminer le programme !");
 				this.connexionReussieDisplay(recupInfo);
 				ViewHome fenHome = new ViewHome(true, "User"); // A REMPLACER PAR LE ROLE RECUPERE
@@ -149,7 +150,7 @@ public class ViewLogin extends JFrame implements ActionListener{
 	
 	/* Affichage d'une nouvelle fenetre si la connexion est réussie (à re-développer) */ 
 	
-	public void connexionReussieDisplay (String[] recupInfoIn) {
+	public void connexionReussieDisplay (ArrayList<String> recupInfo) {
 		this.getRootPane().repaint();
 		this.getRootPane().revalidate();
 		
@@ -166,27 +167,27 @@ public class ViewLogin extends JFrame implements ActionListener{
 		simpleWords.setBounds(10, 5, 88, 50);
 		contentPane.add(simpleWords);
 		
-		JLabel lblID = new JLabel("Nickname : " + recupInfoIn[0]);
+		JLabel lblID = new JLabel("Nickname : " + recupInfo.get(0));
 		lblID.setBounds(10, 40, 88, 50);
 		contentPane.add(lblID);
 		
-		JLabel lblName = new JLabel("Nickname : " + recupInfoIn[1]);
+		JLabel lblName = new JLabel("Nickname : " + recupInfo.get(1));
 		lblName.setBounds(10, 60, 88, 50);
 		contentPane.add(lblName);
 		
-		JLabel lblPassword = new JLabel("Password : "+ recupInfoIn[2]);
+		JLabel lblPassword = new JLabel("Password : "+ recupInfo.get(2));
 		lblPassword.setBounds(10, 80, 88, 50);
 		contentPane.add(lblPassword);
 		
-		JLabel lblsurname = new JLabel("surname : "+ recupInfoIn[3]);
+		JLabel lblsurname = new JLabel("surname : "+ recupInfo.get(3));
 		lblsurname.setBounds(10, 100, 88, 50);
 		contentPane.add(lblsurname);
 		
-		JLabel lblemail = new JLabel("email : "+ recupInfoIn[4]);
+		JLabel lblemail = new JLabel("email : "+ recupInfo.get(4));
 		lblemail.setBounds(10, 120, 88, 50);
 		contentPane.add(lblemail);
 		
-		JLabel lblphoneNumber = new JLabel("phoneNumber : "+ recupInfoIn[5]);
+		JLabel lblphoneNumber = new JLabel("phoneNumber : "+ recupInfo.get(5));
 		lblphoneNumber.setBounds(10, 140, 88, 50);
 		contentPane.add(lblPassword);
 		

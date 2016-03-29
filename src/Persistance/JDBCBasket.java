@@ -53,9 +53,9 @@ public class JDBCBasket extends AbstractBasket {
 		while (rs.next()) {
 			ArrayList<String> temp = new ArrayList<String>();
 	    	for (int j= 0; j<10; j++){
-	    		temp.set(j,rs.getString(j));
+	    		temp.add(j,rs.getString(j));
 	    	}
-	    	res.set(i, temp);
+	    	res.add(i, temp);
 	    	i++;
 	    }
 		}

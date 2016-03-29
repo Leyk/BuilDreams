@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 // MOCK UP 13
 public class FacadeOnlineShop {
 	
@@ -9,22 +12,22 @@ public class FacadeOnlineShop {
 	}
 	
 	// Charge les données du shop
-	public String[][] loadShop(){
+	public ArrayList<ArrayList<String>> loadShop(){
 		return this.myManagerOnlineShop.loadShop();
 	}
 	
 	// Charge les données du shop pour un seller
-	public String[][] loadShopSeller(int idSeller){
+	public ArrayList<ArrayList<String>> loadShopSeller(int idSeller){
 		return this.myManagerOnlineShop.loadShopSeller(idSeller);
 	}
 	
 	// Charge les données du shop pour une category
-	public String[][] loadShopCategory(int idCategory){
+	public ArrayList<ArrayList<String>> loadShopCategory(int idCategory){
 		return this.myManagerOnlineShop.loadShopCategory(idCategory);
 	}
 	
 	// Charge les données du shop pour un seller et une category
-	public String[][] loadShopSellerCategory(int idSeller, int idCategory){
+	public ArrayList<ArrayList<String>> loadShopSellerCategory(int idSeller, int idCategory){
 		return this.myManagerOnlineShop.loadShopSellerCategory(idSeller, idCategory);
 	}
 

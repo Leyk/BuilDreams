@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 // MOCK UP 11 
 public class FacadeGeneralManager {
 	
@@ -60,7 +63,7 @@ public class FacadeGeneralManager {
 	// Charger les category de produits : facade category
 	
 	// Charger les taches generales
-	public String[][] loadAllGeneralTask(){
+	public ArrayList<ArrayList<String>> loadAllGeneralTask(){
 		return this.myManagerGeneralManager.loadAllGeneralTask();
 	}
 	
@@ -75,17 +78,17 @@ public class FacadeGeneralManager {
 	}
 	
 	// Charger la liste des project generaux
-	public String[][] loadAllGeneralProject(){
+	public ArrayList<ArrayList<String>> loadAllGeneralProject(){
 		return this.myManagerGeneralManager.loadAllGeneralProject();
 	}
 	
 	// Charger un projet general
-	public String[] loadGeneralProject(int idGeneralProject){
+	public ArrayList<String> loadGeneralProject(int idGeneralProject){
 		return this.myManagerGeneralManager.loadGeneralProject(idGeneralProject);
 	}
 	
 	// Charger la liste des taches relié à un projet general
-	public String[][] loadAllTasksLinkedToGeneralProject(int idGeneralProject){
+	public ArrayList<ArrayList<String>> loadAllTasksLinkedToGeneralProject(int idGeneralProject){
 		return this.myManagerGeneralManager.loadAllTasksLinkedToGeneralProject(idGeneralProject);
 	}
 	
@@ -112,12 +115,12 @@ public class FacadeGeneralManager {
 	}
 	
 	// Charger une tache generale
-	public String[] loadGeneralTask(int idGeneralTask){
+	public ArrayList<String> loadGeneralTask(int idGeneralTask){
 		return this.myManagerGeneralManager.loadGeneralTask(idGeneralTask);
 	}
 	
 	// Charger la liste des category de produits relié a cette tache generale
-	public String[][] loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask){
+	public ArrayList<ArrayList<String>> loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask){
 		return this.myManagerGeneralManager.loadAllProductCategoriesLinkedToGeneralTask(idGeneralTask);
 	}
 	

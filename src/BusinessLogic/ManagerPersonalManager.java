@@ -1,6 +1,7 @@
 package BusinessLogic;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
 
@@ -24,17 +25,17 @@ public class ManagerPersonalManager {
 		return false;
 	}
 
-	public String[][] loadAllPersonalProject() {
+	public ArrayList<ArrayList<String>> loadAllPersonalProject() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String[] loadPersonalProject(int idPersonalProject) {
+	public ArrayList<String> loadPersonalProject(int idPersonalProject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String[][] loadAllTasksLinkedToPersonalProject(int idPersonalProject) {
+	public ArrayList<ArrayList<String>> loadAllTasksLinkedToPersonalProject(int idPersonalProject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,12 +62,12 @@ public class ManagerPersonalManager {
 		return false;
 	}
 
-	public String[] loadPersonalTask(int idPersonalTask) {
+	public ArrayList<String> loadPersonalTask(int idPersonalTask) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String[][] loadAllProductCategoriesLinkedToPersonalTask(int idPersonalTask) {
+	public ArrayList<ArrayList<String>> loadAllProductCategoriesLinkedToPersonalTask(int idPersonalTask) {
 		// TODO Auto-generated method stub
 		return null;
 	}

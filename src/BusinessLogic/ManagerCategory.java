@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import java.util.ArrayList;
+
 import Persistance.JDBCFactory;
 
 public class ManagerCategory {
@@ -11,7 +13,7 @@ public class ManagerCategory {
 		this.myFactory = new JDBCFactory();
 	}
 
-	public String[][] loadAllProductCategory() {
+	public ArrayList<ArrayList<String>> loadAllProductCategory() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -31,7 +33,7 @@ public class ManagerCategory {
 		return false;
 	}
 
-	public String[][] loadAllProjectCategory() {
+	public ArrayList<ArrayList<String>> loadAllProjectCategory() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,7 +53,7 @@ public class ManagerCategory {
 		return false;
 	}
 
-	public String[][] loadAllTaskCategory() {
+	public ArrayList<ArrayList<String>> loadAllTaskCategory() {
 		// TODO Auto-generated method stub
 		return null;
 	}

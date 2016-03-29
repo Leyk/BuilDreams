@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 //MOCK UP 10 /// PAS DE SUBCATEGORY
 public class FacadeProductSeller {
 
@@ -9,7 +12,7 @@ public class FacadeProductSeller {
 	}
 	
 	// Charge tous les produit de ce seller
-	public String[][] loadAllProductSeller(){
+	public ArrayList<ArrayList<String>> loadAllProductSeller(){
 		return this.myManagerProductSeller.loadAllProductSeller();
 	}
 

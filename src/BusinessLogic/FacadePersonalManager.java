@@ -2,6 +2,7 @@ package BusinessLogic;
 // MOCK UP 12
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class FacadePersonalManager {
 	
@@ -77,17 +78,17 @@ public class FacadePersonalManager {
 	}
 	
 	// Charger la liste des project personel
-	public String[][] loadAllPersonalProject(){
+	public ArrayList<ArrayList<String>> loadAllPersonalProject(){
 		return this.myManagerPersonalManager.loadAllPersonalProject();
 	}
 	
 	// Charger un projet personel
-	public String[] loadPersonalProject(int idPersonalProject){
+	public ArrayList<String> loadPersonalProject(int idPersonalProject){
 		return this.myManagerPersonalManager.loadPersonalProject(idPersonalProject);
 	}
 	
 	// Charger la liste des taches personnels de ce projet
-	public String[][] loadAllTasksLinkedToPersonalProject(int idPersonalProject){
+	public ArrayList<ArrayList<String>> loadAllTasksLinkedToPersonalProject(int idPersonalProject){
 		return this.myManagerPersonalManager.loadAllTasksLinkedToPersonalProject(idPersonalProject);
 	}
 	
@@ -115,12 +116,12 @@ public class FacadePersonalManager {
 	}
 	
 	// Charger une tache personel
-	public String[] loadPersonalTask(int idPersonalTask){
+	public ArrayList<String> loadPersonalTask(int idPersonalTask){
 		return this.myManagerPersonalManager.loadPersonalTask(idPersonalTask);
 	}
 	
 	// Charger la liste des produits relié à cette tache personelle
-	public String[][] loadAllProductCategoriesLinkedToPersonalTask(int idPersonalTask){
+	public ArrayList<ArrayList<String>> loadAllProductCategoriesLinkedToPersonalTask(int idPersonalTask){
 		return this.myManagerPersonalManager.loadAllProductCategoriesLinkedToPersonalTask(idPersonalTask);
 	}
 	

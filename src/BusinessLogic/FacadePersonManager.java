@@ -22,17 +22,17 @@ public class FacadePersonManager {
 	}
 	
 	// Update les nouvelles informations du seller dans la base (person, seller)
-	public String updateSeller(String textFieldPseudoIn, String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn, int textFieldSiretIn, String textFieldWebIn, String textFieldDomainActivityIn) {
+	public boolean updateSeller(String textFieldPseudoIn, String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn, int textFieldSiretIn, String textFieldWebIn, String textFieldDomainActivityIn) {
 		return this.myManagerPersonManager.updateSeller(textFieldPseudoIn, textFieldNameIn, textFieldSurnameIn, textFieldEmailIn, textFieldPasswordIn, textFieldPhoneIn, textFieldSiretIn, textFieldWebIn, textFieldDomainActivityIn);
 	}
 	
 	// Update les nouvelles informations du users dans la base (person)
-	public String updateUsers(String textFieldPseudoIn, String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn) {
+	public boolean updateUsers(String textFieldPseudoIn, String textFieldNameIn, String textFieldSurnameIn, String textFieldEmailIn, String textFieldPasswordIn, String textFieldPhoneIn) {
 		return this.myManagerPersonManager.updateUsers(textFieldPseudoIn, textFieldNameIn, textFieldSurnameIn, textFieldEmailIn, textFieldPasswordIn, textFieldPhoneIn);
 	}
 	
 	// Supprime un Users ou un Vendeur, c'est la meme chose preciser le nickname/pseudo
-	public String deletePerson(String textFieldPseudoIn) {
+	public boolean deletePerson(String textFieldPseudoIn) {
 		return this.myManagerPersonManager.deletePerson(textFieldPseudoIn);
 	}
 	

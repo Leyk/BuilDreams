@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 //MOCK UP 8
 public class FacadeLogin {
 	private ManagerLogin myManagerLogin;
@@ -8,7 +11,7 @@ public class FacadeLogin {
 	}
 	
 	// Renvoie le profile person demandé si il existe
-	public String[] login(String nicknameIn, String passwordIn){
+	public ArrayList<String> login(String nicknameIn, String passwordIn){
 		return this.myManagerLogin.login(nicknameIn, passwordIn);
 	}
 	

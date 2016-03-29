@@ -24,7 +24,7 @@ public class ManagerBasket {
 		resBasket = myBasket.loadContentDB();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			resBasket.set(0, null);
+			resBasket.add(0, null);
 		}
 		this.myBasketContent = resBasket;
 		return resBasket;

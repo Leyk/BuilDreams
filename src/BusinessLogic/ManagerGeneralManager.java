@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import java.util.ArrayList;
+
 import Persistance.JDBCFactory;
 
 public class ManagerGeneralManager {
@@ -11,7 +13,7 @@ public class ManagerGeneralManager {
 		this.myFactory = new JDBCFactory();
 	}
 
-	public String[][] loadAllGeneralTask() {
+	public ArrayList<ArrayList<String>> loadAllGeneralTask() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -27,17 +29,17 @@ public class ManagerGeneralManager {
 		return false;
 	}
 
-	public String[][] loadAllGeneralProject() {
+	public ArrayList<ArrayList<String>> loadAllGeneralProject() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String[] loadGeneralProject(int idGeneralProject) {
+	public ArrayList<String> loadGeneralProject(int idGeneralProject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String[][] loadAllTasksLinkedToGeneralProject(int idGeneralProject) {
+	public ArrayList<ArrayList<String>> loadAllTasksLinkedToGeneralProject(int idGeneralProject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -64,12 +66,12 @@ public class ManagerGeneralManager {
 		return false;
 	}
 
-	public String[] loadGeneralTask(int idGeneralTask) {
+	public ArrayList<String> loadGeneralTask(int idGeneralTask) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String[][] loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask) {
+	public ArrayList<ArrayList<String>> loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask) {
 		// TODO Auto-generated method stub
 		return null;
 	}
