@@ -34,4 +34,8 @@ public abstract class AbstractRole {
 
 	public abstract String[] returnYourAttributes();
 	
+	public boolean hasExistence() {
+		return ((this.getWording()!=null) && (this.getIdRole()!=0));
+	}
+	
 }

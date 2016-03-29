@@ -59,5 +59,5 @@ public class JDBCAdmin extends AbstractAdmin{
 		res[1]=String.valueOf(this.getIdRole());
 		return res;
 	}
-	 
+
 }

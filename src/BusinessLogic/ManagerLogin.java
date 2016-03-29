@@ -1,12 +1,16 @@
 package BusinessLogic;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Persistance.JDBCPerson;
 
 public class ManagerLogin {
 	private AbstractFactory myFactory;
 	private String [] resConnexion;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
+	
 	
 	public ManagerLogin () {
 		this.myFactory = new JDBCFactory();
@@ -38,7 +42,15 @@ public class ManagerLogin {
 		myUsers.loadDB(pseudoIn);
 		mySeller.loadDB(pseudoIn);
 		creationTableau(myPerson);
-		PersonRoleSingleton.initInstance(myPerson, myAdmin, myUsers, mySeller);
+		if (myAdmin.hasExistence()) {
+			this.myAbstractRoleArray.add((AbstractRole)myAdmin);
+		}
+		if (myUsers.hasExistence()) {
+			this.myAbstractRoleArray.add((AbstractRole)myUsers);
+		}
+		if (mySeller.hasExistence()) {
+			this.myAbstractRoleArray.add((AbstractRole)mySeller);
+		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			resConnexion[0] = "";
@@ -58,6 +70,10 @@ public class ManagerLogin {
 		System.out.println(mySeller.getWebSite());
 		System.out.println(mySeller.getDomainActivity());
 		System.out.println(mySeller.getIdRole());
+		System.out.println(this.myAbstractRoleArray.size());
+		System.out.println(this.myAbstractRoleArray.get(0).getWording());
+		System.out.println(this.myAbstractRoleArray.get(0).getIdRole());
+		
 		return resConnexion;
 	}
 }

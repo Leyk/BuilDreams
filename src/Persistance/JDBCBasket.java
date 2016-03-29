@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import BusinessLogic.AbstractBasket;
-import BusinessLogic.PersonRoleSingleton;
-
 public class JDBCBasket extends AbstractBasket {
 
 	public JDBCBasket() {
@@ -31,7 +29,7 @@ public class JDBCBasket extends AbstractBasket {
 
 	@Override
 	public void loadDB() throws SQLException {
-		String queryBasket = "Select * From Basket Where idRole = '" + PersonRoleSingleton.getInstance().getUsers().getIdRole() + "';";
+		String queryBasket = "Select * From Basket Where idRole = '" + "// METTRE ICI LE ROLE RECUPERER DANS LA LISTE D'INSTANCE DU MANAGER" + "';";
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryBasket);
 	    while (rs.next()) {
@@ -49,7 +47,7 @@ public class JDBCBasket extends AbstractBasket {
 	public String[][] loadContentDB() throws SQLException {
 		String[][] res;
 		int count = 0;
-		String queryBasketContent = "Select * From Basket Where idRole = '" + PersonRoleSingleton.getInstance().getUsers().getIdRole() + "';";
+		String queryBasketContent = "Select * From Basket Where idRole = '" + "" + "';";
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryBasketContent);
 		while (rs.next()) {
