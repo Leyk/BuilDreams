@@ -1,6 +1,9 @@
 package BusinessLogic;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import Persistance.JDBCSingleton;
 
 public abstract class AbstractBasket {
 	private int idBasket; //PrimarKey
@@ -34,6 +37,9 @@ public abstract class AbstractBasket {
 	}
 
 	public abstract int saveInsertDB(int role) throws SQLException;
-	
+
+	public abstract void loadDB() throws SQLException;
+
+	public abstract String[][] loadContentDB() throws SQLException;
 	
 }

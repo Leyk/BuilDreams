@@ -12,7 +12,7 @@ public class PersonRoleSingleton {
 	private AbstractSeller seller = null;
 	
 	
-	/** Constructeur privé */
+	/** Constructeur privï¿½ */
 	private PersonRoleSingleton(AbstractPerson person, AbstractAdmin admin, AbstractUsers users, AbstractSeller seller) {
 		this.person = person;
 		this.admin = admin;
@@ -21,12 +21,12 @@ public class PersonRoleSingleton {
 	}
 	
 	
-	/** Point d'accès pour l'instance unique du singleton */
+	/** Point d'accï¿½s pour l'instance unique du singleton */
 	public static PersonRoleSingleton getInstance(){
 		return INSTANCE;
 	}
 	
-	/** Sécurité anti-désérialisation */
+	/** Sï¿½curitï¿½ anti-dï¿½sï¿½rialisation */
 	private Object readResolve() {
 		return INSTANCE;
 	}
@@ -46,6 +46,17 @@ public class PersonRoleSingleton {
 		INSTANCE = null;
 	}
 
-	
+	public AbstractPerson getPerson(){
+		return this.person;
+	}
+	public AbstractAdmin getAdmin(){
+		return this.admin;
+	}
+	public AbstractUsers getUsers(){
+		return this.users;
+	}
+	public AbstractSeller getSeller(){
+		return this.seller;
+	}
 	
 }

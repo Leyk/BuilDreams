@@ -1,8 +1,10 @@
 package Persistance;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import BusinessLogic.AbstractBasket;
+import BusinessLogic.PersonRoleSingleton;
 
 public class JDBCBasket extends AbstractBasket {
 
@@ -26,5 +28,48 @@ public class JDBCBasket extends AbstractBasket {
 	    }
 	    return id_AutoIncrement;
 	}
+
+	@Override
+	public void loadDB() throws SQLException {
+		String queryBasket = "Select * From Basket Where idRole = '" + PersonRoleSingleton.getInstance().getUsers().getIdRole() + "';";
+		try {
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryBasket);
+	    while (rs.next()) {
+	    	this.setIdRole(Integer.parseInt(rs.getString("idRole")));
+	    	this.setIdBasket(Integer.parseInt(rs.getString("idBasket")));
+	        }
+		}
+		catch (SQLException e) {
+			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+		}
+		
+	}
+
+	@Override
+	public String[][] loadContentDB() throws SQLException {
+		String[][] res;
+		int count = 0;
+		String queryBasketContent = "Select * From Basket Where idRole = '" + PersonRoleSingleton.getInstance().getUsers().getIdRole() + "';";
+		try {
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryBasketContent);
+		while (rs.next()) {
+			count++;
+		}
+		rs.beforeFirst();
+		res = new String[count][10];
+		int i = 0;
+		while (rs.next()) {
+	    	for (int j= 0; j<10; j++){
+	    		res[i][j] = rs.getString(j);
+	    	}
+	    	i++;
+	    }
+		}
+		catch (SQLException e) {
+			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+		}
+		return res;
+	}
+	
 	
 }
