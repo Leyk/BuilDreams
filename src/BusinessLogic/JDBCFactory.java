@@ -168,10 +168,8 @@ public class JDBCFactory extends AbstractFactory{
 	}
 
 	@Override
-	public AbstractSeller createSeller(String wording, int siret, String webSite, String domainActivity,
-			int idRole) {
-		return new JDBCSeller(wording, siret, webSite, domainActivity,
-				idRole);
+	public AbstractSeller createSeller(String wording,int idRole, int siret, String webSite, String domainActivity) {
+		return new JDBCSeller(wording, idRole, siret, webSite, domainActivity);
 	}
 
 	@Override

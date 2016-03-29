@@ -2,35 +2,15 @@ package BusinessLogic;
 
 import java.sql.SQLException;
 
-public abstract class AbstractAdmin {
-	private String wording;
-	private int idRole; //PrimarKey //ForeignKey
+public abstract class AbstractAdmin extends AbstractRole{
 	
 	public AbstractAdmin(String wording, int idRole) {
-		super();
-		this.wording = wording;
-		this.idRole = idRole;
+		super(wording, idRole);
 	}
 
 	public AbstractAdmin() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getWording() {
-		return wording;
-	}
-
-	public void setWording(String wording) {
-		this.wording = wording;
-	}
-
-	public int getIdRole() {
-		return idRole;
-	}
-
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
 	}
 
 	public abstract AbstractAdmin loadDB(String pseudoIn);

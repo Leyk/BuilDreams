@@ -12,17 +12,17 @@ public class JDBCSeller extends AbstractSeller{
 		// TODO Auto-generated constructor stub
 	}
 
-	public JDBCSeller(String wording, int siret, String webSite, String domainActivity, int idRole) {
-		super(wording, siret, webSite, domainActivity, idRole);
+	public JDBCSeller(String wording, int idRole, int siret, String webSite, String domainActivity) {
+		super(wording,idRole ,siret, webSite, domainActivity);
 		// TODO Auto-generated constructor stub
 	}
 	
 	private void remplissageAttributs (String [] tableAttributs) {
 		this.setWording(tableAttributs[0]);
-		this.setSiret(Integer.parseInt(tableAttributs[1]));
-		this.setWebSite(tableAttributs[2]);
-		this.setDomainActivity(tableAttributs[3]);
-		this.setIdRole(Integer.parseInt(tableAttributs[4]));
+		this.setIdRole(Integer.parseInt(tableAttributs[1]));
+		this.setSiret(Integer.parseInt(tableAttributs[2]));
+		this.setWebSite(tableAttributs[3]);
+		this.setDomainActivity(tableAttributs[4]);
 	}
 	
 	@Override
@@ -53,13 +53,13 @@ public class JDBCSeller extends AbstractSeller{
 		    ResultSet rs2 = JDBCSingleton.getInstance().RequestWithResultSet(querySeller);
 		    while (rs2.next()) {
 		    	res[0] = rs2.getString("wording");
-		    	res[1] = rs2.getString("siret");
-		    	res[2] = rs2.getString("webSite");
-		    	res[3] = rs2.getString("domainActivity");
-		        res[4] = rs2.getString("idRole");
+		    	res[1] = rs2.getString("idRole");
+		    	res[2] = rs2.getString("siret");
+		    	res[3] = rs2.getString("webSite");
+		    	res[4] = rs2.getString("domainActivity");
 		    }
 	    	} catch (SQLException e) {
-				System.out.println("Pas encore trouvé de role correspondant");
+				System.out.println("Pas encore trouvï¿½ de role correspondant");
 		    }
 	    }
 		}
@@ -71,4 +71,15 @@ public class JDBCSeller extends AbstractSeller{
 		}
 	    return this;
     }
+	
+	@Override
+	public String[] returnYourAttributes() {
+		String[] res = new String[5];
+		res[0]=this.getWording();
+		res[1]=String.valueOf(this.getIdRole());
+		res[2]=String.valueOf(this.getSiret());
+		res[3]=this.getWebSite();
+		res[4]=this.getDomainActivity();
+		return res;
+	}
 }

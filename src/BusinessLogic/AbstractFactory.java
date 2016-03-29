@@ -46,13 +46,14 @@ public abstract class AbstractFactory {
 	abstract public AbstractProjectCategory createProjectCategory(int idProjectCategory, String name, int idSuperProjectCategory);
 	
 	abstract public AbstractSeller createSeller();
-	abstract public AbstractSeller createSeller(String wording, int siret, String webSite, String domainActivity, int idRole);
+	abstract public AbstractSeller createSeller(String wording, int idRole, int siret, String webSite, String domainActivity);
 	
 	abstract public AbstractTaskCategory createTaskCategory();
 	abstract public AbstractTaskCategory createTaskCategory(int idTaskCategory, String name, int idSuperTaskCategory);
 	
 	abstract public AbstractUsers createUsers();
 	abstract public AbstractUsers createUsers(String wording, int idRole);
+	
 	
 	// Classe abstraite de la factory, qui joue "presque" le role d'interface
 }

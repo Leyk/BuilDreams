@@ -2,33 +2,23 @@ package BusinessLogic;
 
 import java.sql.SQLException;
 
-public abstract class AbstractSeller {
-	private String wording;
+public abstract class AbstractSeller extends AbstractRole{
+	
 	private int siret;
 	private String webSite;
 	private String domainActivity;
-	private int idRole; //PrimarKey //ForeignKey
 	
-	public AbstractSeller(String wording, int siret, String webSite, String domainActivity, int idRole) {
-		super();
-		this.wording = wording;
-		this.siret = siret;
-		this.webSite = webSite;
-		this.domainActivity = domainActivity;
-		this.idRole = idRole;
-	}
 
 	public AbstractSeller() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public String getWording() {
-		return wording;
-	}
-
-	public void setWording(String wording) {
-		this.wording = wording;
+	
+	public AbstractSeller(String wording, int idRole, int siret, String webSite, String domainActivity) {
+		super(wording, idRole);
+		this.siret = siret;
+		this.webSite = webSite;
+		this.domainActivity = domainActivity;
 	}
 
 	public int getSiret() {
@@ -53,14 +43,6 @@ public abstract class AbstractSeller {
 
 	public void setDomainActivity(String domainActivity) {
 		this.domainActivity = domainActivity;
-	}
-
-	public int getIdRole() {
-		return idRole;
-	}
-
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
 	}
 
 	public abstract int saveInsertDB(String pseudo) throws SQLException;

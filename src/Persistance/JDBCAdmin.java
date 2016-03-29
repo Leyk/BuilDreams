@@ -39,7 +39,7 @@ public class JDBCAdmin extends AbstractAdmin{
 	    		res[1] = rs2.getString("idRole");
 	    	}
 	    	} catch (SQLException e) {
-	    		System.out.println("Pas encore trouvé de role correspondant");
+	    		System.out.println("Pas encore trouvï¿½ de role correspondant");
 	    	}
 	    }
 		}
@@ -50,6 +50,14 @@ public class JDBCAdmin extends AbstractAdmin{
 			this.remplissageAttributs(res);
 		}
 		return this;
+	}
+
+	@Override
+	public String[] returnYourAttributes() {
+		String[] res = new String[2];
+		res[0]=this.getWording();
+		res[1]=String.valueOf(this.getIdRole());
+		return res;
 	}
 	 
 }

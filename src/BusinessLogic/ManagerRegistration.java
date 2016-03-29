@@ -40,7 +40,7 @@ public class ManagerRegistration {
 		//save la Person
 		//save le Seller
 		AbstractPerson myPerson = myFactory.createPerson(textFieldPseudoIn, textFieldNameIn, textFieldSurnameIn, textFieldEmailIn, textFieldPasswordIn, textFieldPhoneIn);
-		AbstractSeller mySeller = myFactory.createSeller("seller", textFieldSiretIn, textFieldWebIn, textFieldDomainActivityIn, 0);
+		AbstractSeller mySeller = myFactory.createSeller("seller", 0, textFieldSiretIn, textFieldWebIn, textFieldDomainActivityIn);
 		System.out.println(mySeller.getSiret());
 		try {
 		String pseudo = myPerson.saveInsertDB();
