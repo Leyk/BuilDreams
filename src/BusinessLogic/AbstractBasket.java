@@ -39,8 +39,17 @@ public abstract class AbstractBasket {
 
 	public abstract int saveInsertDB(int role) throws SQLException;
 
-	public abstract void loadDB() throws SQLException;
+	public abstract void loadDB(int idRole) throws SQLException;
 
 	public abstract ArrayList<ArrayList<String>> loadContentDB() throws SQLException;
+
+	public abstract void deleteItemFromBasket(int idItem) throws SQLException;
+
+	public abstract ArrayList<String> getListItem() throws SQLException;
+
+	public abstract ArrayList<String> getListSeller() throws SQLException;
+
+	public abstract void deleteAllLinkedItem() throws SQLException;
+		
 	
 }

@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public abstract class AbstractCommand {
 	private int idCommand; //PrimarKey
 	private int idRole; //ForeignKey
@@ -30,6 +33,14 @@ public abstract class AbstractCommand {
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
+
+	public abstract int saveInsertDB(int userIdRole) throws SQLException;
+
+	public abstract void insertLinkedItems(ArrayList<String> listItemBasket) throws SQLException;
+
+	public abstract void insertLinkedSellers(ArrayList<String> listSellerBasket) throws SQLException;
+	
+	
 	
 	
 }

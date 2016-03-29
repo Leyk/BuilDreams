@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+
 public abstract class AbstractItem {
 	private int idItem; //PrimarKey
 	private float price;
@@ -50,6 +52,8 @@ public abstract class AbstractItem {
 	public void setIdProduct(int idProduct) {
 		this.idProduct = idProduct;
 	}
+
+	public abstract void UpdateQuantityItem() throws SQLException;
 	
 	
 }
