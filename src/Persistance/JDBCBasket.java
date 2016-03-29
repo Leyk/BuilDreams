@@ -44,22 +44,18 @@ public class JDBCBasket extends AbstractBasket {
 	}
 
 	@Override
-	public String[][] loadContentDB() throws SQLException {
-		String[][] res;
-		int count = 0;
+	public ArrayList<ArrayList<String>> loadContentDB() throws SQLException {
+		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
 		String queryBasketContent = "Select * From Basket Where idRole = '" + "" + "';";
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryBasketContent);
-		while (rs.next()) {
-			count++;
-		}
-		rs.beforeFirst();
-		res = new String[count][10];
 		int i = 0;
 		while (rs.next()) {
+			ArrayList<String> temp = new ArrayList<String>();
 	    	for (int j= 0; j<10; j++){
-	    		res[i][j] = rs.getString(j);
+	    		temp.set(j,rs.getString(j));
 	    	}
+	    	res.set(i, temp);
 	    	i++;
 	    }
 		}

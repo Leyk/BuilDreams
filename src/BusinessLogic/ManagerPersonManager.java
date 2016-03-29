@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import Persistance.JDBCFactory;
+
 public class ManagerPersonManager {
 	
 	private AbstractFactory myFactory;

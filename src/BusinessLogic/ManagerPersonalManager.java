@@ -2,6 +2,8 @@ package BusinessLogic;
 
 import java.sql.Date;
 
+import Persistance.JDBCFactory;
+
 public class ManagerPersonalManager {
 	
 	private AbstractFactory myFactory;

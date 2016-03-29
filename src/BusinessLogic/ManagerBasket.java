@@ -1,11 +1,14 @@
 package BusinessLogic;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import Persistance.JDBCFactory;
 
 public class ManagerBasket {
 	
 	private AbstractFactory myFactory;
-	private String[][] myBasketContent;
+	private ArrayList<ArrayList<String>> myBasketContent;
 	private AbstractBasket myBasket;
 
 	public ManagerBasket() {
@@ -13,16 +16,17 @@ public class ManagerBasket {
 		this.myFactory = new JDBCFactory();
 	}
 
-	public String[][] loadBasket() {
-		String[][] resBasket = new String[1][1];
+	public ArrayList<ArrayList<String>> loadBasket() {
+		ArrayList<ArrayList<String>> resBasket = new ArrayList<ArrayList<String>>();
 		AbstractBasket myBasket = this.myFactory.createBasket();
 		try {
 		myBasket.loadDB();
 		resBasket = myBasket.loadContentDB();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			resBasket[0][0] = "";
+			resBasket.set(0, null);
 		}
+		this.myBasketContent = resBasket;
 		return resBasket;
 	}
 

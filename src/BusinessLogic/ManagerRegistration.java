@@ -3,6 +3,7 @@ package BusinessLogic;
 import java.io.Serializable;
 import java.sql.SQLException;
 
+import Persistance.JDBCFactory;
 import Persistance.JDBCSingleton;
 
 public class ManagerRegistration {

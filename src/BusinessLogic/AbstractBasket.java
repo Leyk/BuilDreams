@@ -2,6 +2,7 @@ package BusinessLogic;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Persistance.JDBCSingleton;
 
@@ -40,6 +41,6 @@ public abstract class AbstractBasket {
 
 	public abstract void loadDB() throws SQLException;
 
-	public abstract String[][] loadContentDB() throws SQLException;
+	public abstract ArrayList<ArrayList<String>> loadContentDB() throws SQLException;
 	
 }

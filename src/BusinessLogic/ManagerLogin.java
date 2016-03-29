@@ -3,6 +3,7 @@ package BusinessLogic;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Persistance.JDBCFactory;
 import Persistance.JDBCPerson;
 
 public class ManagerLogin {

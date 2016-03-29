@@ -1,23 +1,24 @@
-package BusinessLogic;
+package Persistance;
 
 import java.sql.Date;
 import java.sql.SQLException;
 
-import Persistance.JDBCAdmin;
-import Persistance.JDBCBasket;
-import Persistance.JDBCCommand;
-import Persistance.JDBCGeneralProject;
-import Persistance.JDBCGeneralTask;
-import Persistance.JDBCItem;
-import Persistance.JDBCPerson;
-import Persistance.JDBCPersonalProject;
-import Persistance.JDBCPersonalTask;
-import Persistance.JDBCProduct;
-import Persistance.JDBCProductCategory;
-import Persistance.JDBCProjectCategory;
-import Persistance.JDBCSeller;
-import Persistance.JDBCTaskCategory;
-import Persistance.JDBCUsers;
+import BusinessLogic.AbstractAdmin;
+import BusinessLogic.AbstractBasket;
+import BusinessLogic.AbstractCommand;
+import BusinessLogic.AbstractFactory;
+import BusinessLogic.AbstractGeneralProject;
+import BusinessLogic.AbstractGeneralTask;
+import BusinessLogic.AbstractItem;
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractPersonalProject;
+import BusinessLogic.AbstractPersonalTask;
+import BusinessLogic.AbstractProduct;
+import BusinessLogic.AbstractProductCategory;
+import BusinessLogic.AbstractProjectCategory;
+import BusinessLogic.AbstractSeller;
+import BusinessLogic.AbstractTaskCategory;
+import BusinessLogic.AbstractUsers;
 
 
 public class JDBCFactory extends AbstractFactory{
