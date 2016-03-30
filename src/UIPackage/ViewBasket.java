@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
@@ -25,6 +26,8 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
 import TabPatterns.*;
 
 public class ViewBasket extends JFrame {
@@ -32,6 +35,8 @@ public class ViewBasket extends JFrame {
 	private JButton order = new JButton("Order Items");
 	private JButton home = new JButton("Home");
 	private ModeleDonneesTab model;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	  public ViewBasket(){
 		  this.setLocationRelativeTo(null);
@@ -69,7 +74,7 @@ public class ViewBasket extends JFrame {
 		
 		JLabel lblPrixTot = new JLabel();
 		lblPrixTot.setBounds(32, 11, 252, 24);
-		lblPrixTot.setText("Total Price (€): ");
+		lblPrixTot.setText("Total Price (ï¿½): ");
 		
 		JPanel panbtn = new JPanel();
 		panbtn.add(btnOrder);

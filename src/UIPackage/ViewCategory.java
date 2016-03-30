@@ -6,17 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewCategory extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNameCat;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewCategory() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -6,6 +6,22 @@ import java.util.ArrayList;
 public class FacadeBasket {
 
 	private ManagerBasket myManagerBasket;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerBasket.getMyPerson();
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerBasket.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerBasket.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerBasket.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 
 	public FacadeBasket() {
 		this.myManagerBasket = new ManagerBasket();

@@ -2,11 +2,26 @@ package BusinessLogic;
 
 import java.util.ArrayList;
 
-//MOCK UP 9 sert aussi pour les mock up utilisant des catégories
+//MOCK UP 9 sert aussi pour les mock up utilisant des catï¿½gories
 public class FacadeCategory {
 	
 	private ManagerCategory myManagerCategory;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerCategory.getMyPerson();
+	}
 
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerCategory.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerCategory.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerCategory.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 	public FacadeCategory() {
 		this.myManagerCategory = new ManagerCategory();
 	}
@@ -18,7 +33,7 @@ public class FacadeCategory {
 		return this.myManagerCategory.loadAllProductCategory();
 	}
 
-	// Ca ajoute une categorie de produit à la base
+	// Ca ajoute une categorie de produit ï¿½ la base
 	public boolean addProductCategory(String name){
 		return this.myManagerCategory.addProductCategory(name);
 	}
@@ -40,7 +55,7 @@ public class FacadeCategory {
 		return this.myManagerCategory.loadAllProjectCategory();
 	}
 
-	// Ca ajoute une categorie de projet à la base
+	// Ca ajoute une categorie de projet ï¿½ la base
 	public boolean addProjectCategory(String name){
 		return this.myManagerCategory.addProjectCategory(name);
 	}
@@ -62,7 +77,7 @@ public class FacadeCategory {
 		return this.myManagerCategory.loadAllTaskCategory();
 	}
 
-	// Ca ajoute une categorie de tache à la base
+	// Ca ajoute une categorie de tache ï¿½ la base
 	public boolean addTaskCategory(String name){
 		return this.myManagerCategory.addTaskCategory(name);
 	}

@@ -6,11 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewGenTask extends JFrame {
@@ -19,6 +24,8 @@ public class ViewGenTask extends JFrame {
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldTheoricalLen;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewGenTask () {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

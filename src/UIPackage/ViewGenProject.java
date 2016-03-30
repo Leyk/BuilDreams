@@ -4,10 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -18,6 +23,8 @@ public class ViewGenProject extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewGenProject() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

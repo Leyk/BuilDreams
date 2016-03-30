@@ -6,27 +6,43 @@ import java.util.ArrayList;
 public class FacadeOnlineShop {
 	
 	private ManagerOnlineShop myManagerOnlineShop;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerOnlineShop.getMyPerson();
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerOnlineShop.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerOnlineShop.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerOnlineShop.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 
 	public FacadeOnlineShop() {
 		this.myManagerOnlineShop = new ManagerOnlineShop();
 	}
 	
-	// Charge les données du shop
+	// Charge les donnï¿½es du shop
 	public ArrayList<ArrayList<String>> loadShop(){
 		return this.myManagerOnlineShop.loadShop();
 	}
 	
-	// Charge les données du shop pour un seller
+	// Charge les donnï¿½es du shop pour un seller
 	public ArrayList<ArrayList<String>> loadShopSeller(int idSeller){
 		return this.myManagerOnlineShop.loadShopSeller(idSeller);
 	}
 	
-	// Charge les données du shop pour une category
+	// Charge les donnï¿½es du shop pour une category
 	public ArrayList<ArrayList<String>> loadShopCategory(int idCategory){
 		return this.myManagerOnlineShop.loadShopCategory(idCategory);
 	}
 	
-	// Charge les données du shop pour un seller et une category
+	// Charge les donnï¿½es du shop pour un seller et une category
 	public ArrayList<ArrayList<String>> loadShopSellerCategory(int idSeller, int idCategory){
 		return this.myManagerOnlineShop.loadShopSellerCategory(idSeller, idCategory);
 	}

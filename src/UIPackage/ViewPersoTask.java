@@ -6,12 +6,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewPersoTask extends JFrame {
@@ -21,6 +26,8 @@ public class ViewPersoTask extends JFrame {
 	private JTextField textFieldDescription;
 	private JTextField textFieldBeginDate;
 	private JTextField textFieldTheoricalLen;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewPersoTask() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

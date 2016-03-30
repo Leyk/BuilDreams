@@ -2,6 +2,7 @@ package UIPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
 import BusinessLogic.FacadeProfileModifier;
 
 public class ViewEditProfile extends JFrame implements ActionListener {
@@ -27,6 +30,8 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 	private JPasswordField textFieldPassword;
 	private String role;
 	private FacadeProfileModifier myFacadeProfileModifier;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewEditProfile(String role) {
 		this.role = role;

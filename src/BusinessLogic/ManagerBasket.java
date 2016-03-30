@@ -14,6 +14,22 @@ public class ManagerBasket {
 	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
 	
 
+	public AbstractPerson getMyPerson() {
+		return myPerson;
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myPerson = myPerson;
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return myAbstractRoleArray;
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myAbstractRoleArray = myAbstractRoleArray;
+	}
+
 	public ManagerBasket() {
 		super();
 		this.myFactory = new JDBCFactory();
@@ -62,11 +78,11 @@ public class ManagerBasket {
 
 	public boolean passCommand(String cbInfos) {
 		// Cree la commande
-		// sauver la commande relié à lutilisateur
+		// sauver la commande reliï¿½ ï¿½ lutilisateur
 		// get la liste des item pour le basket
 		// les inserer entre la dans itemCommand
-		// La liste des sellers concerné par le panier
-		// Les relier à la commande
+		// La liste des sellers concernï¿½ par le panier
+		// Les relier ï¿½ la commande
 		// Supprimer les liens entre basket et Item
 		System.out.println(cbInfos);
 		AbstractCommand myCommand = this.myFactory.createCommand();

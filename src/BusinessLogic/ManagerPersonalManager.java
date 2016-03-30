@@ -8,6 +8,25 @@ import Persistance.JDBCFactory;
 public class ManagerPersonalManager {
 	
 	private AbstractFactory myFactory;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
+	
+
+	public AbstractPerson getMyPerson() {
+		return myPerson;
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myPerson = myPerson;
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return myAbstractRoleArray;
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myAbstractRoleArray = myAbstractRoleArray;
+	}
 
 	public ManagerPersonalManager() {
 		super();

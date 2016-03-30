@@ -5,15 +5,31 @@ import java.util.ArrayList;
 //MOCK UP 8
 public class FacadeLogin {
 	private ManagerLogin myManagerLogin;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerLogin.getMyPerson();
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerLogin.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerLogin.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerLogin.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 
 	public FacadeLogin() {
 		this.myManagerLogin = new ManagerLogin();
 	}
 	
-	// Renvoie le profile person demandé si il existe
-	public ArrayList<String> login(String nicknameIn, String passwordIn){
+	// Renvoie le profile person demandï¿½ si il existe
+	public boolean login(String nicknameIn, String passwordIn){
 		return this.myManagerLogin.login(nicknameIn, passwordIn);
 	}
 	
-	/* Délègue uniquement l'appel de la méthode login, de cette manière le user ne voit pas la complexité */
+	/* Dï¿½lï¿½gue uniquement l'appel de la mï¿½thode login, de cette maniï¿½re le user ne voit pas la complexitï¿½ */
 }

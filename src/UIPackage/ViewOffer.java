@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -15,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
 import TabPatterns.ButtonEditor;
 import TabPatterns.ButtonRenderer;
 import TabPatterns.ModeleDonneesTab;
@@ -24,6 +27,8 @@ public class ViewOffer extends JFrame {
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewOffer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,8 +52,8 @@ public class ViewOffer extends JFrame {
 			btnCancel.setBounds(176, 130, 112, 23);
 			
 			JButton btnMngOrder = new JButton("");  
-			if(true){   // Vérifier que le role est SELLER
-		    btnMngOrder.setText("Valide prices");   // A PARTIR DE L'ETAT DE LA COMMANDE : si déjà validée le bouton doit s'appeler "Sent"
+			if(true){   // Vï¿½rifier que le role est SELLER
+		    btnMngOrder.setText("Valide prices");   // A PARTIR DE L'ETAT DE LA COMMANDE : si dï¿½jï¿½ validï¿½e le bouton doit s'appeler "Sent"
 			btnMngOrder.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ViewManageOrder fenMngOrder = new ViewManageOrder (); 

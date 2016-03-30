@@ -6,6 +6,22 @@ import java.util.ArrayList;
 public class FacadeShopOrder {
 	
 	private ManagerShopOrder myManagerShopOrder;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerShopOrder.getMyPerson();
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerShopOrder.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerShopOrder.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerShopOrder.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 
 	public FacadeShopOrder() {
 		this.myManagerShopOrder = new ManagerShopOrder();
@@ -21,7 +37,7 @@ public class FacadeShopOrder {
 		return this.myManagerShopOrder.loadCommand(idCommand);
 	}
 	
-	// Change l'etat d'une commande à validée(1) ou envoyée(2)
+	// Change l'etat d'une commande ï¿½ validï¿½e(1) ou envoyï¿½e(2)
 	public boolean changeState(int idCommand, int state){
 		return this.myManagerShopOrder.changeState(idCommand, state);
 	}

@@ -6,11 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewPayment extends JFrame {
@@ -18,6 +23,8 @@ public class ViewPayment extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldOwnerName;
 	private JTextField textFieldValidityDate;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewPayment() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

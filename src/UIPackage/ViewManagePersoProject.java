@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -14,6 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
 import TabPatterns.ButtonEditor;
 import TabPatterns.ButtonRenderer;
 import TabPatterns.ModeleDonneesTab;
@@ -23,6 +26,8 @@ public class ViewManagePersoProject extends JFrame {
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewManagePersoProject() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

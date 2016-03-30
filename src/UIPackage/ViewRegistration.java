@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
 import BusinessLogic.FacadeRegistration;
 
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewRegistration extends JFrame implements ActionListener{
@@ -42,6 +45,8 @@ public class ViewRegistration extends JFrame implements ActionListener{
 	private JButton btnCancel;
 	
 	private FacadeRegistration myFacadeRegistration;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	/**
 	 * Create the frame.
@@ -159,7 +164,7 @@ public class ViewRegistration extends JFrame implements ActionListener{
 	
 	public void actionPerformed (ActionEvent e){
 		if ("Cancel".equals(e.getActionCommand())){
-			ViewHome fenHome = new ViewHome();  // A CHANGER, renvoyer si user non connecté ou si admin
+			ViewHome fenHome = new ViewHome();  // A CHANGER, renvoyer si user non connectï¿½ ou si admin
 			fenHome.setVisible(true);	
 			dispose();
 		}
@@ -200,11 +205,11 @@ public class ViewRegistration extends JFrame implements ActionListener{
 			}
 			
 			if (recup.equals("Invalid registration")){
-				JOptionPane.showMessageDialog(null, "Invalid registration, le pseudo que vous demandez est déjà utilisé. Veuillez en choisir un autre !",
+				JOptionPane.showMessageDialog(null, "Invalid registration, le pseudo que vous demandez est dï¿½jï¿½ utilisï¿½. Veuillez en choisir un autre !",
 			   		     "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Félicitation vous avez réussi à vous inscrire, allez tout de suite vous connecter !",
+				JOptionPane.showMessageDialog(null, "Fï¿½licitation vous avez rï¿½ussi ï¿½ vous inscrire, allez tout de suite vous connecter !",
 			   		     "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
 				ViewHome fenHome = new ViewHome();
 				fenHome.setVisible(true);	

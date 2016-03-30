@@ -11,6 +11,23 @@ public class ManagerLogin {
 	private ArrayList<String> resConnexion;
 	private AbstractPerson myPerson;
 	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
+
+
+	public AbstractPerson getMyPerson() {
+		return myPerson;
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myPerson = myPerson;
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return myAbstractRoleArray;
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myAbstractRoleArray = myAbstractRoleArray;
+	}
 	
 	
 	public ManagerLogin () {
@@ -32,7 +49,7 @@ public class ManagerLogin {
 	
 	/* M�thode qui appelle le loadDB du user stock�, s'il y a match (le user existe en base) alors ok on appelle la m�thode de remplissage, 
 	 * sinon on traite l'erreur en renvoyant un tableau vide, la vue affichera le bon r�sultat */
-	public ArrayList<String> login(String pseudoIn, String passwordIn) {
+	public boolean login(String pseudoIn, String passwordIn) {
 		AbstractPerson myPerson = this.myFactory.createPerson(pseudoIn, passwordIn);
 		AbstractAdmin myAdmin = this.myFactory.createAdmin();
 		AbstractUsers myUsers = this.myFactory.createUsers();
@@ -53,8 +70,8 @@ public class ManagerLogin {
 			this.myAbstractRoleArray.add((AbstractRole)mySeller);
 		}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			resConnexion.add(0, "");
+			System.out.println("La connexion s'est pas passée, identifiants erronés sûrement");
+			return false;
 		}
 		System.out.println(resConnexion.get(0));
 		System.out.println(resConnexion.get(1));
@@ -75,6 +92,6 @@ public class ManagerLogin {
 		System.out.println(this.myAbstractRoleArray.get(0).getWording());
 		System.out.println(this.myAbstractRoleArray.get(0).getIdRole());
 		
-		return resConnexion;
+		return true;
 	}
 }

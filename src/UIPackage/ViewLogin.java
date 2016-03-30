@@ -14,6 +14,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
 import BusinessLogic.FacadeLogin;
 
 public class ViewLogin extends JFrame implements ActionListener{
@@ -23,6 +25,8 @@ public class ViewLogin extends JFrame implements ActionListener{
 	private JButton btnLogIn;
 	private JButton btnCancel;
 	private FacadeLogin myFacadeLogin;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 	
 
 	/**
@@ -110,7 +114,7 @@ public class ViewLogin extends JFrame implements ActionListener{
 	/* FIN ACCESSEUR */
 	
 	
-	/* Implémentation de l'interface ActionListener */
+	/* Implï¿½mentation de l'interface ActionListener */
 	
 	private void addActionListenner () {
 		this.getButtonLogIn().addActionListener(this);
@@ -129,11 +133,11 @@ public class ViewLogin extends JFrame implements ActionListener{
 			//String [] recup = this.connectionDatabase(this.getTextFieldLogin(), this.getTextFieldPassword());
 			this.myFacadeLogin = new FacadeLogin();
 			
-			ArrayList<String> recupInfo = this.myFacadeLogin.login(this.getTextFieldLogin(),this.getTextFieldPassword());
+			boolean recupInfo = this.myFacadeLogin.login(this.getTextFieldLogin(),this.getTextFieldPassword());
 			
-			if (recupInfo.get(0).equals(this.getTextFieldLogin()) && recupInfo.get(0) != ""){
-				//System.out.println("Bravo, votre identifiant existe bien en base de données ! Il ne reste plus qu'à terminer le programme !");
-				this.connexionReussieDisplay(recupInfo);
+			if (recupInfo){
+				//System.out.println("Bravo, votre identifiant existe bien en base de donnï¿½es ! Il ne reste plus qu'ï¿½ terminer le programme !");
+				//this.connexionReussieDisplay(recupInfo);
 				ViewHome fenHome = new ViewHome(true, "User"); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);
 				dispose();
@@ -146,9 +150,9 @@ public class ViewLogin extends JFrame implements ActionListener{
 		}
 	}
 	
-	/* Fin Code d'implémentation de l'interface ActionListener */  // A FINALISER
+	/* Fin Code d'implï¿½mentation de l'interface ActionListener */  // A FINALISER
 	
-	/* Affichage d'une nouvelle fenetre si la connexion est réussie (à re-développer) */ 
+	/* Affichage d'une nouvelle fenetre si la connexion est rï¿½ussie (ï¿½ re-dï¿½velopper) */ 
 	
 	public void connexionReussieDisplay (ArrayList<String> recupInfo) {
 		this.getRootPane().repaint();

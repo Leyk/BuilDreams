@@ -6,17 +6,33 @@ import java.util.ArrayList;
 public class FacadeGeneralManager {
 	
 	private ManagerGeneralManager myManagerGeneralManager;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerGeneralManager.getMyPerson();
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerGeneralManager.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerGeneralManager.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerGeneralManager.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 
 	public FacadeGeneralManager() {
 		this.myManagerGeneralManager = new ManagerGeneralManager();
 	}
 	
-	// A SIMOM : Lors du select penses bien à recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
+	// A SIMOM : Lors du select penses bien ï¿½ recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
 	
 	// Create General Project 
 	// Charger les category de project : facade category
 	// Charger les taches generales
-	// Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general)
+	// Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliï¿½s a un project general)
 	// (Enregistrer les tache relier a un project general)
 	
 	// Update General Project
@@ -24,8 +40,8 @@ public class FacadeGeneralManager {
 	// Charger les category de project : facade category
 	// Charger un projet general
 	// Charger les taches generales
-	// Charger la liste des taches relié à un projet general
-	// Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general)
+	// Charger la liste des taches reliï¿½ ï¿½ un projet general
+	// Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliï¿½s a un project general)
 	// (Enregistrer les tache relier a un project general)
 	
 	// Delete General Project
@@ -33,12 +49,12 @@ public class FacadeGeneralManager {
 	// Charger un projet general
 	// Supprimer le projet general et ses liens
 	
-	// A SIMOM : Lors du select penses bien à recuper la liste de [idCategoryProduit, quantity, unit] (ici tableau 3 fois n) pour apres l'envoyer dans la requette de creation ou d'update
+	// A SIMOM : Lors du select penses bien ï¿½ recuper la liste de [idCategoryProduit, quantity, unit] (ici tableau 3 fois n) pour apres l'envoyer dans la requette de creation ou d'update
 	
 	// Create General Task 
 	// Charger les category de Tache : facade category
 	// Charger les category de produits : facade category
-	// Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
+	// Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliï¿½s a une tache generale)
 	// (Enregistrer les produit relier a une tache generale) ==> (quantity unit idcategory)
 	
 	// Update General Task
@@ -46,9 +62,9 @@ public class FacadeGeneralManager {
 	// Charger les category de Tache : facade category
 	// Charger une tache generale
 	// Charger les category de produit
-	// Charger la liste des category de produits relié a cette tache generale
-	// Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
-	// (Enregistrer les produits reliés a une tache generale)
+	// Charger la liste des category de produits reliï¿½ a cette tache generale
+	// Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliï¿½s a une tache generale)
+	// (Enregistrer les produits reliï¿½s a une tache generale)
 	
 	// Delete General Task
 	// Charger la liste des taches generales
@@ -67,7 +83,7 @@ public class FacadeGeneralManager {
 		return this.myManagerGeneralManager.loadAllGeneralTask();
 	}
 	
-	// ADD Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general) le string est la liste des id
+	// ADD Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliï¿½s a un project general) le string est la liste des id
 	public boolean addGeneralProject(String name, String description, int idProjectCategory, String[] linkedGeneralTasks){
 		return this.myManagerGeneralManager.addGeneralProject(name, description, idProjectCategory, linkedGeneralTasks);
 	}
@@ -87,12 +103,12 @@ public class FacadeGeneralManager {
 		return this.myManagerGeneralManager.loadGeneralProject(idGeneralProject);
 	}
 	
-	// Charger la liste des taches relié à un projet general
+	// Charger la liste des taches reliï¿½ ï¿½ un projet general
 	public ArrayList<ArrayList<String>> loadAllTasksLinkedToGeneralProject(int idGeneralProject){
 		return this.myManagerGeneralManager.loadAllTasksLinkedToGeneralProject(idGeneralProject);
 	}
 	
-	// UPDATE Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliés a un project general) le string est la liste des id
+	// UPDATE Enregistrer un projet (qui poura appeler apres Enregistrer les taches reliï¿½s a un project general) le string est la liste des id
 	public boolean updateGeneralProject(int idGeneralProject, String name, String description, int idProjectCategory, String[] linkedGeneralTasks){
 		return this.myManagerGeneralManager.updateGeneralProject(idGeneralProject, name,  description, idProjectCategory, linkedGeneralTasks);
 	}
@@ -102,7 +118,7 @@ public class FacadeGeneralManager {
 		return this.myManagerGeneralManager.deleteGeneralProject(idGeneralProject);
 	}
 	
-	// ADD Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
+	// ADD Enregistrer une tache (qui poura appeler apres Enregistrer les produits reliï¿½s a une tache generale)
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public boolean addGeneralTask(String name, String description, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
 		return this.myManagerGeneralManager.addGeneralTask(name, description, theoreticalLength, idTaskCategory, linkedProductCategories);
@@ -119,12 +135,12 @@ public class FacadeGeneralManager {
 		return this.myManagerGeneralManager.loadGeneralTask(idGeneralTask);
 	}
 	
-	// Charger la liste des category de produits relié a cette tache generale
+	// Charger la liste des category de produits reliï¿½ a cette tache generale
 	public ArrayList<ArrayList<String>> loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask){
 		return this.myManagerGeneralManager.loadAllProductCategoriesLinkedToGeneralTask(idGeneralTask);
 	}
 	
-	// UPDATE Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliés a une tache generale)
+	// UPDATE Enregistrer une tache generale (qui poura appeler apres Enregistrer les produits reliï¿½s a une tache generale)
 	// Ici String[][] linkedProductCategories est un tableau avec sur chauqe ligne (idProductCategory, quantity, price)
 	public boolean updateGeneralTask(int idGeneralTask, String name, String description, int theoreticalLength, int idTaskCategory, String[][] linkedProductCategories){
 		return this.myManagerGeneralManager.updateGeneralTask(idGeneralTask, name, description, theoreticalLength, idTaskCategory, linkedProductCategories);

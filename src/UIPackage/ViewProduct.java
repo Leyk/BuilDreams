@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BusinessLogic.AbstractPerson;
+import BusinessLogic.AbstractRole;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -13,6 +17,7 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewProduct extends JFrame {
@@ -21,6 +26,8 @@ public class ViewProduct extends JFrame {
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldReference;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray;
 
 	public ViewProduct() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

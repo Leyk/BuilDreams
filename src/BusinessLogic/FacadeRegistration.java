@@ -1,7 +1,27 @@
 package BusinessLogic;
+
+import java.util.ArrayList;
+
 // MOCK UP 7 
 public class FacadeRegistration {
+	
 	private ManagerRegistration myManagerRegistration;
+	
+	public AbstractPerson getMyPerson() {
+		return this.myManagerRegistration.getMyPerson();
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myManagerRegistration.setMyPerson(myPerson);
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return this.myManagerRegistration.getMyAbstractRoleArray();
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myManagerRegistration.setMyAbstractRoleArray(myAbstractRoleArray);
+	}
 	
 	public FacadeRegistration () {
 		this.myManagerRegistration = new ManagerRegistration();

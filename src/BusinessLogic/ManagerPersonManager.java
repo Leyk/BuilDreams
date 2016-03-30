@@ -1,10 +1,31 @@
 package BusinessLogic;
 
+import java.util.ArrayList;
+
 import Persistance.JDBCFactory;
 
 public class ManagerPersonManager {
 	
 	private AbstractFactory myFactory;
+	private AbstractPerson myPerson;
+	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
+	
+
+	public AbstractPerson getMyPerson() {
+		return myPerson;
+	}
+
+	public void setMyPerson(AbstractPerson myPerson) {
+		this.myPerson = myPerson;
+	}
+
+	public ArrayList<AbstractRole> getMyAbstractRoleArray() {
+		return myAbstractRoleArray;
+	}
+
+	public void setMyAbstractRoleArray(ArrayList<AbstractRole> myAbstractRoleArray) {
+		this.myAbstractRoleArray = myAbstractRoleArray;
+	}
 
 	public ManagerPersonManager() {
 		super();
