@@ -1,19 +1,20 @@
 package UIPackage;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
 
-public class ViewEditProfile extends JFrame {
+import BusinessLogic.FacadeProfileModifier;
+
+public class ViewEditProfile extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;
@@ -23,8 +24,12 @@ public class ViewEditProfile extends JFrame {
 	private JTextField textFieldDomainActivity;
 	private JTextField textFieldWeb;
 	private JTextField textFieldSiret;
+	private JPasswordField textFieldPassword;
+	private String role;
+	private FacadeProfileModifier myFacadeProfileModifier;
 
 	public ViewEditProfile(String role) {
+		this.role = role;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 338, 284);
 		contentPane = new JPanel();
@@ -70,9 +75,9 @@ public class ViewEditProfile extends JFrame {
 		textFieldEmail.setBounds(123, 106, 182, 20);
 		contentPane.add(textFieldEmail);
 		
-		JPasswordField passwordField = new JPasswordField();
-		passwordField.setBounds(123, 141, 182, 20);
-		contentPane.add(passwordField);
+		textFieldPassword = new JPasswordField();
+		textFieldPassword.setBounds(123, 141, 182, 20);
+		contentPane.add(textFieldPassword);
 		
 		textFieldPhone = new JTextField();
 		textFieldPhone.setBounds(123, 176, 182, 20);
@@ -109,17 +114,12 @@ public class ViewEditProfile extends JFrame {
 		lblDomainActivity.setVisible(false);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(this);
 		btnUpdate.setBounds(51, 211, 89, 23);
 		contentPane.add(btnUpdate);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewHome fenHome = new ViewHome(true,"User"); // A REMPLACER PAR LE ROLE RECUPERE
-				fenHome.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel.addActionListener(this);
 		btnCancel.setBounds(191, 211, 89, 23);
 		contentPane.add(btnCancel);
 				
@@ -134,6 +134,33 @@ public class ViewEditProfile extends JFrame {
 			btnCancel.setBounds(182, 326, 89, 23);
 			setBounds(100, 100, 338, 410);
 			setLocationRelativeTo(null);
+		}
+	}
+	
+	public void actionPerformed (ActionEvent e){
+		if("Cancel".equals(e.getActionCommand())){
+				ViewHome fenHome = new ViewHome(true,"User"); // A REMPLACER PAR LE ROLE RECUPERE
+				fenHome.setVisible(true);	
+				dispose();
+		}
+		else if("Update".equals(e.getActionCommand())){
+			Boolean req = false;
+			if(this.role=="User"){
+				req = this.myFacadeProfileModifier.modifyProfileUsers(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText());				
+			}
+			else if(this.role=="Seller"){
+				req = this.myFacadeProfileModifier.modifyProfileSeller(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText(), Integer.parseInt(textFieldSiret.getText()), textFieldWeb.getText(), textFieldDomainActivity.getText());
+			}
+			if(req = true){
+				JOptionPane.showMessageDialog(null, "Your profile has been edited successfully !", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);		
+				ViewHome fenHome = new ViewHome(true, role);
+				fenHome.setVisible(true);	
+				dispose();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "A problem occured when editing your profile ! Please try again or contact the administration ;)",
+			   		     "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 }

@@ -171,7 +171,7 @@ public class ViewLogin extends JFrame implements ActionListener{
 		lblID.setBounds(10, 40, 88, 50);
 		contentPane.add(lblID);
 		
-		JLabel lblName = new JLabel("Nickname : " + recupInfo.get(1));
+		JLabel lblName = new JLabel("Name : " + recupInfo.get(1));
 		lblName.setBounds(10, 60, 88, 50);
 		contentPane.add(lblName);
 		
