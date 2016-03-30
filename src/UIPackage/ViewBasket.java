@@ -28,7 +28,6 @@ import javax.swing.table.TableCellRenderer;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
-import TabPatterns.*;
 
 public class ViewBasket extends JFrame {
 	private JTable tableau;

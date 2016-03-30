@@ -8,7 +8,6 @@ import Persistance.JDBCFactory;
 public class ManagerBasket {
 	
 	private AbstractFactory myFactory;
-	private ArrayList<ArrayList<String>> myBasketContent;
 	private AbstractBasket myBasket;
 	private AbstractPerson myPerson;
 	private ArrayList<AbstractRole> myAbstractRoleArray = new ArrayList<AbstractRole>();
@@ -45,7 +44,6 @@ public class ManagerBasket {
 			e.printStackTrace();
 			resBasket.add(0, null);
 		}
-		this.myBasketContent = resBasket;
 		return resBasket;
 	}
 

@@ -18,9 +18,6 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
-import TabPatterns.ButtonEditor;
-import TabPatterns.ButtonRenderer;
-import TabPatterns.ModeleDonneesTab;
 
 public class ViewOrder extends JFrame {
 

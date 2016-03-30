@@ -72,7 +72,9 @@ public class JDBCPerson extends AbstractPerson {
 	@Override
 	public String saveInsertDB() throws SQLException {
 		 String queryPerson = "INSERT INTO Person(nickname, name, surname, email, password, phoneNumber) VALUES ('" + this.getPseudo() + "','" + this.getName() + "','" + this.getSurname() + "','" + this.getEmail() + "','" + this.getPassword() + "','" + this.getPhoneNumber() + "');";
+		 System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLIIIIIIIIIIIIIRRRRRRRRRREEEEEEEEEEEEE");
 		 JDBCSingleton.getInstance().UpdateWithoutResultSet(queryPerson);
+		 System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLIIIIIIIIIIIIIRRRRRRRRRREEEEEEEEEEEEE");
 		 return this.getPseudo();
 	}
 }

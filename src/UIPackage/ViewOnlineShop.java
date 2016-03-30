@@ -18,11 +18,6 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
-import TabPatterns.ButtonEditor;
-import TabPatterns.ButtonRenderer;
-import TabPatterns.ModeleDonneesTab;
-import TabPatterns.SpinnerEditor;
-import TabPatterns.SpinnerRenderer;
 
 public class ViewOnlineShop extends JFrame {
 

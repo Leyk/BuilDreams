@@ -1,4 +1,4 @@
-package TabPatterns;
+package UIPackage;
 
 import java.awt.Component;
 import java.awt.Toolkit;

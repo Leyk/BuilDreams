@@ -1,4 +1,4 @@
-package TabPatterns;
+package UIPackage;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -8,10 +8,6 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
-
-import UIPackage.ViewHome;
-import UIPackage.ViewOffer;
-import UIPackage.ViewOrder;
 
 public class ButtonEditor extends DefaultCellEditor {
 

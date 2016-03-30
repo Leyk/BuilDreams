@@ -31,7 +31,7 @@ public class JDBCCommand extends AbstractCommand{
 	    }
 	    return id_AutoIncrement;
 		} catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, ");
 		}
 	}
 
@@ -44,7 +44,7 @@ public class JDBCCommand extends AbstractCommand{
 		}
 		}
 		catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, ");
 		}
 		
 		
@@ -58,7 +58,7 @@ public class JDBCCommand extends AbstractCommand{
 				JDBCSingleton.getInstance().UpdateWithoutResultSet(queryCommand);
 			}
 		} catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur,");
 		}
 	}
 

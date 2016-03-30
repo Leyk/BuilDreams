@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public abstract class AbstractGeneralTask {
 	private int idGeneralTask; //PrimarKey
 	private String name;
@@ -61,6 +64,8 @@ public abstract class AbstractGeneralTask {
 	public void setIdTaskCategory(int idTaskCategory) {
 		this.idTaskCategory = idTaskCategory;
 	}
+
+	public abstract ArrayList<ArrayList<String>> loadAllDB() throws SQLException;
 	
 	
 	

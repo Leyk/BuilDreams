@@ -1,5 +1,6 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
@@ -32,35 +33,75 @@ public class ManagerGeneralManager {
 		this.myFactory = new JDBCFactory();
 	}
 
+	
 	public ArrayList<ArrayList<String>> loadAllGeneralTask() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resGeneralTask = new ArrayList<ArrayList<String>>();
+		AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask();
+		try {	
+		resGeneralTask = myGeneralTask.loadAllDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resGeneralTask.add(0, null);
+		}
+		return resGeneralTask;
 	}
 
 	public boolean addGeneralProject(String name, String description, int idProjectCategory,
-			String[] linkedGeneralTasks) {
-		// TODO Auto-generated method stub
-		return false;
+		String[] linkedGeneralTasks) {
+		AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject(0, name, description, idProjectCategory);
+		try {
+		int id = myGeneralProject.saveInsertDB();
+		myGeneralProject.saveLinkedGeneralTasksForNewProject(id, linkedGeneralTasks);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean saveLinkedGeneralTask(int idGeneralProject, String[] linkedGeneralTasks) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject(idGeneralProject, "", "", 0);
+		try {
+		myGeneralProject.saveLinkedGeneralTasksForExistingProject(linkedGeneralTasks);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public ArrayList<ArrayList<String>> loadAllGeneralProject() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resGeneralProject = new ArrayList<ArrayList<String>>();
+		AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject();
+		try {	
+		resGeneralProject = myGeneralProject.loadAllDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resGeneralProject.add(0, null);
+		}
+		return resGeneralProject;
 	}
 
 	public ArrayList<String> loadGeneralProject(int idGeneralProject) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> resGeneralProject = new ArrayList<String>();
+		AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject(idGeneralProject, "", "", 0);
+		try {
+		resGeneralProject = myGeneralProject.loadDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resGeneralProject.add(0, null);
+		}
+		return resGeneralProject;
 	}
 
 	public ArrayList<ArrayList<String>> loadAllTasksLinkedToGeneralProject(int idGeneralProject) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resTaskLinked = new ArrayList<ArrayList<String>>();
+		AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject(idGeneralProject, "", "", 0);
+		try {	
+		resTaskLinked = myGeneralProject.loadAllTaskLinked();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resTaskLinked.add(0, null);
+		}
+		return resTaskLinked;
 	}
 
 	public boolean updateGeneralProject(int idGeneralProject, String name, String description, int idProjectCategory,

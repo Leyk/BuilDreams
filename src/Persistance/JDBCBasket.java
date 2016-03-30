@@ -28,7 +28,7 @@ public class JDBCBasket extends AbstractBasket {
 	    return id_AutoIncrement;
 		}
 		catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, saveInsertDB");
 		}
 	}
 
@@ -44,7 +44,7 @@ public class JDBCBasket extends AbstractBasket {
 	        }
 		}
 		catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, loadDB");
 		}
 		} else {
 			new IllegalArgumentException("vous n'etes pas un users");
@@ -69,7 +69,7 @@ public class JDBCBasket extends AbstractBasket {
 	    }
 		}
 		catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, loadConntentDB");
 		}
 		return res;
 	}
@@ -80,7 +80,7 @@ public class JDBCBasket extends AbstractBasket {
 			String queryDelete = "Delete from itemBasket where idBasket = " + this.getIdBasket() + " and idItem = " + idItem + ";";
 			JDBCSingleton.getInstance().UpdateWithoutResultSet(queryDelete);
 		} catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, deleteItemFromBasket");
 		}
 	}
 
@@ -97,7 +97,7 @@ public class JDBCBasket extends AbstractBasket {
 	    }
 		}
 		catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, getListItem");
 		}
 		return res;
 	}
@@ -115,7 +115,7 @@ public class JDBCBasket extends AbstractBasket {
 	    }
 		}
 		catch (SQLException e) {
-			throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+			throw new SQLException("Erreur, getListSeller");
 		}
 		return res;
 	}
@@ -127,7 +127,7 @@ public class JDBCBasket extends AbstractBasket {
 			JDBCSingleton.getInstance().UpdateWithoutResultSet(queryDelete);
 			}
 			catch (SQLException e) {
-				throw new SQLException("Erreur, l'identifiant ou le mot de passe n'existe pas dans la base de donn�es");
+				throw new SQLException("Erreur, deleteAllLinketItem");
 			}
 	}
 	
