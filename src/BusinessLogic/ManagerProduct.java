@@ -37,7 +37,7 @@ public class ManagerProduct {
 		ArrayList<ArrayList<String>> resShop = new ArrayList<ArrayList<String>>();
 		AbstractProduct myProduct = this.myFactory.createProduct();
 		try {
-			resShop = myProduct.loadContentDB();
+			resShop = myProduct.loadContentAllDB();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			resShop.add(0, null);

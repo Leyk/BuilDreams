@@ -95,8 +95,10 @@ public abstract class AbstractProduct {
 		this.idRole = idRole;
 	}
 	
-	public abstract ArrayList<ArrayList<String>> loadContentDB() throws SQLException;
+	public abstract ArrayList<ArrayList<String>> loadContentDB(int i) throws SQLException;
 
 	public abstract void saveInsertDB() throws SQLException;
+
+	public abstract ArrayList<ArrayList<String>> loadContentAllDB() throws SQLException;
 	
 }

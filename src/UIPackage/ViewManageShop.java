@@ -63,6 +63,20 @@ public class ViewManageShop extends JFrame implements ActionListener {
 		btnCreateProd = new JButton("New product");
 		btnCreateProd.setBounds(176, 130, 112, 23);
 		
+		if(myAbstractArrayListRoleIn.get(0).getWording().equals("admin")){
+			this.myFacadeProduct = new FacadeProduct();
+			this.myFacadeProduct.setMyPerson(myAbstractPersonIn);
+			this.myFacadeProduct.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+			this.isSeller = false;
+			this.btnCreateProd.setVisible(false);
+		}
+		else if(myAbstractArrayListRoleIn.get(0).getWording().equals("seller")){
+			this.myFacade = new FacadeProductSeller();
+			this.myFacade.setMyPerson(myAbstractPersonIn);
+			this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+			this.isSeller = true;
+		}
+		
 		JPanel panbtn = new JPanel();
 		panbtn.add(btnCreateProd);
 		panbtn.add(btnHome);
@@ -78,18 +92,34 @@ public class ViewManageShop extends JFrame implements ActionListener {
 		this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 		
 		// Retrieve the content of the all the products in the shop
-		 ArrayList<ArrayList<String>> allProducts = myFacade.loadAllProductSeller();
-		 data = new Object[allProducts.size()][8];
-			 for (int i=0;i<allProducts.size();i++){
-				 data[i][0] = allProducts.get(i).get(0);  
-				 data[i][1] = allProducts.get(i).get(1); 
-				 data[i][2] = allProducts.get(i).get(2); 
-				 data[i][3] = allProducts.get(i).get(3);
-				 data[i][4] = Integer.parseInt(allProducts.get(i).get(4));
-				 data[i][5] = Integer.parseInt(allProducts.get(i).get(5));
-				 data[i][6] = "Update";
-				 data[i][7] = "Delete";
-			 }                           
+		if(this.isSeller){
+			ArrayList<ArrayList<String>> allProducts = myFacade.loadAllProductSeller();
+			 data = new Object[allProducts.size()][8];
+				 for (int i=0;i<allProducts.size();i++){
+					 data[i][0] = allProducts.get(i).get(0);  
+					 data[i][1] = allProducts.get(i).get(1); 
+					 data[i][2] = allProducts.get(i).get(2); 
+					 data[i][3] = allProducts.get(i).get(3);
+					 data[i][4] = Integer.parseInt(allProducts.get(i).get(4));
+					 data[i][5] = Integer.parseInt(allProducts.get(i).get(5));
+					 data[i][6] = "Update";
+					 data[i][7] = "Delete";
+				 }                           
+		} else {
+			ArrayList<ArrayList<String>> allProducts = myFacadeProduct.loadAllProduct();
+			 data = new Object[allProducts.size()][8];
+				 for (int i=0;i<allProducts.size();i++){
+					 data[i][0] = allProducts.get(i).get(0);  
+					 data[i][1] = allProducts.get(i).get(1); 
+					 data[i][2] = allProducts.get(i).get(2); 
+					 data[i][3] = allProducts.get(i).get(3);
+					 data[i][4] = Integer.parseInt(allProducts.get(i).get(4));
+					 data[i][5] = Integer.parseInt(allProducts.get(i).get(5));
+					 data[i][6] = "Update";
+					 data[i][7] = "Delete";
+				 }                         
+		}
+		 
 	    String  title[] = {"Ref", "Product name", "Category", "Seller","Quantity", "Price", " ","  "};
 	    
 	    this.model = new ModeleDonneesTab(data, title);

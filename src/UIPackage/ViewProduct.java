@@ -133,7 +133,6 @@ public class ViewProduct extends JFrame implements ActionListener {
 			dispose();
 		}
 		else if ("Add".equals(e.getActionCommand())){
-			System.out.println("Test");
 			this.myFacade.addProductSeller(this.textFieldName.getText(), this.textFieldDescription.getText(), (int)this.spinnerQuantity.getValue() , this.textFieldReference.getText(), Integer.parseInt(this.formattedTextFieldUnitPrice.getText()), 1);
 			ViewManageShop fenMngShop = new ViewManageShop(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray());
 			fenMngShop.setVisible(true);	
