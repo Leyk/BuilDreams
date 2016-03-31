@@ -28,10 +28,12 @@ public class ViewProduct extends JFrame implements ActionListener {
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldReference;
-	
+	private JSpinner spinnerQuantity;
+	private JFormattedTextField formattedTextFieldUnitPrice;
 	private FacadeProductSeller myFacade;
 	
 	private JButton btnCancel;
+	private JButton btnAdd;
 
 	public ViewProduct(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
 		this.myFacade = new FacadeProductSeller();
@@ -87,7 +89,7 @@ public class ViewProduct extends JFrame implements ActionListener {
 		contentPane.add(textFieldReference);
 		textFieldReference.setColumns(10);
 		
-		JButton btnAdd = new JButton("Add");
+		btnAdd = new JButton("Add");
 		btnAdd.setBounds(36, 285, 89, 23);
 		contentPane.add(btnAdd);
 		
@@ -111,11 +113,11 @@ public class ViewProduct extends JFrame implements ActionListener {
 		lblUnitPrice.setBounds(26, 253, 86, 14);
 		contentPane.add(lblUnitPrice);
 		
-		JSpinner spinnerQuantity = new JSpinner();
+		spinnerQuantity = new JSpinner();
 		spinnerQuantity.setBounds(123, 216, 29, 20);
 		contentPane.add(spinnerQuantity);
 		
-		JFormattedTextField formattedTextFieldUnitPrice = new JFormattedTextField();
+		formattedTextFieldUnitPrice = new JFormattedTextField();
 		formattedTextFieldUnitPrice.setBounds(123, 253, 76, 20);
 		contentPane.add(formattedTextFieldUnitPrice);
 		
@@ -130,9 +132,17 @@ public class ViewProduct extends JFrame implements ActionListener {
 			fenMngShop.setVisible(true);	
 			dispose();
 		}
+		else if ("Add".equals(e.getActionCommand())){
+			System.out.println("Test");
+			this.myFacade.addProductSeller(this.textFieldName.getText(), this.textFieldDescription.getText(), (int)this.spinnerQuantity.getValue() , this.textFieldReference.getText(), Integer.parseInt(this.formattedTextFieldUnitPrice.getText()), 1);
+			ViewManageShop fenMngShop = new ViewManageShop(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray());
+			fenMngShop.setVisible(true);	
+			dispose();
+		}
 	}
 	
 	public void addActionListener () {
 		this.btnCancel.addActionListener(this);
+		this.btnAdd.addActionListener(this);
 	}
 }

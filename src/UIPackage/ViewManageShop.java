@@ -78,7 +78,7 @@ public class ViewManageShop extends JFrame implements ActionListener {
 		this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 		
 		// Retrieve the content of the all the products in the shop
-		 ArrayList<ArrayList<String>> allProducts = myFacadeProduct.loadAllProduct();
+		 ArrayList<ArrayList<String>> allProducts = myFacade.loadAllProductSeller();
 		 data = new Object[allProducts.size()][8];
 			 for (int i=0;i<allProducts.size();i++){
 				 data[i][0] = allProducts.get(i).get(0);  

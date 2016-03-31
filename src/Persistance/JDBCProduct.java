@@ -44,6 +44,17 @@ public class JDBCProduct extends AbstractProduct{
 		return res;
 	}
 
+	@Override
+	public void saveInsertDB() throws SQLException {
+		String queryGeneralTask = "INSERT INTO Product (name, description, quantity, reference, price ,idCategory, idRole) VALUES ('" + this.getName() + "','" + this.getDescription() + "'," + this.getQuantity() + ",'" + this.getReference() + "'," + this.getPrice() + "," + this.getIdCategory() + "," + this.getIdRole() + ");";
+		try {
+			JDBCSingleton.getInstance().UpdateWithoutResultSet(queryGeneralTask);
+		} catch (SQLException e) {
+			throw new SQLException("Erreur, saveInsertDB");
+		}
+		
+	}
+
 
 
 }
