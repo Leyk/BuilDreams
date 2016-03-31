@@ -1,10 +1,8 @@
 package Persistance;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 
 import BusinessLogic.AbstractPerson;
 
@@ -82,4 +80,27 @@ public class JDBCPerson extends AbstractPerson {
 		String queryUpdate = "Update Person set name = '"+name+"', surname = '"+surname+"', email = '"+email+"', password = '"+password+"', phonenumber = '" + phoneNumber + "' where nickname = '" + this.getPseudo() + "';";
 		JDBCSingleton.getInstance().UpdateWithoutResultSet(queryUpdate);
 	}
+
+	@Override
+	public ArrayList<ArrayList<String>> loadAllPersonDB() throws SQLException {
+		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
+		String queryPersonContent = "select nickname, name, surname, email, phonenumber from person";
+		try{
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryPersonContent);
+		int i = 0;
+		while (rs.next()) {
+			ArrayList<String> temp = new ArrayList<String>();
+		    for (int j= 0; j<5; j++){
+		    	temp.add(j,rs.getString(j+1));
+		    }
+		    res.add(i, temp);
+		    i++;
+		   }
+		}
+		catch (SQLException e) {
+			throw new SQLException("Erreur, loadContentDB");
+		}
+		return res;
+	}
+
 }

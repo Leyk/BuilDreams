@@ -57,6 +57,10 @@ public class FacadePersonManager {
 		return this.myManagerPersonManager.deletePerson(textFieldPseudoIn);
 	}
 	
+	public ArrayList<ArrayList<String>> loadAllMembers(){
+		return this.myManagerPersonManager.loadAllMembers();
+	}
+	
 	
 	
 }

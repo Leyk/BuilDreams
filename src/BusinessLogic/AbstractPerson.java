@@ -1,6 +1,7 @@
 package BusinessLogic;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public abstract class AbstractPerson {
 	private String pseudo; //PrimarKey
@@ -85,6 +86,8 @@ public abstract class AbstractPerson {
 	}
 
 	public abstract AbstractPerson loadDB() throws SQLException;
+	
+	public abstract ArrayList<ArrayList<String>> loadAllPersonDB() throws SQLException;
 
 	public abstract String saveInsertDB() throws SQLException;
 

@@ -26,6 +26,7 @@ public class ViewManageMember extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
+	private Object[][] data;
 
 	private FacadePersonManager myFacade;
 	
@@ -68,13 +69,19 @@ public class ViewManageMember extends JFrame implements ActionListener {
 		this.getContentPane().add(panNorth, BorderLayout.NORTH);
 		this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 		
-		 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-			      {"654532", "Faivre", "Loic", "loic.faivre@gmail.com","0677777777","Admin","Delete"},
-			      {"654533", "Kane", "Djeneba", "djeneba.kane@gmail.com","0677777777","Admin","Delete"},
-			      {"654534", "Vasseur", "Alexandre", "alex.vasseur@gmail.com","0677777777","Admin","Delete"},
-			      {"654535", "Savornin", "Simon", "sim.savornin@gmail.com","0677777777","Admin","Delete"}
-			    };
-	    String  title[] = {"ID", "Name", "Surname", "Email", "Phone", "Role", " "};
+		ArrayList<ArrayList<String>> allMembers = myFacade.loadAllMembers();
+		System.out.println(allMembers + "KOUKOU View Manage affichage all members");
+		 data = new Object[allMembers.size()][6];
+			 for (int i=0;i<allMembers.size();i++){
+				 data[i][0] = allMembers.get(i).get(0);  
+				 data[i][1] = allMembers.get(i).get(1); 
+				 data[i][2] = allMembers.get(i).get(2); 
+				 data[i][3] = allMembers.get(i).get(3);
+				 data[i][4] = allMembers.get(i).get(4);
+				 data[i][5] = "Delete";
+			 }                           
+		
+	    String  title[] = {"Nickname", "Name", "Surname", "Email", "Phone", " "};
 	    
 	    this.model = new ModeleDonneesTab(data, title);
 	    this.tableau = new JTable(model);

@@ -1,5 +1,6 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
@@ -48,6 +49,19 @@ public class ManagerPersonManager {
 	public boolean deletePerson(String textFieldPseudoIn) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public ArrayList<ArrayList<String>> loadAllMembers() {
+		ArrayList<ArrayList<String>> resMember = new ArrayList<ArrayList<String>>();
+		AbstractPerson members = this.myFactory.createPerson();
+		System.out.println(members + "troud");
+		try {
+			resMember = members.loadAllPersonDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resMember.add(0, null);
+		}
+		return resMember;
 	}
 
 }
