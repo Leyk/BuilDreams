@@ -88,6 +88,8 @@ public abstract class AbstractPerson {
 
 	public abstract String saveInsertDB() throws SQLException;
 
-	
+	public abstract void updateDB(String name, String surname, String email, String password, String phoneNumber)
+			throws SQLException;
+
 	/* Classe abstraite contenant tous les attributs communs � tous les users. Permettra ensuite de jouer avec le pattern role etc ... */
 }

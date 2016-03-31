@@ -77,4 +77,10 @@ public class JDBCPerson extends AbstractPerson {
 		 System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLIIIIIIIIIIIIIRRRRRRRRRREEEEEEEEEEEEE");
 		 return this.getPseudo();
 	}
+
+	@Override
+	public void updateDB(String name, String surname, String email, String password, String phoneNumber) throws SQLException {
+		String queryUpdate = "Update Person set name = '"+name+"', surname = '"+surname+"', email = '"+email+"', password = '"+password+"', phonenumber = '" + phoneNumber + "' where nickname = '" + this.getPseudo() + "';";
+		JDBCSingleton.getInstance().UpdateWithoutResultSet(queryUpdate);
+	}
 }

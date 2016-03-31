@@ -32,7 +32,7 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 	private FacadeProfileModifier myFacadeProfileModifier;
 
 	public ViewEditProfile(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
-		this.myFacadeProfileModifier = new FacadeProfileModifier();
+this.myFacadeProfileModifier = new FacadeProfileModifier();
 		
 		this.myFacadeProfileModifier.setMyPerson(myAbstractPersonIn);
 		this.myFacadeProfileModifier.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
@@ -72,22 +72,27 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 		contentPane.add(lblPassword);
 	
 		textFieldName = new JTextField();
+		textFieldName.setText(this.myFacadeProfileModifier.getMyPerson().getName());
 		textFieldName.setBounds(123, 36, 182, 20);
 		contentPane.add(textFieldName);
 		
 		textFieldSurname = new JTextField();
+		textFieldSurname.setText(this.myFacadeProfileModifier.getMyPerson().getSurname());
 		textFieldSurname.setBounds(123, 71, 182, 20);
 		contentPane.add(textFieldSurname);
 	
 		textFieldEmail = new JTextField();
+		textFieldEmail.setText(this.myFacadeProfileModifier.getMyPerson().getEmail());
 		textFieldEmail.setBounds(123, 106, 182, 20);
 		contentPane.add(textFieldEmail);
 		
 		textFieldPassword = new JPasswordField();
+		textFieldPassword.setText(this.myFacadeProfileModifier.getMyPerson().getPassword());
 		textFieldPassword.setBounds(123, 141, 182, 20);
 		contentPane.add(textFieldPassword);
 		
 		textFieldPhone = new JTextField();
+		textFieldPhone.setText(this.myFacadeProfileModifier.getMyPerson().getPhoneNumber());
 		textFieldPhone.setBounds(123, 176, 182, 20);
 		contentPane.add(textFieldPhone);
 
@@ -145,6 +150,14 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 		}
 	}
 	
+	private void generalSetter (){
+		this.myFacadeProfileModifier.getMyPerson().setName(this.textFieldName.getText());
+		this.myFacadeProfileModifier.getMyPerson().setSurname(this.textFieldSurname.getText());
+		this.myFacadeProfileModifier.getMyPerson().setPassword(this.textFieldPassword.getText());
+		this.myFacadeProfileModifier.getMyPerson().setEmail(this.textFieldEmail.getText());
+		this.myFacadeProfileModifier.getMyPerson().setPhoneNumber(this.textFieldPhone.getText());
+	}
+	
 	public void actionPerformed (ActionEvent e){
 		if("Cancel".equals(e.getActionCommand())){
 				ViewHome fenHome = new ViewHome(this.myFacadeProfileModifier.getMyPerson(),this.myFacadeProfileModifier.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
@@ -153,14 +166,19 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 		}
 		else if("Update".equals(e.getActionCommand())){
 			Boolean req = false;
-			if(this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()=="User"){
+			
+			if((this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()).equals("users")){
 				req = this.myFacadeProfileModifier.modifyProfileUsers(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText());				
 			}
-			else if(this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()=="Seller"){
+			else if((this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()).equals("seller")){
 				req = this.myFacadeProfileModifier.modifyProfileSeller(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText(), Integer.parseInt(textFieldSiret.getText()), textFieldWeb.getText(), textFieldDomainActivity.getText());
 			}
-			if(req = true){
-				JOptionPane.showMessageDialog(null, "Your profile has been edited successfully !", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);		
+			
+			if(req){
+				JOptionPane.showMessageDialog(null, "Your profile has been edited successfully !", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);	
+				
+				this.generalSetter();
+				
 				ViewHome fenHome = new ViewHome(this.myFacadeProfileModifier.getMyPerson(),this.myFacadeProfileModifier.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);	
 				dispose();

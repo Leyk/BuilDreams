@@ -1,5 +1,6 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
@@ -35,11 +36,30 @@ public class ManagerProfileModifier {
 	public boolean modifyProfileSeller(String name, String surname, String email, String password, String phoneNumber,
 			int siret, String webSite, String domainActivity) {
 		// TODO Auto-generated method stub
-		return false;
+		Boolean res = true;
+		
+		try{
+			this.myPerson.updateDB(name, surname, email, password, phoneNumber);
+		}
+		catch(SQLException e){
+			System.out.print(e.getMessage());
+			res = false;
+		}
+		return res;
 	}
 
 	public boolean modifyProfileUsers(String name, String surname, String email, String password, String phoneNumber) {
 		// TODO Auto-generated method stub
-		return false;
+		Boolean res = true;
+		
+		try{
+			this.myPerson.updateDB(name, surname, email, password, phoneNumber);
+		}
+		catch(SQLException e){
+			System.out.print(e.getMessage());
+			res = false;
+		}
+		
+		return res;
 	}
 }
