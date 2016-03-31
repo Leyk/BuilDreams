@@ -56,7 +56,6 @@ public class JDBCPerson extends AbstractPerson {
 	        res[3] = rs.getString("email");
 	        res[4] = rs.getString("password");
 	        res[5] = rs.getString("phoneNumber");
-	        System.out.println(res[0] + "|" + res[1] + "|" + res[2] + "|" + res[3] + "|" + res[4] + "|" + res[5]);
 	    }
 	    
 		
