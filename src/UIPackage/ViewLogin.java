@@ -25,8 +25,6 @@ public class ViewLogin extends JFrame implements ActionListener{
 	private JButton btnLogIn;
 	private JButton btnCancel;
 	private FacadeLogin myFacadeLogin;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
 	
 
 	/**
@@ -135,10 +133,12 @@ public class ViewLogin extends JFrame implements ActionListener{
 			boolean recupInfo = this.myFacadeLogin.login(this.getTextFieldLogin(),this.getTextFieldPassword());
 			
 			if (recupInfo){
-				ViewHome fenHome = new ViewHome(true, "User"); // A REMPLACER PAR LE ROLE RECUPERE
+				AbstractPerson recupPerson = this.myFacadeLogin.getMyPerson();
+				ArrayList<AbstractRole> recupRole = this.myFacadeLogin.getMyAbstractRoleArray();
+				
+				ViewHome fenHome = new ViewHome(recupPerson, recupRole); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);
 				dispose();
-				
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Invalid Login/Password, please try again.",

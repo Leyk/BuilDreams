@@ -6,7 +6,7 @@ import BusinessLogic.AbstractSeller;
 import BusinessLogic.AbstractUsers;
 
 public class JDBCSeller extends AbstractSeller{
-
+	
 	public JDBCSeller() {
 		super();
 		// TODO Auto-generated constructor stub

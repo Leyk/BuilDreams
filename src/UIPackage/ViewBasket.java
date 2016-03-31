@@ -28,16 +28,23 @@ import javax.swing.table.TableCellRenderer;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
 
-public class ViewBasket extends JFrame {
+public class ViewBasket extends JFrame implements ActionListener{
 	private JTable tableau;
-	private JButton order = new JButton("Order Items");
-	private JButton home = new JButton("Home");
 	private ModeleDonneesTab model;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private JButton btnHome;
+	private JButton btnOrder;
+	
+	private FacadeBasket myFacade;
 
-	  public ViewBasket(){
+	  public ViewBasket(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn){
+		  this.myFacade = new FacadeBasket();
+		  
+		  this.myFacade.setMyPerson(myAbstractPersonIn);
+		  this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		  
 		  this.setLocationRelativeTo(null);
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  this.setBounds(100, 100, 488, 258);
@@ -51,24 +58,10 @@ public class ViewBasket extends JFrame {
 			    };
 	    String  title[] = {"Product name", "Chosen Quantity", "Price", "Seller"," "};
 	    
-	    JButton btnHome = new JButton("Home");
-	    btnHome.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    		ViewHome fenHome = new ViewHome(true,"User"); // A REMPLACER PAR LE ROLE RECUPERE
-				fenHome.setVisible(true);	
-				dispose();
-	    	}
-	    });
+	    btnHome = new JButton("Home");
 		btnHome.setBounds(176, 130, 112, 23);
 		
-		JButton btnOrder = new JButton("Order");
-		btnOrder.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				ViewPayment fenPayment = new ViewPayment();
-				fenPayment.setVisible(true);
-				dispose();
-			}
-		});
+		btnOrder = new JButton("Order");
 		btnOrder.setBounds(176, 130, 112, 23);
 		
 		JLabel lblPrixTot = new JLabel();
@@ -92,9 +85,34 @@ public class ViewBasket extends JFrame {
 	    this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 	    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());
 	    this.tableau.getColumn("Chosen Quantity").setCellRenderer(new SpinnerRenderer());
-	    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox()));
+	    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(this, new JCheckBox(), this.myFacade.getMyPerson(), this.myFacade.getMyAbstractRoleArray()));
 	    this.tableau.getColumn("Chosen Quantity").setCellEditor(new SpinnerEditor());
 	    this.tableau.setAutoCreateRowSorter(true);
 	    this.setLocationRelativeTo(null);
+	    
+	    this.addActionListener();
 	  }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Home".equals(e.getActionCommand())){
+			ViewHome fenHome = new ViewHome(this.myFacade.getMyPerson(), this.myFacade.getMyAbstractRoleArray());
+			fenHome.setVisible(true);	
+			this.dispose();
+		}
+		else if ("Order".equals(e.getActionCommand())){
+			ViewPayment fenPayment = new ViewPayment(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray());
+			fenPayment.setVisible(true);
+			dispose();
+		}
+	}
+	
+	private void addActionListener (){
+		this.btnHome.addActionListener(this);
+		this.btnOrder.addActionListener(this);
+	}
+	
+	  
+	  
 }

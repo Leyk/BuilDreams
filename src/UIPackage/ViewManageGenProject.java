@@ -17,16 +17,26 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadeGeneralManager;
 
-public class ViewManageGenProject extends JFrame {
+public class ViewManageGenProject extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private JButton btnHome;
+	private JButton btnCreateGeneralProject;
+	
+	private FacadeGeneralManager myFacade;
 
-	public ViewManageGenProject() {
+	public ViewManageGenProject(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadeGeneralManager();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 258);
 		setTitle("BuilDreams : Manage general projects");
@@ -37,24 +47,10 @@ public class ViewManageGenProject extends JFrame {
 		setLocationRelativeTo(null);
 		
 		
-		 JButton btnHome = new JButton("Home");
-		    btnHome.addActionListener(new ActionListener() {
-		    	public void actionPerformed(ActionEvent e) {
-		    		ViewHome fenHome = new ViewHome(true,"Administrator"); // A REMPLACER PAR LE ROLE RECUPERE
-					fenHome.setVisible(true);	
-					dispose();
-		    	}
-		    });
-			btnHome.setBounds(176, 130, 112, 23);
+		btnHome = new JButton("Home");
+		btnHome.setBounds(176, 130, 112, 23);
 			
-			JButton btnCreateGeneralProject = new JButton("Create general project");
-			btnCreateGeneralProject.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					ViewGenProject fenGenProj = new ViewGenProject(); 
-					fenGenProj.setVisible(true);	
-					dispose();
-				}
-			});
+			btnCreateGeneralProject = new JButton("Create general project");
 			btnCreateGeneralProject.setBounds(22, 31, 225, 23);
 			
 			JPanel panbtn = new JPanel();
@@ -85,11 +81,32 @@ public class ViewManageGenProject extends JFrame {
 		    this.tableau.setRowHeight(20);
 		    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 		    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());
-		    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox()));
+		    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(this, new JCheckBox(), this.myFacade.getMyPerson(), this.myFacade.getMyAbstractRoleArray()));
 		    this.tableau.getColumn("  ").setCellRenderer(new ButtonRenderer());
-		    this.tableau.getColumn("  ").setCellEditor(new ButtonEditor(new JCheckBox()));
+		    this.tableau.getColumn("  ").setCellEditor(new ButtonEditor(this, new JCheckBox(), this.myFacade.getMyPerson(), this.myFacade.getMyAbstractRoleArray()));
 		    this.tableau.setAutoCreateRowSorter(true);
+		    
+		    this.addActionListener();
 	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Home".equals(e.getActionCommand())){
+			ViewHome fenHome = new ViewHome(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
+			fenHome.setVisible(true);	
+			dispose();
+		}
+		else if ("Create general project".equals(e.getActionCommand())){
+			ViewGenProject fenGenProj = new ViewGenProject(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); 
+			fenGenProj.setVisible(true);	
+			dispose();
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnHome.addActionListener(this);
+		this.btnCreateGeneralProject.addActionListener(this);
+	}
 
 }

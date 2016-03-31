@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadePersonalManager;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -19,17 +21,25 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewPersoTask extends JFrame {
+public class ViewPersoTask extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldBeginDate;
 	private JTextField textFieldTheoricalLen;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
 
-	public ViewPersoTask() {
+	private FacadePersonalManager myFacade;
+	
+	private JButton btnCancel;
+	private JButton btnCreate;
+	
+	public ViewPersoTask(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadePersonalManager();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		  
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 373, 344);
 		setTitle("BuilDreams : Create a personnal task");
@@ -55,18 +65,11 @@ public class ViewPersoTask extends JFrame {
 		lblCategory.setBounds(26, 201, 86, 20);
 		contentPane.add(lblCategory);
 		
-		JButton btnCreate = new JButton("Create");
+		btnCreate = new JButton("Create");
 		btnCreate.setBounds(88, 271, 89, 23);
 		contentPane.add(btnCreate);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewManagePersoProject fenMngPersoProjTask = new ViewManagePersoProject(); 
-				fenMngPersoProjTask.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(214, 271, 89, 23);
 		contentPane.add(btnCancel);
 		
@@ -134,6 +137,26 @@ public class ViewPersoTask extends JFrame {
 				}
 			}
 		});
+		
+		this.addActionListener();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewManagePersoProject fenMngPersoProjTask = new ViewManagePersoProject(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); 
+			fenMngPersoProjTask.setVisible(true);	
+			dispose();
+		}
+		else if ("Create".equals(e.getActionCommand())){
+			
+		}
+	}
+	
+	private void addActionListener (){
+		this.btnCancel.addActionListener(this);
+		this.btnCreate.addActionListener(this);
 	}
 
 }

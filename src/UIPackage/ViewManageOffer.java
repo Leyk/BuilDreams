@@ -23,8 +23,8 @@ public class ViewManageOffer extends JFrame {
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	
 
 	public ViewManageOffer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,9 +39,9 @@ public class ViewManageOffer extends JFrame {
 		JButton btnHome = new JButton("Home");
 	    btnHome.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		ViewHome fenHome = new ViewHome(true,"Seller"); // A REMPLACER PAR LE ROLE RECUPERE
+	    		/*ViewHome fenHome = new ViewHome(true,"Seller"); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);	
-				dispose();
+				dispose();*/
 	    	}
 	    });
 		btnHome.setBounds(176, 130, 112, 23);	
@@ -73,7 +73,7 @@ public class ViewManageOffer extends JFrame {
 	    this.tableau.setRowHeight(20);
 	    this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 	    this.tableau.getColumn(" ").setCellRenderer(new ButtonRenderer());
-	    this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(new JCheckBox()));
+	    //this.tableau.getColumn(" ").setCellEditor(new ButtonEditor(this, new JCheckBox(), this.myFacade.getMyPerson(), this.myFacade.getMyAbstractRoleArray()));
 	    this.tableau.setAutoCreateRowSorter(true);
 	    this.tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}

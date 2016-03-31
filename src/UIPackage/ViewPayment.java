@@ -9,8 +9,11 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadeShopOrder;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
@@ -18,15 +21,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewPayment extends JFrame {
+public class ViewPayment extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textFieldOwnerName;
 	private JTextField textFieldValidityDate;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private FacadeShopOrder myFacade;
+	
+	private JButton btnCancel;
+	private JButton btnConfirmOrder;
 
-	public ViewPayment() {
+	public ViewPayment(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadeShopOrder();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 398, 255);
 		setTitle("BuilDreams : Order Payment");
@@ -52,18 +63,11 @@ public class ViewPayment extends JFrame {
 		lblValidityDate.setBounds(48, 144, 126, 14);
 		contentPane.add(lblValidityDate);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewBasket fenBasket = new ViewBasket(); // A REMPLACER PAR LE ROLE RECUPERE
-				fenBasket.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(48, 182, 134, 23);
 		contentPane.add(btnCancel);
 		
-		JButton btnConfirmOrder = new JButton("Confirm order");
+		btnConfirmOrder = new JButton("Confirm order");
 		btnConfirmOrder.setBounds(215, 182, 134, 23);
 		contentPane.add(btnConfirmOrder);
 		
@@ -84,5 +88,25 @@ public class ViewPayment extends JFrame {
 		textFieldValidityDate.setBounds(167, 144, 182, 20);
 		contentPane.add(textFieldValidityDate);
 		textFieldValidityDate.setColumns(10);
+		
+		this.addActionListener();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewBasket fenBasket = new ViewBasket(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
+			fenBasket.setVisible(true);	
+			dispose();
+		}
+		else if ("Confirm order".equals(e.getActionCommand())){
+			
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnCancel.addActionListener(this);
+		this.btnConfirmOrder.addActionListener(this);
 	}
 }

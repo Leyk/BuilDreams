@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
 import BusinessLogic.FacadeProfileModifier;
 
 public class ViewEditProfile extends JFrame implements ActionListener {
@@ -28,13 +29,15 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 	private JTextField textFieldWeb;
 	private JTextField textFieldSiret;
 	private JPasswordField textFieldPassword;
-	private String role;
 	private FacadeProfileModifier myFacadeProfileModifier;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
 
-	public ViewEditProfile(String role) {
-		this.role = role;
+	public ViewEditProfile(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacadeProfileModifier = new FacadeProfileModifier();
+		
+		this.myFacadeProfileModifier.setMyPerson(myAbstractPersonIn);
+		this.myFacadeProfileModifier.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 338, 284);
 		contentPane = new JPanel();
@@ -44,7 +47,7 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		
-		JLabel lblConnectedAs = new JLabel("Connected as "+role);
+		JLabel lblConnectedAs = new JLabel("Connected as "+ this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording());
 		lblConnectedAs.setBounds(123, 11, 160, 14);
 		contentPane.add(lblConnectedAs);
 		
@@ -128,7 +131,7 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 		btnCancel.setBounds(191, 211, 89, 23);
 		contentPane.add(btnCancel);
 				
-		if(role=="Seller"){
+		if(this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()=="seller"){
 			lblDomainActivity.setVisible(true);
 			lblWebsite.setVisible(true);
 			lblSiret.setVisible(true);
@@ -144,21 +147,21 @@ public class ViewEditProfile extends JFrame implements ActionListener {
 	
 	public void actionPerformed (ActionEvent e){
 		if("Cancel".equals(e.getActionCommand())){
-				ViewHome fenHome = new ViewHome(true,"User"); // A REMPLACER PAR LE ROLE RECUPERE
+				ViewHome fenHome = new ViewHome(this.myFacadeProfileModifier.getMyPerson(),this.myFacadeProfileModifier.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);	
 				dispose();
 		}
 		else if("Update".equals(e.getActionCommand())){
 			Boolean req = false;
-			if(this.role=="User"){
+			if(this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()=="User"){
 				req = this.myFacadeProfileModifier.modifyProfileUsers(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText());				
 			}
-			else if(this.role=="Seller"){
+			else if(this.myFacadeProfileModifier.getMyAbstractRoleArray().get(0).getWording()=="Seller"){
 				req = this.myFacadeProfileModifier.modifyProfileSeller(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword.getText(), textFieldPhone.getText(), Integer.parseInt(textFieldSiret.getText()), textFieldWeb.getText(), textFieldDomainActivity.getText());
 			}
 			if(req = true){
 				JOptionPane.showMessageDialog(null, "Your profile has been edited successfully !", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);		
-				ViewHome fenHome = new ViewHome(true, role);
+				ViewHome fenHome = new ViewHome(this.myFacadeProfileModifier.getMyPerson(),this.myFacadeProfileModifier.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
 				fenHome.setVisible(true);	
 				dispose();
 			}

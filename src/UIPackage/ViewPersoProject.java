@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadePersonalManager;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -19,17 +21,24 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewPersoProject extends JFrame {
+public class ViewPersoProject extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldBeginDate;
 	private JTextField textFieldEstimateLen;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private JButton btnCancel;
+	
+	private FacadePersonalManager myFacade;
 
-	public ViewPersoProject() {
+	public ViewPersoProject(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadePersonalManager();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 359, 314);
 		setTitle("BuilDreams : Create a personnal project");
@@ -55,14 +64,7 @@ public class ViewPersoProject extends JFrame {
 		btnCreate.setBounds(50, 241, 89, 23);
 		contentPane.add(btnCreate);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewManagePersoProject fenMngPersoProjTask = new ViewManagePersoProject(); 
-				fenMngPersoProjTask.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(184, 241, 89, 23);
 		contentPane.add(btnCancel);
 		
@@ -124,5 +126,24 @@ public class ViewPersoProject extends JFrame {
 				}
 			}
 		});
+		
+		this.addActionListener();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewManagePersoProject fenMngPersoProjTask = new ViewManagePersoProject(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); 
+			fenMngPersoProjTask.setVisible(true);	
+			dispose();
+		}
+		else if ("Create".equals(e.getActionCommand())){
+			
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnCancel.addActionListener(this);
 	}
 }

@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadeGeneralManager;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -18,16 +20,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewGenTask extends JFrame {
+public class ViewGenTask extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldTheoricalLen;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private FacadeGeneralManager myFacade;
+	
+	private JButton btnCancel;
 
-	public ViewGenTask () {
+	public ViewGenTask (AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadeGeneralManager();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 373, 308);
 		setTitle("BuilDreams : Create a general task");
@@ -57,14 +66,7 @@ public class ViewGenTask extends JFrame {
 		btnCreate.setBounds(102, 235, 89, 23);
 		contentPane.add(btnCreate);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewManageGenTask fenMngGenTask = new ViewManageGenTask();
-				fenMngGenTask.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(216, 235, 89, 23);
 		contentPane.add(btnCancel);
 		
@@ -91,6 +93,21 @@ public class ViewGenTask extends JFrame {
 		textFieldTheoricalLen = new JTextField();
 		textFieldTheoricalLen.setBounds(123, 109, 182, 20);
 		contentPane.add(textFieldTheoricalLen);
+		
+		this.addActionListener();
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewManageGenTask fenMngGenTask = new ViewManageGenTask(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray());
+			fenMngGenTask.setVisible(true);	
+			dispose();
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnCancel.addActionListener(this);
+	}
 }

@@ -12,21 +12,30 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadeGeneralManager;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JList;
 
-public class ViewGenProject extends JFrame {
+public class ViewGenProject extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
-
-	public ViewGenProject() {
+	
+	private FacadeGeneralManager myFacade;
+	
+	private JButton btnCancel;
+	
+	public ViewGenProject(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadeGeneralManager();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 373, 262);
 		setTitle("BuilDreams : Create a general project");
@@ -56,14 +65,7 @@ public class ViewGenProject extends JFrame {
 		btnCreate.setBounds(105, 188, 89, 23);
 		contentPane.add(btnCreate);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewManageGenProject fenMngGenProj = new ViewManageGenProject();
-				fenMngGenProj.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(216, 188, 89, 23);
 		contentPane.add(btnCancel);
 		
@@ -82,6 +84,22 @@ public class ViewGenProject extends JFrame {
 		JList listTask = new JList();
 		listTask.setBounds(123, 141, 182, 20);
 		contentPane.add(listTask);
+		
+		this.addActionListener();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewManageGenProject fenMngGenProj = new ViewManageGenProject(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray());
+			fenMngGenProj.setVisible(true);	
+			dispose();
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnCancel.addActionListener(this);
 	}
 
 }

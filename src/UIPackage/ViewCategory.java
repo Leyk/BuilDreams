@@ -9,23 +9,33 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadeCategory;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.Action;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewCategory extends JFrame {
+public class ViewCategory extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldNameCat;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
 
-	public ViewCategory() {
+	private FacadeCategory myFacade;
+	
+	private JButton btnCancel;
+	
+	public ViewCategory(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadeCategory();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 317, 203);
 		setTitle("BuilDreams : Create a category");
@@ -55,16 +65,25 @@ public class ViewCategory extends JFrame {
 		btnCreate.setBounds(34, 130, 89, 23);
 		contentPane.add(btnCreate);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewManageCategory fenMngCategory = new ViewManageCategory(); 
-				fenMngCategory.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(172, 130, 89, 23);
 		contentPane.add(btnCancel);
+		
+		this.addActionListener();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewManageCategory fenMngCategory = new ViewManageCategory(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); 
+			fenMngCategory.setVisible(true);	
+			dispose();
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnCancel.addActionListener(this);
 	}
 
 }

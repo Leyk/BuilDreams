@@ -45,15 +45,30 @@ public class ViewRegistration extends JFrame implements ActionListener{
 	private JButton btnCancel;
 	
 	private FacadeRegistration myFacadeRegistration;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private AbstractPerson myAbstractPerson;
+	private ArrayList<AbstractRole> myAbstractArrayListRole;
 
 	/**
 	 * Create the frame.
 	 */
+	
+	public ViewRegistration (AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacadeRegistration = new FacadeRegistration();
+		this.myAbstractPerson = myAbstractPersonIn;
+		this.myAbstractArrayListRole = myAbstractArrayListRoleIn;
+		
+		this.affichageView();
+	}
+	
 	public ViewRegistration() {
 		this.myFacadeRegistration = new FacadeRegistration();
+		this.myAbstractArrayListRole = new ArrayList<AbstractRole>();
 		
+		this.affichageView();
+	}
+	
+	public void affichageView () {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 338, 337);
 		setTitle("BuilDreams : Registration");
@@ -161,12 +176,18 @@ public class ViewRegistration extends JFrame implements ActionListener{
 		contentPane.add(textFieldPassword);
 	}
 	
-	
 	public void actionPerformed (ActionEvent e){
 		if ("Cancel".equals(e.getActionCommand())){
-			ViewHome fenHome = new ViewHome();  // A CHANGER, renvoyer si user non connectï¿½ ou si admin
-			fenHome.setVisible(true);	
-			dispose();
+			if (this.myAbstractArrayListRole.isEmpty()){
+				ViewHome fenHome = new ViewHome();
+				fenHome.setVisible(true);	
+				dispose();
+			}
+			else {
+				ViewManageMember fenMember = new ViewManageMember(this.myAbstractPerson,this.myAbstractArrayListRole);
+				fenMember.setVisible(true);
+				dispose();
+			}	
 		}
 		else if ("Yes".equals(e.getActionCommand())){
 			if (chckbxYes.isSelected()){
@@ -209,11 +230,20 @@ public class ViewRegistration extends JFrame implements ActionListener{
 			   		     "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Fï¿½licitation vous avez rï¿½ussi ï¿½ vous inscrire, allez tout de suite vous connecter !",
-			   		     "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-				ViewHome fenHome = new ViewHome();
-				fenHome.setVisible(true);	
-				dispose();
+				if (this.myAbstractArrayListRole.isEmpty()){
+					JOptionPane.showMessageDialog(null, "Fï¿½licitation vous avez rï¿½ussi ï¿½ vous inscrire, allez tout de suite vous connecter !",
+				   		     "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+					ViewHome fenHome = new ViewHome();
+					fenHome.setVisible(true);	
+					dispose();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Félicitation vous avez réussi à inscrire cette personne !",
+				   		     "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+					ViewManageMember fenMember = new ViewManageMember(this.myAbstractPerson,this.myAbstractArrayListRole);
+					fenMember.setVisible(true);
+					dispose();
+				}				
 			}
 		}
 	}

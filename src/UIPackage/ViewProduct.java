@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import BusinessLogic.AbstractPerson;
 import BusinessLogic.AbstractRole;
+import BusinessLogic.FacadeBasket;
+import BusinessLogic.FacadeProductSeller;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,16 +22,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewProduct extends JFrame {
+public class ViewProduct extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldDescription;
 	private JTextField textFieldReference;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
+	private FacadeProductSeller myFacade;
+	
+	private JButton btnCancel;
 
-	public ViewProduct() {
+	public ViewProduct(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myFacade = new FacadeProductSeller();
+		
+		this.myFacade.setMyPerson(myAbstractPersonIn);
+		this.myFacade.setMyAbstractRoleArray(myAbstractArrayListRoleIn);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 338, 358);
 		contentPane = new JPanel();
@@ -82,14 +91,7 @@ public class ViewProduct extends JFrame {
 		btnAdd.setBounds(36, 285, 89, 23);
 		contentPane.add(btnAdd);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageShop fenMngShop = new ViewManageShop();
-				fenMngShop.setVisible(true);	
-				dispose();
-			}
-		});
+		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(192, 285, 89, 23);
 		contentPane.add(btnCancel);
 		
@@ -116,5 +118,21 @@ public class ViewProduct extends JFrame {
 		JFormattedTextField formattedTextFieldUnitPrice = new JFormattedTextField();
 		formattedTextFieldUnitPrice.setBounds(123, 253, 76, 20);
 		contentPane.add(formattedTextFieldUnitPrice);
+		
+		this.addActionListener();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Cancel".equals(e.getActionCommand())){
+			ViewManageShop fenMngShop = new ViewManageShop(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray());
+			fenMngShop.setVisible(true);	
+			dispose();
+		}
+	}
+	
+	public void addActionListener () {
+		this.btnCancel.addActionListener(this);
 	}
 }

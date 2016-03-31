@@ -17,10 +17,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ViewHome extends JFrame {
+public class ViewHome extends JFrame implements ActionListener {
 
-	private Boolean isConnected;
-	private String role;
+	AbstractPerson myAbstractPerson;
+	ArrayList<AbstractRole> myAbstractArrayListRole;
+	
+	private String myRole;
 	
 	private JPanel contentPane;
 	
@@ -43,19 +45,17 @@ public class ViewHome extends JFrame {
 	private JButton btnMyShop;
 	private JButton btnOrder;
 	private JButton btnManagePersoTask;
-	private AbstractPerson myPerson;
-	private ArrayList<AbstractRole> myAbstractRoleArray;
 	
 	
 	public ViewHome() {
-		this.isConnected = false;
-		this.role = "Visiteur";
+		this.myAbstractArrayListRole = new ArrayList<AbstractRole>(0);
 		this.CreationViewHome();
 	}
 	
-	public ViewHome(Boolean isConnectedIn, String role) {
-		this.isConnected = isConnectedIn;
-		this.role = role;
+	public ViewHome(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn) {
+		this.myAbstractPerson = myAbstractPersonIn;
+		this.myAbstractArrayListRole = myAbstractArrayListRoleIn;
+		
 		this.CreationViewHome();
 	}
 	
@@ -69,66 +69,42 @@ public class ViewHome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblConnectAs = new JLabel("Connected as " + role);
+		myRole = "";
+		
+		
+		
+		if (this.myAbstractArrayListRole.isEmpty())  {
+			myRole = "visiteur";
+		}
+		else {
+			myRole = this.myAbstractArrayListRole.get(0).getWording();
+		}
+		
+		JLabel lblConnectAs = new JLabel("Connected as " + myRole);
 		lblConnectAs.setBounds(230, 11, 194, 14);
 		contentPane.add(lblConnectAs);
 		
 		this.btnEditProfile = new JButton("Edit my profile");
-		btnEditProfile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewEditProfile fenEditProfile = new ViewEditProfile(role);
-				fenEditProfile.setVisible(true);		
-				dispose();
-			}
-		});
 		btnEditProfile.setBounds(10, 46, 219, 23);
 		contentPane.add(btnEditProfile);
 		btnEditProfile.setEnabled(false);
 		
 		this.btnMngProduct = new JButton("Manage products");
-		btnMngProduct.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageShop fenMngShop = new ViewManageShop();
-				fenMngShop.setVisible(true);		
-				dispose();
-			}
-		});
 		btnMngProduct.setBounds(10, 114, 219, 23);
 		contentPane.add(btnMngProduct);
 		btnMngProduct.setVisible(false);
 		
 		this.btnManagePersoProj = new JButton("My projects");
-		btnManagePersoProj.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManagePersoProject fenMngPersoProj = new ViewManagePersoProject();
-				fenMngPersoProj.setVisible(true);		
-				dispose();
-			}
-		});
 		btnManagePersoProj.setBounds(10, 80, 219, 23);
 		contentPane.add(btnManagePersoProj);
 		btnManagePersoProj.setEnabled(false);
 		
 		this.btnMngGenProj = new JButton("Manage general projects");
-		btnMngGenProj.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageGenProject fenMngGenProj = new ViewManageGenProject();
-				fenMngGenProj.setVisible(true);		
-				dispose();
-			}
-		});
 		btnMngGenProj.setBounds(10, 80, 219, 23);
 		contentPane.add(btnMngGenProj);
 		btnMngGenProj.setVisible(false);
 		
 		this.btnOrder = new JButton("My orders");
-		btnOrder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageOrder fenMngOrder = new ViewManageOrder();
-				fenMngOrder.setVisible(true);		
-				dispose();
-			}
-		});
 		btnOrder.setBounds(10, 114, 219, 23);
 		contentPane.add(btnOrder);
 		btnOrder.setEnabled(false);
@@ -139,13 +115,6 @@ public class ViewHome extends JFrame {
 		btnMyJournal.setEnabled(false);
 		
 		this.btnMngUser = new JButton("Manage members");
-		btnMngUser.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageMember fenMngUser = new ViewManageMember();
-				fenMngUser.setVisible(true);		
-				dispose();
-			}
-		});
 		btnMngUser.setBounds(240, 46, 219, 23);
 		contentPane.add(btnMngUser);
 		btnMngUser.setVisible(false);
@@ -156,148 +125,71 @@ public class ViewHome extends JFrame {
 		btnMembers.setEnabled(false);*/
 		
 		this.btnShop = new JButton("Online shop");
-		btnShop.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewOnlineShop fenOnlineShop = new ViewOnlineShop();
-				fenOnlineShop.setVisible(true);		
-				dispose();
-			}
-		});
 		btnShop.setBounds(240, 46, 219, 23);
 		contentPane.add(btnShop);
 		btnShop.setEnabled(false);
 		
 		this.btnMngCateg = new JButton("Manage product categories");
-		btnMngCateg.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageCategory fenMngCategory = new ViewManageCategory();
-				fenMngCategory.setVisible(true);		
-				dispose();
-			}
-		});
 		btnMngCateg.setBounds(240,114,219,23);
 		contentPane.add(btnMngCateg);
 		btnMngCateg.setVisible(false);
 		
 		this.btnMyShop = new JButton("My shop");
-		btnMyShop.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageShop fenMngShop = new ViewManageShop();
-				fenMngShop.setVisible(true);		
-				dispose();
-			}
-		});
 		btnMyShop.setBounds(240, 46, 219, 23);
 		contentPane.add(btnMyShop);
 		btnMyShop.setVisible(false);
 		
 		this.btnManageBasket = new JButton("My basket");
-		btnManageBasket.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewBasket fenBasket = new ViewBasket();
-				fenBasket.setVisible(true);		
-				dispose();
-			}
-		});
 		btnManageBasket.setBounds(10, 148, 219, 23);
 		contentPane.add(btnManageBasket);
 		btnManageBasket.setEnabled(false);
 		
 		
 		this.btnManagePersoTask = new JButton("My tasks");
-		btnManagePersoTask.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManagePersoTask fenMngPersoTask = new ViewManagePersoTask();
-				fenMngPersoTask.setVisible(true);		
-				dispose();
-			}
-		});
 		btnManagePersoTask.setBounds(240, 80, 219, 23);
 		contentPane.add(btnManagePersoTask);
 		btnManagePersoTask.setEnabled(false);
 		
 		this.btnMngGenTask = new JButton("Manage general tasks");
-		btnMngGenTask.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageGenTask fenMngGenTask = new ViewManageGenTask();
-				fenMngGenTask.setVisible(true);		
-				dispose();
-			}
-		});
 		btnMngGenTask.setBounds(240, 80, 219, 23);
 		contentPane.add(btnMngGenTask);
 		btnMngGenTask.setVisible(false);
 		
 		this.btnOffers = new JButton("My offers ");
-		btnOffers.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ViewManageOffer fenMngOffer = new ViewManageOffer();
-				fenMngOffer.setVisible(true);		
-				dispose();
-			}
-		});
 		btnOffers.setBounds(240, 114, 219, 23);
 		contentPane.add(btnOffers);
 		btnOffers.setEnabled(false);
 		
 		this.btnLogOut = new JButton("Log out");
-		btnLogOut.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewHome fenHome = new ViewHome();
-				dispose();
-				JOptionPane.showMessageDialog(null, "You are now disconnected.",
-			   		     "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-				fenHome.setVisible(true);
-			}
-		});
 		btnLogOut.setBounds(82, 182, 100, 23);
 		contentPane.add(btnLogOut);
 		btnLogOut.setVisible(false);
 		
 		this.btnSignIn = new JButton("Sign in");
-		btnSignIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewRegistration fenReg = new ViewRegistration();
-				fenReg.setVisible(true);
-				dispose();
-			}
-		});
 		btnSignIn.setBounds(190, 182, 100, 23);
 		contentPane.add(btnSignIn);
 		
 		this.btnLogIn = new JButton("Log in");
-		btnLogIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ViewLogin fenLogin = new ViewLogin();
-				fenLogin.setVisible(true);
-				dispose();
-			}
-		});
 		btnLogIn.setBounds(72, 182, 100, 23);
 		contentPane.add(btnLogIn);
 		
 		this.btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-		    	System.exit(0); 
-			}
-		});
 		btnQuit.setBounds(310, 182, 100, 23);
 		contentPane.add(btnQuit);
 		
 		this.setLocationRelativeTo(null);
 		
-		if (this.isConnected & this.role == "User"){
+		if (myRole.equals("users")){
 			this.setEnableButtonsUser();
 		}
-		if (this.isConnected & this.role == "Administrator"){
+		else if (myRole.equals("admin")){
 			this.setVisibleButtonsAdmin();
 		}
-		if (this.isConnected & this.role == "Seller"){
+		else if (myRole.equals("seller")){
 			this.setVisibleButtonsSeller();
 		}
 		
+		this.addActionListener();
 	}
 	
 	private void setEnableButtonsUser() {
@@ -352,12 +244,129 @@ public class ViewHome extends JFrame {
 		btnMyShop.setVisible(true);
 		btnEditProfile.setEnabled(true);
 		btnOrder.setEnabled(true);	
-		btnOffers.setEnabled(true);
+		//btnOffers.setEnabled(true);
 		btnOffers.setBounds(240, 80, 219, 23);
 		btnOrder.setBounds(10,80,219,23);
 		btnQuit.setBounds(310, 114, 100, 23);
 		btnLogOut.setBounds(82, 114, 100, 23);
 		setBounds(100, 100, 488, 200);
 		setLocationRelativeTo(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if ("Edit my profile".equals(e.getActionCommand())){
+			System.out.println(String.valueOf(myAbstractPerson.getPassword()));
+			System.out.println(String.valueOf(myAbstractArrayListRole.get(0).getWording()));
+			ViewEditProfile fenEditProfile = new ViewEditProfile(myAbstractPerson, myAbstractArrayListRole);
+			fenEditProfile.setVisible(true);		
+			dispose();
+		}
+		else if ("Manage products".equals(e.getActionCommand())){
+			ViewManageShop fenMngShop = new ViewManageShop(myAbstractPerson,myAbstractArrayListRole);
+			fenMngShop.setVisible(true);		
+			dispose();
+		}
+		else if ("My projects".equals(e.getActionCommand())){
+			ViewManagePersoProject fenMngPersoProj = new ViewManagePersoProject(myAbstractPerson,myAbstractArrayListRole);
+			fenMngPersoProj.setVisible(true);		
+			dispose();
+		}
+		else if ("Manage general projects".equals(e.getActionCommand())){
+			ViewManageGenProject fenMngGenProj = new ViewManageGenProject(myAbstractPerson,myAbstractArrayListRole);
+			fenMngGenProj.setVisible(true);		
+			dispose();
+		}
+		else if ("My orders".equals(e.getActionCommand())){
+			ViewManageOrder fenMngOrder = new ViewManageOrder(myAbstractPerson,myAbstractArrayListRole);
+			fenMngOrder.setVisible(true);		
+			dispose();
+		}
+		else if ("My journal".equals(e.getActionCommand())){
+			
+		}
+		else if ("Manage members".equals(e.getActionCommand())){
+			ViewManageMember fenMngUser = new ViewManageMember(myAbstractPerson,myAbstractArrayListRole);
+			fenMngUser.setVisible(true);		
+			dispose();
+		}
+		else if ("Online shop".equals(e.getActionCommand())){
+			ViewOnlineShop fenOnlineShop = new ViewOnlineShop(myAbstractPerson,myAbstractArrayListRole);
+			fenOnlineShop.setVisible(true);		
+			dispose();
+		}
+		else if ("Manage product categories".equals(e.getActionCommand())){
+			ViewManageCategory fenMngCategory = new ViewManageCategory(myAbstractPerson,myAbstractArrayListRole);
+			fenMngCategory.setVisible(true);		
+			dispose();
+		}
+		else if ("My shop".equals(e.getActionCommand())){
+			ViewManageShop fenMngShop = new ViewManageShop(myAbstractPerson,myAbstractArrayListRole);
+			fenMngShop.setVisible(true);		
+			dispose();
+		}
+		else if ("My basket".equals(e.getActionCommand())){
+			ViewBasket fenBasket = new ViewBasket(myAbstractPerson,myAbstractArrayListRole);
+			fenBasket.setVisible(true);		
+			dispose();
+		}
+		else if ("My tasks".equals(e.getActionCommand())){
+			ViewManagePersoTask fenMngPersoTask = new ViewManagePersoTask(myAbstractPerson,myAbstractArrayListRole);
+			fenMngPersoTask.setVisible(true);		
+			dispose();
+		}
+		else if ("Manage general tasks".equals(e.getActionCommand())){
+			ViewManageGenTask fenMngGenTask = new ViewManageGenTask(myAbstractPerson,myAbstractArrayListRole);
+			fenMngGenTask.setVisible(true);		
+			dispose();
+		}
+		else if ("My offers ".equals(e.getActionCommand())){
+			//ViewManageOffer fenMngOffer = new ViewManageOffer(myAbstractPerson,myAbstractArrayListRole);
+			//fenMngOffer.setVisible(true);		
+			//dispose();
+		}
+		else if ("Log out".equals(e.getActionCommand())){
+			ViewHome fenHome = new ViewHome();
+			dispose();
+			JOptionPane.showMessageDialog(null, "You are now disconnected.",
+		   		     "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+			fenHome.setVisible(true);
+		}
+		else if ("Sign in".equals(e.getActionCommand())){
+			ViewRegistration fenReg = new ViewRegistration();
+			fenReg.setVisible(true);
+			dispose();
+		}
+		else if ("Log in".equals(e.getActionCommand())){
+			ViewLogin fenLogin = new ViewLogin();
+			fenLogin.setVisible(true);
+			dispose();
+		}
+		else if ("Quit".equals(e.getActionCommand())){
+			dispose();
+	    	System.exit(0);
+		}
+	}
+	
+	private void addActionListener () {
+		this.btnEditProfile.addActionListener(this);
+		this.btnManagePersoProj.addActionListener(this);
+		this.btnMyJournal.addActionListener(this);
+		this.btnShop.addActionListener(this);
+		this.btnManageBasket.addActionListener(this);
+		this.btnLogOut.addActionListener(this);
+		this.btnOffers.addActionListener(this);
+		this.btnSignIn.addActionListener(this);
+		this.btnLogIn.addActionListener(this);
+		this.btnMngProduct.addActionListener(this);
+		this.btnMngUser.addActionListener(this);
+		this.btnMngCateg.addActionListener(this);
+		this.btnMngGenProj.addActionListener(this);
+		this.btnMngGenTask.addActionListener(this);
+		this.btnQuit.addActionListener(this);
+		this.btnMyShop.addActionListener(this);
+		this.btnOrder.addActionListener(this);
+		this.btnManagePersoTask.addActionListener(this);
 	}
 }

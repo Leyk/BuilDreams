@@ -26,6 +26,7 @@ public class ViewOffer extends JFrame {
 	private JTable tableau;
 	private AbstractPerson myPerson;
 	private ArrayList<AbstractRole> myAbstractRoleArray;
+	
 
 	public ViewOffer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,9 +42,9 @@ public class ViewOffer extends JFrame {
 		 JButton btnCancel = new JButton("Cancel");
 		    btnCancel.addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent e) {
-		    		ViewManageOrder fenMngOrder= new ViewManageOrder(); // A REMPLACER PAR LE ROLE RECUPERE
-		    		fenMngOrder.setVisible(true);	
-					dispose();
+		    		//ViewManageOrder fenMngOrder= new ViewManageOrder(); // A REMPLACER PAR LE ROLE RECUPERE
+		    		//fenMngOrder.setVisible(true);	
+					//dispose();
 		    	}
 		    });
 			btnCancel.setBounds(176, 130, 112, 23);
@@ -53,11 +54,11 @@ public class ViewOffer extends JFrame {
 		    btnMngOrder.setText("Valide prices");   // A PARTIR DE L'ETAT DE LA COMMANDE : si d�j� valid�e le bouton doit s'appeler "Sent"
 			btnMngOrder.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					ViewManageOrder fenMngOrder = new ViewManageOrder (); 
+					/*ViewManageOrder fenMngOrder = new ViewManageOrder (); 
 					JOptionPane.showMessageDialog(null, "Offer validation successful",
 				   		     "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
 					fenMngOrder.setVisible(true);	
-					dispose();				
+					dispose();*/				
 				}
 			});
 			}
@@ -65,9 +66,11 @@ public class ViewOffer extends JFrame {
 				btnMngOrder.setText("Order");
 				btnMngOrder.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						/*
 						ViewPayment fenPayment = new ViewPayment();
 						fenPayment.setVisible(true);
 						dispose();
+						*/
 					}
 				});			
 			}
