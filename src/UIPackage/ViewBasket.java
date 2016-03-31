@@ -36,7 +36,7 @@ public class ViewBasket extends JFrame implements ActionListener{
 	
 	private JButton btnHome;
 	private JButton btnOrder;
-	
+	private Object[][] data;
 	private FacadeBasket myFacade;
 
 	  public ViewBasket(AbstractPerson myAbstractPersonIn, ArrayList<AbstractRole> myAbstractArrayListRoleIn){
@@ -50,12 +50,18 @@ public class ViewBasket extends JFrame implements ActionListener{
 		  this.setBounds(100, 100, 488, 258);
 		  this.setTitle("BuilDreams : My Basket");
 		  
-		  Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-			      {"Wood", 100, 200,"Dupont","Delete"},
-			      {"Plastic", 100, 50,"Kane","Delete"},
-			      {"Hammer", 100, 45,"Vasseur","Delete"},
-			      {"Screw", 100, 19,"Faivre","Delete"}
-			    };
+		  
+		  // Retrieve the content of the basket for the connected user
+		  ArrayList<ArrayList<String>> myProducts = myFacade.loadBasket();
+		  data = new Object[myProducts.size()][5];
+			 for (int i=0;i<myProducts.size();i++){
+				 data[i][0] = myProducts.get(i).get(1);  
+				 data[i][1] = Integer.parseInt(myProducts.get(i).get(3));
+				 data[i][2] = Integer.parseInt(myProducts.get(i).get(4));
+				 data[i][3] = myProducts.get(i).get(6);
+				 data[i][4] = "Delete";
+			 }                             
+			 
 	    String  title[] = {"Product name", "Chosen Quantity", "Price", "Seller"," "};
 	    
 	    btnHome = new JButton("Home");
@@ -66,7 +72,7 @@ public class ViewBasket extends JFrame implements ActionListener{
 		
 		JLabel lblPrixTot = new JLabel();
 		lblPrixTot.setBounds(32, 11, 252, 24);
-		lblPrixTot.setText("Total Price (ï¿½): ");
+		lblPrixTot.setText("Total Price (€): ");
 		
 		JPanel panbtn = new JPanel();
 		panbtn.add(btnOrder);
@@ -75,6 +81,8 @@ public class ViewBasket extends JFrame implements ActionListener{
 		JPanel panPrixTot = new JPanel();
 		panPrixTot.add(lblPrixTot);
 	    
+		
+		// Setting of the table
 	    JSpinner monspin = new JSpinner();
 	    this.model = new ModeleDonneesTab(data, title);
 	    this.tableau = new JTable(model);
@@ -111,8 +119,5 @@ public class ViewBasket extends JFrame implements ActionListener{
 	private void addActionListener (){
 		this.btnHome.addActionListener(this);
 		this.btnOrder.addActionListener(this);
-	}
-	
-	  
-	  
+	} 
 }

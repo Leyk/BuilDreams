@@ -27,7 +27,7 @@ public class FacadeBasket {
 		this.myManagerBasket = new ManagerBasket();
 	}
 	
-	// Charge les donnï¿½es du panier
+	// Charge les données du panier
 	public ArrayList<ArrayList<String>> loadBasket(){
 		return this.myManagerBasket.loadBasket();
 	}

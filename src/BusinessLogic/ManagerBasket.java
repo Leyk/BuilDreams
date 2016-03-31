@@ -38,8 +38,8 @@ public class ManagerBasket {
 		ArrayList<ArrayList<String>> resBasket = new ArrayList<ArrayList<String>>();
 		AbstractBasket myBasket = this.myFactory.createBasket();
 		try {	
-		myBasket.loadDB(this.getUserIdRole());
-		resBasket = myBasket.loadContentDB();
+			myBasket.loadDB(this.myAbstractRoleArray.get(0).getIdRole());
+			resBasket = myBasket.loadContentDB();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			resBasket.add(0, null);
