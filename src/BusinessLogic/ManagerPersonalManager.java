@@ -1,6 +1,7 @@
 package BusinessLogic;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
@@ -35,7 +36,7 @@ public class ManagerPersonalManager {
 
 	public boolean addPersonalProjectFromGeneralProject(int idGeneralProject, Date beginDate, Date endDate) {
 		// TODO Auto-generated method stub
-		return false;
+				return false;
 	}
 
 	public boolean addGeneralProject(String name, String description, Date beginDate, Date endDate,

@@ -1,5 +1,6 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
@@ -33,63 +34,129 @@ public class ManagerCategory {
 	}
 
 	public ArrayList<ArrayList<String>> loadAllProductCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resProductCategory = new ArrayList<ArrayList<String>>();
+		AbstractProductCategory myProductCategory = this.myFactory.createProductCategory();
+		try {	
+		resProductCategory = myProductCategory.loadAllDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resProductCategory.add(0, null);
+		}
+		return resProductCategory;
 	}
 
 	public boolean addProductCategory(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProductCategory myProductCategory = this.myFactory.createProductCategory(0, name, 0);
+		try {
+		int id = myProductCategory.saveInsertDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean updateProductCategory(int idCategory, String newName) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProductCategory myProductCategory = this.myFactory.createProductCategory(idCategory, newName, 0);
+		try {
+		myProductCategory.saveUpdateDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean deleteProductCategory(int idCategory) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProductCategory myProductCategory = this.myFactory.createProductCategory(idCategory, "", 0);
+		try {
+		myProductCategory.deleteDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public ArrayList<ArrayList<String>> loadAllProjectCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resProjectCategory = new ArrayList<ArrayList<String>>();
+		AbstractProjectCategory myProjectCategory = this.myFactory.createProjectCategory();
+		try {	
+		resProjectCategory = myProjectCategory.loadAllDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resProjectCategory.add(0, null);
+		}
+		return resProjectCategory;
 	}
 
 	public boolean addProjectCategory(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProjectCategory myProjectCategory = this.myFactory.createProjectCategory(0, name, 0);
+		try {
+		int id = myProjectCategory.saveInsertDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean updateProjectCategory(int idProjectCategory, String newName) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProjectCategory myProjectCategory = this.myFactory.createProjectCategory(idProjectCategory, newName, 0);
+		try {
+		myProjectCategory.saveUpdateDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean deleteProjectCategory(int idProjectCategory) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProjectCategory myProjectCategory = this.myFactory.createProjectCategory(idProjectCategory, "", 0);
+		try {
+		myProjectCategory.deleteDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public ArrayList<ArrayList<String>> loadAllTaskCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resTaskCategory = new ArrayList<ArrayList<String>>();
+		AbstractTaskCategory myTaskCategory = this.myFactory.createTaskCategory();
+		try {	
+		resTaskCategory = myTaskCategory.loadAllDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resTaskCategory.add(0, null);
+		}
+		return resTaskCategory;
 	}
 
 	public boolean addTaskCategory(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractTaskCategory myTaskCategory = this.myFactory.createTaskCategory(0, name, 0);
+		try {
+		int id = myTaskCategory.saveInsertDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean updateTaskCategory(int idTaskCategory, String newName) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractTaskCategory myTaskCategory = this.myFactory.createTaskCategory(idTaskCategory, newName, 0);
+		try {
+		myTaskCategory.saveUpdateDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean deleteTaskCategory(int idTaskCategory) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractTaskCategory myTaskCategory = this.myFactory.createTaskCategory(idTaskCategory, "", 0);
+		try {
+		myTaskCategory.deleteDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 	
 }

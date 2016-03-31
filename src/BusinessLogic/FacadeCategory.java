@@ -26,6 +26,7 @@ public class FacadeCategory {
 		this.myManagerCategory = new ManagerCategory();
 	}
 	
+		
 	//PRODUCT CATEGORY MANAGE
 	
 	// Ca charge toutes les categories de produit leur id et leur nom

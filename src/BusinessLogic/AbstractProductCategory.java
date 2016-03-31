@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public abstract class AbstractProductCategory {
 	private int idCategory; //PrimarKey
 	private String name;
@@ -40,6 +43,13 @@ public abstract class AbstractProductCategory {
 	public void setIdSuperCategory(int idSuperCategory) {
 		this.idSuperCategory = idSuperCategory;
 	}
-	
+
+	public abstract ArrayList<ArrayList<String>> loadAllDB() throws SQLException;
+
+	public abstract int saveInsertDB() throws SQLException;
+
+	public abstract void saveUpdateDB() throws SQLException;
+
+	public abstract void deleteDB() throws SQLException;
 	
 }

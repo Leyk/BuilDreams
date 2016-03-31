@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.sql.Date;
+import java.sql.SQLException;
 
 public abstract class AbstractPersonalProject {
 	private int idPersonalProject; //PrimarKey
@@ -82,6 +83,8 @@ public abstract class AbstractPersonalProject {
 	public void setIdProjectCategory(int idProjectCategory) {
 		this.idProjectCategory = idProjectCategory;
 	}
+
+	public abstract int saveInsertFromGeneralProjectDB(int idGeneralProject, Date beginDate, Date endDate) throws SQLException;
 	
 	
 }

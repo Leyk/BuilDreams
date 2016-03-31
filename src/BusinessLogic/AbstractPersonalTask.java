@@ -1,6 +1,8 @@
 package BusinessLogic;
 
 import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public abstract class AbstractPersonalTask {
 	private String name;
@@ -93,6 +95,7 @@ public abstract class AbstractPersonalTask {
 	public void setIdTaskCategory(int idTaskCategory) {
 		this.idTaskCategory = idTaskCategory;
 	}
+
 	
 	
 }

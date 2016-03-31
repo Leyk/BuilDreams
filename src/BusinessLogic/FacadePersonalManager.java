@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class FacadePersonalManager {
 	
 	private ManagerPersonalManager myManagerPersonalManager;
+	private ManagerCategory myManagerCategory;
+	private ManagerGeneralManager myManagerGeneralManager;
 	
 	public AbstractPerson getMyPerson() {
 		return this.myManagerPersonalManager.getMyPerson();
@@ -26,6 +28,8 @@ public class FacadePersonalManager {
 
 	public FacadePersonalManager() {
 		this.myManagerPersonalManager = new ManagerPersonalManager();
+		this.myManagerCategory = new ManagerCategory();
+		this.myManagerGeneralManager = new ManagerGeneralManager();
 	}
 	
 	// A SIMOM : Lors du select penses bien � recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
@@ -82,6 +86,31 @@ public class FacadePersonalManager {
 	// Charger les category de project : facade category
 	// Charger les category de Tache : facade category
 	// Charger les category de produits : facade category
+	
+	// Charger la liste des project generaux
+	public ArrayList<ArrayList<String>> loadAllGeneralProject(){
+		return this.myManagerGeneralManager.loadAllGeneralProject();
+	}
+	
+	// Charger un projet general
+	public ArrayList<String> loadGeneralProject(int idGeneralProject){
+		return this.myManagerGeneralManager.loadGeneralProject(idGeneralProject);
+	}
+	
+	// Ca charge toutes les categories de produit leur id et leur nom
+	public ArrayList<ArrayList<String>> loadAllProductCategory(){
+		return this.myManagerCategory.loadAllProductCategory();
+	}
+		
+	// Ca charge toutes les categories de projet leur id et leur nom
+	public ArrayList<ArrayList<String>> loadAllProjectCategory(){
+		return this.myManagerCategory.loadAllProjectCategory();
+	}
+			
+	// Ca charge toutes les categories de tache leur id et leur nom
+	public ArrayList<ArrayList<String>> loadAllTaskCategory(){
+		return this.myManagerCategory.loadAllTaskCategory();
+	}
 	
 	// Creation projet personel a partir d'un projet general : un projet generale est choisie la personne auras que a mettre les date et faire create, les taches avec leur produit relier sont faite automatiquement, il pourra les modifier ulterieurement
 	public boolean addPersonalProjectFromGeneralProject(int idGeneralProject, Date beginDate, Date endDate){

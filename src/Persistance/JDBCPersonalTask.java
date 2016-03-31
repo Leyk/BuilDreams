@@ -1,5 +1,8 @@
 package Persistance;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import BusinessLogic.AbstractPersonalTask;
 
@@ -16,4 +19,6 @@ public class JDBCPersonalTask extends AbstractPersonalTask{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 }

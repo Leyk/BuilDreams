@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class FacadeGeneralManager {
 	
 	private ManagerGeneralManager myManagerGeneralManager;
+	private ManagerCategory myManagerCategory;
 	
 	public AbstractPerson getMyPerson() {
 		return this.myManagerGeneralManager.getMyPerson();
@@ -25,6 +26,7 @@ public class FacadeGeneralManager {
 
 	public FacadeGeneralManager() {
 		this.myManagerGeneralManager = new ManagerGeneralManager();
+		this.myManagerCategory = new ManagerCategory();
 	}
 	
 	// A SIMOM : Lors du select penses bien � recuper la liste de [idCategoryTache] pour apres l'envoyer dans la requette de creation ou d'update
@@ -77,6 +79,21 @@ public class FacadeGeneralManager {
 	// Charger les category de project : facade category
 	// Charger les category de Tache : facade category
 	// Charger les category de produits : facade category
+	
+	// Ca charge toutes les categories de produit leur id et leur nom
+	public ArrayList<ArrayList<String>> loadAllProductCategory(){
+		return this.myManagerCategory.loadAllProductCategory();
+	}
+	
+	// Ca charge toutes les categories de projet leur id et leur nom
+	public ArrayList<ArrayList<String>> loadAllProjectCategory(){
+		return this.myManagerCategory.loadAllProjectCategory();
+	}
+		
+	// Ca charge toutes les categories de tache leur id et leur nom
+	public ArrayList<ArrayList<String>> loadAllTaskCategory(){
+		return this.myManagerCategory.loadAllTaskCategory();
+	}
 	
 	// Charger les taches generales
 	public ArrayList<ArrayList<String>> loadAllGeneralTask(){

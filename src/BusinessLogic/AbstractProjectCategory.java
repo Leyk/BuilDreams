@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public abstract class AbstractProjectCategory {
 	private int idProjectCategory; //PrimarKey
 	private String name;
@@ -33,6 +36,10 @@ public abstract class AbstractProjectCategory {
 	public void setIdSuperProjectCategory(int idSuperProjectCategory) {
 		this.idSuperProjectCategory = idSuperProjectCategory;
 	}
+	public abstract ArrayList<ArrayList<String>> loadAllDB() throws SQLException;
+	public abstract int saveInsertDB() throws SQLException;
+	public abstract void saveUpdateDB() throws SQLException;
+	public abstract void deleteDB() throws SQLException;
 	
 	
 }
