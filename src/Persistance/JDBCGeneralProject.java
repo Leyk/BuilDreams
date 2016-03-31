@@ -20,13 +20,13 @@ public class JDBCGeneralProject extends AbstractGeneralProject{
 	@Override
 	public ArrayList<ArrayList<String>> loadAllDB() throws SQLException {
 		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
-		String queryGeneralProjectAll = "Select idGeneralProject, name From GeneralProject;";
+		String queryGeneralProjectAll = "Select GP.idGeneralProject, GP.name, C.name From GeneralProject GP, ProjectCategory C where GP.idprojectcategory = c.idprojectcategory ;";
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryGeneralProjectAll);
 		int i = 0;
 		while (rs.next()) {
 			ArrayList<String> temp = new ArrayList<String>();
-	    	for (int j= 0; j<2; j++){
+	    	for (int j= 0; j<3; j++){
 	    		temp.add(j,rs.getString(j+1));
 	    	}
 	    	res.add(i, temp);

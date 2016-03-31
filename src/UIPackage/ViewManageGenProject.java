@@ -25,6 +25,7 @@ public class ViewManageGenProject extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
+	private Object[][] data;
 	
 	private JButton btnHome;
 	private JButton btnCreateGeneralProject;
@@ -66,14 +67,22 @@ public class ViewManageGenProject extends JFrame implements ActionListener{
 			panNorth.add(lblInfos);
 			this.getContentPane().add(panNorth, BorderLayout.NORTH);
 			this.getContentPane().add(panbtn, BorderLayout.SOUTH);
-			
-			 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-				      {"Project1", "Cat1", "Update","Delete"},
-				      {"Project2", "Cat2", "Update","Delete"},
-				      {"Project3", "Cat3", "Update","Delete"},
-				      {"Project4", "Cat4", "Update","Delete"}
-				    };
-		    String  title[] = {"Project name", "Category", " ", "  "};
+					
+			// Retrieve the content of the all the general projects in the shop
+			 ArrayList<ArrayList<String>> allProject = myFacade.loadAllGeneralProject();
+			 System.out.println("kikoo" + allProject);
+			 data = new Object[allProject.size()][5];
+				 for (int i=0;i<allProject.size();i++){
+					 data[i][0] = allProject.get(i).get(0); 
+					 data[i][1] = allProject.get(i).get(1); 
+					 System.out.println(data[i][1]);
+					 data[i][2] = allProject.get(i).get(2); 
+					 System.out.println(data[i][2]);
+					 data[i][3] = "Update";
+					 data[i][4] = "Delete";
+				 }                           
+
+		    String  title[] = {"ID Project", "Project name", "Category", " ", "  "};
 		    
 		    this.model = new ModeleDonneesTab(data, title);
 		    this.tableau = new JTable(model);
@@ -93,7 +102,7 @@ public class ViewManageGenProject extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if ("Home".equals(e.getActionCommand())){
-			ViewHome fenHome = new ViewHome(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); // A REMPLACER PAR LE ROLE RECUPERE
+			ViewHome fenHome = new ViewHome(this.myFacade.getMyPerson(),this.myFacade.getMyAbstractRoleArray()); 
 			fenHome.setVisible(true);	
 			dispose();
 		}
