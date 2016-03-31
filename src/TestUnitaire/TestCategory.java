@@ -4,7 +4,7 @@ import org.junit.Test;
 import BusinessLogic.*;
 
 public class TestCategory {
-	@Test
+/*	@Test
 	public void TestValidAddGeneralManager()  {
 		ManagerGeneralManager m = new ManagerGeneralManager();
 		String name = "Montages";
@@ -31,13 +31,13 @@ public class TestCategory {
 
 	}
 
+*/
 	@Test
 	public void TestValidLoadAllGeneralProject()  {
 		// Permet de charger tous les generalProject presentes dans la bd
 		ManagerGeneralManager m = new ManagerGeneralManager();
 	Assert.assertNotNull("Le chargement a marche",m.loadAllGeneralProject());
 	}
-	
 	
 
 }
