@@ -102,11 +102,10 @@ public class JDBCGeneralProject extends AbstractGeneralProject{
 
 	@Override
 	public ArrayList<ArrayList<String>> loadAllTaskLinked() throws SQLException {
-		//// NE PAS UTILISER
 		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
-		String queryGeneralProjectAll = "Select idGeneralProject, name From GeneralProject;";
+		String queryTaskLinked = "Select generalTask.idGeneralTask , generalTask.name, description, theoreticalLength, idTaskCategory From GeneralTask, isBelongGeneral where isBelongGeneral.idGeneralProject = '" + this.getIdGeneralProject() + "' and isBelongGeneral.idGeneralTask = GeneralTask.idGeneralTask;";
 		try {
-		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryGeneralProjectAll);
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryTaskLinked);
 		int i = 0;
 		while (rs.next()) {
 			ArrayList<String> temp = new ArrayList<String>();
@@ -121,6 +120,28 @@ public class JDBCGeneralProject extends AbstractGeneralProject{
 			throw new SQLException("Erreur, loadAllDB");
 		}
 		return res;
+	}
+
+	@Override
+	public void saveUpdateDB() throws SQLException {
+		String queryGeneralTask = "UPDATE GeneralProject Set name = '" + this.getName() + "', description = '" + this.getDescription() + "', idProjectCategory = '" + this.getIdProjectCategory() + "' WHERE idGeneralProject = '" + this.getIdGeneralProject() + "');";
+		try {
+		JDBCSingleton.getInstance().UpdateWithoutResultSet(queryGeneralTask);
+		} catch (SQLException e) {
+			throw new SQLException("Erreur, saveInsertDB");
+		}
+	}
+
+	@Override
+	public void deleteProject() throws SQLException {
+		try {
+			String queryDelete1 = "Delete from GeneralProject where idGeneralProject = '" + this.getIdGeneralProject() + "';";
+			String queryDelete2 = "Delete from isBelongGeneral where idGeneralProject = '" + this.getIdGeneralProject() + "';";
+			JDBCSingleton.getInstance().UpdateWithoutResultSet(queryDelete1);
+			JDBCSingleton.getInstance().UpdateWithoutResultSet(queryDelete2);
+		} catch (SQLException e) {
+			throw new SQLException("Erreur, deleteProject");
+		}
 	}
 
 }

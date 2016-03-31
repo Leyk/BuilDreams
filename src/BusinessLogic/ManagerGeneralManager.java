@@ -106,44 +106,93 @@ public class ManagerGeneralManager {
 
 	public boolean updateGeneralProject(int idGeneralProject, String name, String description, int idProjectCategory,
 			String[] linkedGeneralTasks) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject(idGeneralProject, name, description, idProjectCategory);
+		try {
+		myGeneralProject.saveUpdateDB();
+		myGeneralProject.saveLinkedGeneralTasksForExistingProject(linkedGeneralTasks);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean deleteGeneralProject(int idGeneralProject) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			AbstractGeneralProject myGeneralProject = this.myFactory.createGeneralProject(idGeneralProject, "","",0);
+			myGeneralProject.deleteProject();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	public boolean addGeneralTask(String name, String description, int theoreticalLength, int idTaskCategory,
 			String[][] linkedProductCategories) {
-		// TODO Auto-generated method stub
-		return false;
+			AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask(0, name, description, theoreticalLength, idTaskCategory);
+			try {
+			int id = myGeneralTask.saveInsertDB();
+			myGeneralTask.saveLinkedProductCategoriesForNewTask(id, linkedProductCategories);
+			} catch (SQLException e) {
+				return false;
+			}
+			return true;
 	}
 
 	public boolean saveLinkedProductCategories(int idGeneralTask, String[][] linkedProductCategories) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask(idGeneralTask, "", "",0,0);
+		try {
+		myGeneralTask.saveLinkedProductCategoriesForExistingTask(linkedProductCategories);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public ArrayList<String> loadGeneralTask(int idGeneralTask) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> resGeneralTask = new ArrayList<String>();
+		AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask(idGeneralTask, "", "",0, 0);
+		try {
+		resGeneralTask = myGeneralTask.loadDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resGeneralTask.add(0, null);
+		}
+		return resGeneralTask;
 	}
 
 	public ArrayList<ArrayList<String>> loadAllProductCategoriesLinkedToGeneralTask(int idGeneralTask) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resProductLinked = new ArrayList<ArrayList<String>>();
+		AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask(idGeneralTask, "", "",0, 0);
+		try {	
+		resProductLinked = myGeneralTask.loadAllProductLinked();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resProductLinked.add(0, null);
+		}
+		return resProductLinked;
 	}
 
 	public boolean updateGeneralTask(int idGeneralTask, String name, String description, int theoreticalLength,
 			int idTaskCategory, String[][] linkedProductCategories) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask(idGeneralTask, name, description,theoreticalLength, idTaskCategory);
+		try {
+		myGeneralTask.saveUpdateDB();
+		myGeneralTask.saveLinkedProductCategoriesForExistingTask(linkedProductCategories);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean deleteGeneralTask(int idGeneralTask) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			AbstractGeneralTask myGeneralTask = this.myFactory.createGeneralTask(idGeneralTask, "","",0,0);
+			myGeneralTask.deleteTask();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

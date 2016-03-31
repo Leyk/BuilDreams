@@ -66,6 +66,11 @@ public abstract class AbstractGeneralProject {
 
 	public abstract ArrayList<ArrayList<String>> loadAllTaskLinked() throws SQLException;
 
+	public abstract void saveUpdateDB() throws SQLException;
+
+	public abstract void deleteProject() throws SQLException;
+
+	
 	
 	
 }

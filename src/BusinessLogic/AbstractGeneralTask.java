@@ -66,6 +66,20 @@ public abstract class AbstractGeneralTask {
 	}
 
 	public abstract ArrayList<ArrayList<String>> loadAllDB() throws SQLException;
+
+	public abstract int saveInsertDB() throws SQLException;
+
+	public abstract void saveLinkedProductCategoriesForNewTask(int id, String[][] linkedProductCategories) throws SQLException;
+
+	public abstract void saveLinkedProductCategoriesForExistingTask(String[][] linkedProductCategories) throws SQLException;
+
+	public abstract ArrayList<String> loadDB() throws SQLException;
+
+	public abstract ArrayList<ArrayList<String>> loadAllProductLinked() throws SQLException;
+
+	public abstract void saveUpdateDB() throws SQLException;
+
+	public abstract void deleteTask() throws SQLException;
 	
 	
 	
