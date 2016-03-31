@@ -21,13 +21,13 @@ public class JDBCGeneralTask extends AbstractGeneralTask{
 	@Override
 	public ArrayList<ArrayList<String>> loadAllDB() throws SQLException {
 		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
-		String queryGeneralTaskAll = "Select idGeneraltask, name From GeneralTask;";
+		String queryGeneralTaskAll = "Select GT.idGeneraltask, GT.name, TC.name, GT.theoreticallength From GeneralTask GT, TaskCategory TC where TC.idTaskCategory = GT.idTaskCategory";
 		try {
 		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryGeneralTaskAll);
 		int i = 0;
 		while (rs.next()) {
 			ArrayList<String> temp = new ArrayList<String>();
-	    	for (int j= 0; j<2; j++){
+	    	for (int j= 0; j<4; j++){
 	    		temp.add(j,rs.getString(j+1));
 	    	}
 	    	res.add(i, temp);

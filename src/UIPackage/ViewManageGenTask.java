@@ -25,6 +25,7 @@ public class ViewManageGenTask extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
+	private Object[][] data;
 
 	private FacadeGeneralManager myFacade;
 	
@@ -67,13 +68,19 @@ public class ViewManageGenTask extends JFrame implements ActionListener {
 		this.getContentPane().add(panNorth, BorderLayout.NORTH);
 		this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 		
-		 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-			      {"Task1", "Cat1", "10j","Update","Delete"},
-			      {"Task2", "Cat2", "8j","Update","Delete"},
-			      {"Task3", "Cat3", "1j","Update","Delete"},
-			      {"Task4", "Cat4", "3j","Update","Delete"}
-			    };
-	    String  title[] = {"Task name", "Category", "Length", " ", "  "};
+		// Retrieve the content of the all the general tasks in the shop
+		 ArrayList<ArrayList<String>> allTask = myFacade.loadAllGeneralTask();
+		 data = new Object[allTask.size()][6];
+			 for (int i=0;i<allTask.size();i++){
+				 data[i][0] = allTask.get(i).get(0); 
+				 data[i][1] = allTask.get(i).get(1); 
+				 data[i][2] = allTask.get(i).get(2); 
+				 data[i][3] = allTask.get(i).get(3);
+				 data[i][4] = "Update";
+				 data[i][5] = "Delete";
+			 }                           
+		
+	    String  title[] = {"ID Task", "Task name", "Category", "Length", " ", "  "};
 	    
 	    this.model = new ModeleDonneesTab(data, title);
 	    this.tableau = new JTable(model);
