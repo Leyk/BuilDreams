@@ -198,7 +198,7 @@ public class ViewHome extends JFrame implements ActionListener {
 		btnManagePersoTask.setEnabled(true);
 		btnShop.setEnabled(true);
 		btnManageBasket.setEnabled(true);
-		btnOffers.setEnabled(true);
+		//btnOffers.setEnabled(true);
 		btnLogOut.setVisible(true);
 		btnLogIn.setVisible(false);
 		btnSignIn.setVisible(false);
