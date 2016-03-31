@@ -70,14 +70,11 @@ public class ViewManageGenProject extends JFrame implements ActionListener{
 					
 			// Retrieve the content of the all the general projects in the shop
 			 ArrayList<ArrayList<String>> allProject = myFacade.loadAllGeneralProject();
-			 System.out.println("kikoo" + allProject);
 			 data = new Object[allProject.size()][5];
 				 for (int i=0;i<allProject.size();i++){
 					 data[i][0] = allProject.get(i).get(0); 
 					 data[i][1] = allProject.get(i).get(1); 
-					 System.out.println(data[i][1]);
 					 data[i][2] = allProject.get(i).get(2); 
-					 System.out.println(data[i][2]);
 					 data[i][3] = "Update";
 					 data[i][4] = "Delete";
 				 }                           
