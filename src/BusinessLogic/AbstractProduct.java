@@ -96,4 +96,7 @@ public abstract class AbstractProduct {
 	}
 	
 	public abstract ArrayList<ArrayList<String>> loadContentDB() throws SQLException;
+
+	public abstract void saveInsertDB() throws SQLException;
+	
 }

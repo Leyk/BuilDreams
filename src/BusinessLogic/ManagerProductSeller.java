@@ -1,5 +1,6 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistance.JDBCFactory;
@@ -33,14 +34,26 @@ public class ManagerProductSeller {
 	}
 
 	public ArrayList<ArrayList<String>> loadAllProductSeller() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ArrayList<String>> resShop = new ArrayList<ArrayList<String>>();
+		AbstractProduct myProduct = this.myFactory.createProduct();
+		try {
+			resShop = myProduct.loadContentDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resShop.add(0, null);
+		}
+		return resShop;
 	}
 
 	public boolean addProductSeller(String name, String description, float quantity, String reference, float price,
 			int idCategory) {
-		// TODO Auto-generated method stub
-		return false;
+		AbstractProduct myProduct = this.myFactory.createProduct(0, name, description, quantity, reference, price, idCategory, this.myAbstractRoleArray.get(0).getIdRole());
+		try {
+		myProduct.saveInsertDB();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean updateProductSeller(int idProduct, String name, String description, float quantity, String reference,
