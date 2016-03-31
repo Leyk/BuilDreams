@@ -28,6 +28,7 @@ public class ViewManageCategory extends JFrame implements ActionListener {
 	
 	private JButton btnHome;
 	private JButton btnCreateCategory;
+	private Object[][] data;
 	
 	private FacadeCategory myFacade;
 
@@ -66,13 +67,14 @@ public class ViewManageCategory extends JFrame implements ActionListener {
 		this.getContentPane().add(panNorth, BorderLayout.NORTH);
 		this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 		
-		 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-			      {"Categ1", "Subcat1", "Update","Delete"},
-			      {"Categ2", "Subcat2", "Update","Delete"},
-			      {"Categ3", "Subcat3", "Update","Delete"},
-			      {"Categ4", "Subcat4", "Update","Delete"}
-			    };
-	    String  title[] = {"Category name", "Sub-category", " ", "  "};
+		ArrayList<ArrayList<String>> myProductCategories = myFacade.loadAllProductCategory();
+		 data = new Object[myProductCategories.size()][5];
+			 for (int i=0;i<myProductCategories.size();i++){
+				 data[i][0] = myProductCategories.get(i).get(1);  
+				 data[i][1] = "Update";
+				 data[i][2] = "Delete";
+			 }                             
+	    String  title[] = {"Category name", " ", "  "};
 	    
 	    this.model = new ModeleDonneesTab(data, title);
 	    this.tableau = new JTable(model);
