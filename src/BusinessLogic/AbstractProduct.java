@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public abstract class AbstractProduct {
 	private int idProduct; //PrimarKey
 	private String name;
@@ -92,5 +95,5 @@ public abstract class AbstractProduct {
 		this.idRole = idRole;
 	}
 	
-	
+	public abstract ArrayList<ArrayList<String>> loadContentDB() throws SQLException;
 }

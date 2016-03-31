@@ -1,4 +1,8 @@
 package Persistance;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import BusinessLogic.AbstractProduct;
 
 public class JDBCProduct extends AbstractProduct{
@@ -14,6 +18,31 @@ public class JDBCProduct extends AbstractProduct{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	// This method permits to retrieve all the products
+	@Override
+	public ArrayList<ArrayList<String>> loadContentDB() throws SQLException {
+		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
+		String queryProductContent = "select Product.reference, Product.name, ProductCategory.name, Person.nickname, Product.quantity, Product.price "
+				+ "from Product, Productcategory, Role, Seller, Person where Product.idcategory = ProductCategory.idcategory and Product.idRole = Seller.idRole "
+				+ "and Seller.idRole = Role.idRole and Role.nickname = Person.nickname";
+		try{
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryProductContent);
+		int i = 0;
+		while (rs.next()) {
+			ArrayList<String> temp = new ArrayList<String>();
+	    	for (int j= 0; j<6; j++){
+	    		temp.add(j,rs.getString(j+1));
+	    	}
+	    	res.add(i, temp);
+	    	i++;
+	    }
+		}
+		catch (SQLException e) {
+			throw new SQLException("Erreur, loadContentDB");
+		}
+		return res;
+	}
 
 
 
