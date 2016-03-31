@@ -25,6 +25,7 @@ public class ViewManageOrder extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private ModeleDonneesTab model;
 	private JTable tableau;
+	private Object[][] data;
 	
 	private JButton btnHome;
 
@@ -61,13 +62,17 @@ public class ViewManageOrder extends JFrame implements ActionListener{
 		this.getContentPane().add(panNorth, BorderLayout.NORTH);
 		this.getContentPane().add(panbtn, BorderLayout.SOUTH);
 		
-		 Object[][] data = {                              // A COMPLETER AVEC LES DONNEES RECUPEREES DE LA REQUETE
-			      {"Vasseur", "20/03/2016", "250", "!","See Order"},
-			      {"Faivre", "20/03/2016", "250", "!","See Order"},
-			      {"Duchemole", "19/03/2016", "250", "Validated","See Order"},
-			      {"Toto", "18/03/2016", "250", "Sent","See Order"},
-			    };
-	    String  title[] = {"Client","Date","Total Price","Status"," "};  // Changer si c'est un user qui regarde ses orders : mettre "Seller" au lieu de "Client"
+		// Retrieve all the orders of the connected seller
+		ArrayList<ArrayList<String>> allOrder = myFacade.loadAllCommand();
+		data = new Object[allOrder.size()][5];
+		for (int i=0;i<allOrder.size();i++){
+			data[i][0] = allOrder.get(i).get(0); 
+			data[i][1] = allOrder.get(i).get(1); 
+			data[i][2] = allOrder.get(i).get(2); 
+			data[i][3] = allOrder.get(i).get(3);
+			data[i][4] = "See Order";
+					 } 
+	    String  title[] = {"ID Order","Date","Client","Status"," "};  // Changer si c'est un user qui regarde ses orders : mettre "Seller" au lieu de "Client"
 	    
 	    this.model = new ModeleDonneesTab(data, title);
 	    this.tableau = new JTable(model);

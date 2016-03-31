@@ -40,6 +40,8 @@ public abstract class AbstractCommand {
 
 	public abstract void insertLinkedSellers(ArrayList<String> listSellerBasket) throws SQLException;
 	
+	public abstract ArrayList<ArrayList<String>> loadOrderDB(ArrayList<AbstractRole> myAbstractArrayListRoleIn) throws SQLException;
+	
 	
 	
 	

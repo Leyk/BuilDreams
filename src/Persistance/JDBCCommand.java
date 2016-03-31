@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import BusinessLogic.AbstractCommand;
+import BusinessLogic.AbstractRole;
 
 public class JDBCCommand extends AbstractCommand{
 
@@ -62,4 +63,25 @@ public class JDBCCommand extends AbstractCommand{
 		}
 	}
 
+	@Override
+	public ArrayList<ArrayList<String>> loadOrderDB(ArrayList<AbstractRole> myAbstractArrayListRoleIn) throws SQLException {
+		ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
+		String queryOrderContent = "Select C.idcommand, C.createdDate, P.nickname, CS.state from command C, Users U, Role R, Person P, commandSeller CS Where C.idRole = U.idRole and U.idRole = R.idRole and R.nickname = P.nickname and C.idCommand = CS.idCommand and CS.idRole = "+myAbstractArrayListRoleIn.get(0).getIdRole();
+		try{
+		ResultSet rs = JDBCSingleton.getInstance().RequestWithResultSet(queryOrderContent);
+		int i = 0;
+		while (rs.next()) {
+			ArrayList<String> temp = new ArrayList<String>();
+	    	for (int j= 0; j<4; j++){
+	    		temp.add(j,rs.getString(j+1));
+	    	}
+	    	res.add(i, temp);
+	    	i++;
+	    }
+		}
+		catch (SQLException e) {
+			throw new SQLException("Erreur, loadContentDB");
+		}
+		return res;
+	}
 }
